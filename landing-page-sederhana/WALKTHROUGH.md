@@ -119,6 +119,7 @@ Landing page menggunakan **storytelling flow** dengan 5 section strategis:
 **Elemen Kunci**:
 - ✅ Logo & Teks: SPINOTEK, HIMA TI, POLITEKNIK HASNUR
 - ✅ High visibility placement (top of page)
+- ✅ White background with orange accents for clean professional look
 - ✅ Responsive layout with flexbox
 
 ### 7. **Footer Enhancements**
