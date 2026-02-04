@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SHIREKA ARCADE - Putri Canon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+        
+        :root {
+            --bg-body: #FFF5F7;
+            --text-main: #FF69B4;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --glass-border: #FFD1DC;
+            --accent: #FFB6C1;
+            --card-bg: #FFFFFF;
+        }
+
+        .dark-mode {
+            --bg-body: #1a1a2e;
+            --text-main: #ff85a1;
+            --glass-bg: rgba(26, 26, 46, 0.95);
+            --glass-border: #303056;
+            --accent: #e94560;
+            --card-bg: #16213e;
+        }
+
+        body { 
+            font-family: 'Quicksand', sans-serif; 
+            background-color: var(--bg-body); 
+            color: var(--text-main); 
+            transition: all 0.4s ease;
+            overflow-x: hidden; 
+            -webkit-tap-highlight-color: transparent; 
+        }
+
+        .glass { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); }
+        .nav-active { background: var(--accent) !important; color: white !important; transform: translateY(-8px); box-shadow: 0 10px 20px rgba(233, 69, 96, 0.4); }
+        
+        canvas { touch-action: none; border-radius: 2rem; max-width: 100%; background: var(--card-bg); }
+        .game-card { background: var(--card-bg); transition: transform 0.2s; }
+        
+        .theme-control { position: fixed; top: 110px; left: 20px; z-index: 100; cursor: pointer; }
+        .audio-control { position: fixed; top: 110px; right: 20px; z-index: 100; cursor: pointer; }
+        
+        .playing-bar { display: inline-block; width: 3px; background: var(--text-main); margin: 0 1px; animation: bounce 0.6s infinite alternate; }
+        @keyframes bounce { from { height: 5px; } to { height: 15px; } }
+
+        /* LOADING SCREEN */
+        #loading-screen {
+            position: fixed; inset: 0; background: var(--bg-body); z-index: 9999;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+        .loader-circle {
+            width: 50px; height: 50px; border: 5px solid var(--glass-border);
+            border-top-color: var(--text-main); border-radius: 50%; animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .fade-out { opacity: 0; visibility: hidden; }
+
+        .social-icon { transition: all 0.3s ease; filter: grayscale(1); opacity: 0.6; }
+        .social-icon:hover { filter: grayscale(0); opacity: 1; transform: scale(1.1); }
+    </style>
+</head>
+<body class="min-h-screen pb-28">
+
+    <div id="loading-screen">
+        <div class="loader-circle mb-6"></div>
+        <div class="text-center px-6">
+            <h2 class="text-2xl font-black tracking-[0.3em] uppercase mb-1" style="color: var(--text-main)">SHIREKA</h2>
+            <div class="h-[1px] w-12 bg-pink-300 mx-auto mb-3 opacity-50"></div>
+            <p class="text-[10px] font-bold opacity-40 uppercase tracking-widest mb-1">Arcade Project</p>
+            <p class="text-[11px] font-black uppercase tracking-[0.1em]" style="color: var(--text-main)">Created by Putri Canon</p>
+        </div>
+    </div>
+
+    <audio id="bgm" loop><source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mpeg"></audio>
+    <audio id="sfx-pop"><source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" type="audio/mpeg"></audio>
+    <audio id="sfx-win"><source src="https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3" type="audio/mpeg"></audio>
+    <audio id="sfx-hit"><source src="https://assets.mixkit.co/active_storage/sfx/2572/2572-preview.mp3" type="audio/mpeg"></audio>
+
+    <div class="theme-control glass p-2 rounded-full shadow-md w-10 h-10 flex items-center justify-center" onclick="toggleTheme()">
+        <span id="theme-icon">🌙</span>
+    </div>
+
+    <div class="audio-control glass p-2 rounded-full flex items-center gap-2 shadow-md" onclick="toggleMute()">
+        <div id="music-waves" class="hidden items-end h-4 px-1">
+            <div class="playing-bar" style="animation-delay: 0.1s"></div>
+            <div class="playing-bar" style="animation-delay: 0.3s"></div>
+            <div class="playing-bar" style="animation-delay: 0.2s"></div>
+        </div>
+        <span id="mute-icon">🔇</span>
+    </div>
+
+    <nav class="w-full glass py-5 px-2 flex justify-around items-center sticky top-0 z-50 shadow-sm">
+        <div class="flex-1 flex flex-col items-center justify-center opacity-80">
+            <div class="h-8 w-full flex items-center justify-center">
+                <img src="image/spinotek-logo.png" alt="SP" class="max-h-full max-w-[60px] object-contain" onerror="this.src='https://via.placeholder.com/60x30?text=SP'">
+            </div>
+            <span class="text-[7px] font-black mt-2 uppercase tracking-tighter">Spinotek</span>
+        </div>
+        <div class="flex-[1.5] flex flex-col items-center justify-center scale-110">
+            <div class="h-14 w-full flex items-center justify-center">
+                <img src="image/png POLHAS.png" alt="PH" class="max-h-full max-w-[100px] object-contain" onerror="this.src='https://via.placeholder.com/100x50?text=POLHAS'">
+            </div>
+            <span class="text-[8px] font-black mt-1 uppercase tracking-widest" style="color: var(--text-main)">Polihasnur</span>
+        </div>
+        <div class="flex-1 flex flex-col items-center justify-center opacity-80">
+            <div class="h-8 w-full flex items-center justify-center">
+                <img src="image/logo-hima-ti.png" alt="HIMA" class="max-h-full max-w-[60px] object-contain" onerror="this.src='https://via.placeholder.com/60x30?text=HIMA'">
+            </div>
+            <span class="text-[7px] font-black mt-2 uppercase tracking-tighter">HIMA TI</span>
+        </div>
+    </nav>
+
+    <main class="p-4 max-w-md mx-auto mt-4">
+        <section id="page-home">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-black" style="color: var(--text-main)">SHIREKA ARCADE</h1>
+                <p class="text-[10px] tracking-[0.3em] opacity-60 font-bold uppercase">Dynamic Gaming Experience</p>
+            </div>
+            <div class="grid gap-4">
+                <div onclick="changePage('ttt')" class="glass p-5 rounded-[2rem] flex items-center gap-4 cursor-pointer game-card active:scale-95">
+                    <span class="text-2xl">❌</span>
+                    <div><h3 class="font-bold text-sm">Tic Tac Toe</h3><p class="text-[9px] opacity-50 uppercase">Strategy</p></div>
+                </div>
+                <div onclick="changePage('memory')" class="glass p-5 rounded-[2rem] flex items-center gap-4 cursor-pointer game-card active:scale-95">
+                    <span class="text-2xl">🌸</span>
+                    <div><h3 class="font-bold text-sm">Memory Match</h3><p class="text-[9px] opacity-50 uppercase">Memory</p></div>
+                </div>
+                <div onclick="changePage('catch')" class="glass p-5 rounded-[2rem] flex items-center gap-4 cursor-pointer game-card active:scale-95">
+                    <span class="text-2xl">🧺</span>
+                    <div><h3 class="font-bold text-sm">Shireka Catch</h3><p class="text-[9px] opacity-50 uppercase">Action</p></div>
+                </div>
+            </div>
+            <footer class="mt-12 mb-10 pb-4 text-center">
+                <div class="glass p-6 rounded-[2.5rem] border-dashed border-2">
+                    <h4 class="text-xs font-black uppercase tracking-[0.2em] mb-4">About Developer</h4>
+                    <div class="flex items-center justify-center gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-full border-2 border-white shadow-md overflow-hidden bg-white">
+                            <img src="image/foto-putri.png" alt="PC" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/150?text=PC'">
+                        </div>
+                        <div class="text-left">
+                            <p class="text-[12px] font-black leading-none uppercase tracking-wide" style="color: var(--text-main)">Putri Canon</p>
+                            <p class="text-[9px] opacity-60 font-bold mt-1">Creative Web Developer</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-around items-center">
+                        <a href="https://wa.me/6282159285325" target="_blank" class="social-icon flex flex-col items-center gap-1">💬<span class="text-[7px] uppercase opacity-50 font-bold">WhatsApp</span></a>
+                        <a href="https://instagram.com/putrii3e_" target="_blank" class="social-icon flex flex-col items-center gap-1">📸<span class="text-[7px] uppercase opacity-50 font-bold">Instagram</span></a>
+                        <a href="https://github.com/PutriCanon" target="_blank" class="social-icon flex flex-col items-center gap-1">💻<span class="text-[7px] uppercase opacity-50 font-bold">GitHub</span></a>
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <div id="game-container" class="hidden">
+            <div id="game-header" class="flex justify-between items-center mb-4 px-2">
+                <button onclick="changePage('home')" class="text-[10px] font-bold opacity-60 uppercase">← Back</button>
+                <span id="game-title" class="font-black text-sm uppercase">TITLE</span>
+                <span id="game-stat" class="text-xs font-bold text-pink-500">READY</span>
+            </div>
+
+            <div id="instruction-screen" class="glass p-8 rounded-[3rem] text-center mb-6">
+                <div id="game-icon" class="text-5xl mb-4">🎮</div>
+                <h3 class="font-bold text-lg mb-2">Cara Bermain</h3>
+                <p id="instruction-text" class="text-xs leading-relaxed opacity-60 mb-6 italic">Instruksi...</p>
+                <button id="start-btn" class="w-full py-4 rounded-2xl font-bold shadow-lg uppercase text-xs" style="background: var(--accent); color: white;">Start Now!</button>
+            </div>
+
+            <div id="result-screen" class="hidden glass p-8 rounded-[3rem] text-center mb-6">
+                <h3 id="result-title" class="font-black text-2xl mb-1">RESULT</h3>
+                <p id="result-text" class="text-sm font-bold opacity-60 mb-6">Message...</p>
+                <div class="flex gap-2">
+                    <button id="retry-btn" class="flex-1 py-3 rounded-xl font-bold text-[10px] uppercase shadow-md" style="background: var(--accent); color: white;">Play Again</button>
+                    <button onclick="changePage('home')" class="flex-1 py-3 glass rounded-xl font-bold text-[10px] uppercase">Menu</button>
+                </div>
+            </div>
+
+            <div id="play-area" class="hidden">
+                <div id="ttt-board" class="grid grid-cols-3 gap-3 hidden"></div>
+                <div id="memory-grid" class="grid grid-cols-4 gap-2 hidden"></div>
+                <div id="canvas-wrapper" class="flex justify-center hidden">
+                    <canvas id="catch-canvas" class="glass shadow-lg"></canvas>
+                </div>
+            </div>
+
+            <div id="history-section" class="mt-8 px-2">
+                <h4 class="text-[10px] font-black uppercase tracking-[0.2em] mb-3 opacity-50">Match History</h4>
+                <div id="history-list" class="space-y-2 max-h-40 overflow-y-auto pr-2"></div>
+            </div>
+        </div>
+    </main>
+
+    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-sm glass rounded-full p-2 flex justify-around items-end z-50 shadow-xl">
+        <button onclick="changePage('home')" id="nav-home" class="p-3 rounded-full flex flex-col items-center"><span class="text-lg">🏠</span><span class="text-[7px] font-bold uppercase">Lobby</span></button>
+        <button onclick="changePage('ttt')" id="nav-ttt" class="p-3 rounded-full flex flex-col items-center"><span class="text-lg">❌</span><span class="text-[7px] font-bold uppercase">TTT</span></button>
+        <button onclick="changePage('memory')" id="nav-memory" class="p-3 rounded-full flex flex-col items-center"><span class="text-lg">🌸</span><span class="text-[7px] font-bold uppercase">MEM</span></button>
+        <button onclick="changePage('catch')" id="nav-catch" class="p-3 rounded-full flex flex-col items-center"><span class="text-lg">🧺</span><span class="text-[7px] font-bold uppercase">Catch</span></button>
+    </nav>
+
+    <script>
+        // --- CORE SYSTEMS ---
+        window.addEventListener('load', () => {
+            setTimeout(() => document.getElementById('loading-screen').classList.add('fade-out'), 2500);
+        });
+
+        let isDark = false;
+        function toggleTheme() {
+            isDark = !isDark;
+            document.body.classList.toggle('dark-mode');
+            document.getElementById('theme-icon').innerText = isDark ? "☀️" : "🌙";
+            playSFX('pop');
+        }
+
+        const pages = {
+            home: { title: "Lobby", icon: "🏠", info: "" },
+            ttt: { title: "Tic Tac Toe", icon: "❌", info: "Lawan bot. Bariskan 3 simbol sama!" },
+            memory: { title: "Memory Match", icon: "🌸", info: "Cari pasangan gambar yang sama!" },
+            catch: { title: "Shireka Catch", icon: "🧺", info: "Tangkap bunga 🌸, hindari bom 💣!" }
+        };
+
+        let currentPage = 'home', catchGameRunning = false, isMuted = true;
+        const bgm = document.getElementById('bgm'), sfxPop = document.getElementById('sfx-pop'), sfxWin = document.getElementById('sfx-win'), sfxHit = document.getElementById('sfx-hit');
+        let gameHistory = { ttt: [], memory: [], catch: [] };
+
+        function toggleMute() {
+            isMuted = !isMuted;
+            if (!isMuted) {
+                bgm.play().catch(() => {});
+                document.getElementById('mute-icon').innerText = "🔊";
+                document.getElementById('music-waves').classList.replace('hidden', 'flex');
+            } else {
+                bgm.pause();
+                document.getElementById('mute-icon').innerText = "🔇";
+                document.getElementById('music-waves').classList.replace('flex', 'hidden');
+            }
+        }
+
+        function playSFX(type) {
+            if (isMuted) return;
+            const sounds = { pop: sfxPop, win: sfxWin, hit: sfxHit };
+            if(sounds[type]) { 
+                const s = sounds[type].cloneNode(); 
+                s.volume = 0.5; 
+                s.play(); 
+            }
+        }
+
+        function changePage(id) {
+            currentPage = id; catchGameRunning = false;
+            document.querySelectorAll('section, #game-container').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('nav button').forEach(el => el.classList.remove('nav-active'));
+            document.getElementById('nav-'+id).classList.add('nav-active');
+
+            if(id === 'home') document.getElementById('page-home').classList.remove('hidden');
+            else {
+                document.getElementById('game-container').classList.remove('hidden');
+                setupInstruction(id); renderHistory(id);
+            }
+            playSFX('pop');
+        }
+
+        function setupInstruction(id) {
+            document.getElementById('play-area').classList.add('hidden');
+            document.getElementById('result-screen').classList.add('hidden');
+            document.getElementById('instruction-screen').classList.remove('hidden');
+            document.getElementById('game-title').innerText = pages[id].title;
+            document.getElementById('game-icon').innerText = pages[id].icon;
+            document.getElementById('instruction-text').innerText = pages[id].info;
+            document.getElementById('game-stat').innerText = "READY";
+            document.getElementById('start-btn').onclick = () => launchGame(id);
+        }
+
+        function launchGame(id) {
+            playSFX('pop');
+            document.getElementById('instruction-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.add('hidden');
+            document.getElementById('play-area').classList.remove('hidden');
+            
+            document.getElementById('ttt-board').classList.add('hidden');
+            document.getElementById('memory-grid').classList.add('hidden');
+            document.getElementById('canvas-wrapper').classList.add('hidden');
+
+            if(id === 'ttt') { document.getElementById('ttt-board').classList.remove('hidden'); initTTT(); }
+            else if(id === 'memory') { document.getElementById('memory-grid').classList.remove('hidden'); initMemory(); }
+            else if(id === 'catch') { document.getElementById('canvas-wrapper').classList.remove('hidden'); startCatch(); }
+        }
+
+        function showResult(msg, id, isWin = true) {
+            document.getElementById('play-area').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+            document.getElementById('result-title').innerText = isWin ? "CONGRATS!" : "GAME OVER";
+            document.getElementById('result-text').innerText = msg;
+            
+            isWin ? playSFX('win') : playSFX('hit');
+            if(isWin) confetti();
+
+            document.getElementById('retry-btn').onclick = () => launchGame(id);
+
+            gameHistory[id].unshift({ date: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), res: msg });
+            renderHistory(id);
+        }
+
+        function renderHistory(id) {
+            const list = document.getElementById('history-list');
+            list.innerHTML = gameHistory[id].length ? "" : "<p class='text-[9px] opacity-30 italic text-center'>No match history.</p>";
+            gameHistory[id].slice(0, 3).forEach(h => {
+                list.innerHTML += `<div class="bg-white/10 p-2 rounded-lg flex justify-between items-center text-[10px] border border-white/5">
+                    <span class="opacity-40 font-bold">${h.date}</span><span class="font-bold uppercase">${h.res}</span>
+                </div>`;
+            });
+        }
+
+        // --- GAME LOGIC: TTT ---
+        let tttState = ["","","","","","","","",""], tttActive = true;
+        function initTTT() {
+            tttState = ["","","","","","","","",""]; tttActive = true;
+            const b = document.getElementById('ttt-board'); b.innerHTML = "";
+            tttState.forEach((_, i) => {
+                const c = document.createElement('div');
+                c.className = "h-20 glass rounded-2xl flex items-center justify-center text-2xl font-bold cursor-pointer active:scale-95";
+                c.onclick = () => { if(tttState[i] || !tttActive) return; tttState[i]="X"; playSFX('pop'); drawTTT(); if(!checkTTT()){ tttActive=false; setTimeout(aiTTT, 500); } };
+                b.appendChild(c);
+            });
+        }
+        function drawTTT() { const cells = document.querySelectorAll('#ttt-board div'); tttState.forEach((v, i) => cells[i].innerText = v); }
+        function aiTTT() { 
+            let av = tttState.map((v,i)=>v===""?i:null).filter(v=>v!==null);
+            if(av.length){ tttState[av[Math.floor(Math.random()*av.length)]]="O"; drawTTT(); if(!checkTTT()) tttActive=true; }
+        }
+        function checkTTT() {
+            const lines = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+            for(let l of lines) {
+                if(tttState[l[0]] && tttState[l[0]]===tttState[l[1]] && tttState[l[0]]===tttState[l[2]]) {
+                    const win = tttState[l[0]]==='X';
+                    showResult(win ? "YOU WIN! 🏆" : "BOT WIN! 🤖", 'ttt', win);
+                    return true;
+                }
+            }
+            if(!tttState.includes("")) { showResult("DRAW! 🤝", 'ttt', true); return true; }
+            return false;
+        }
+
+        // --- GAME LOGIC: MEMORY ---
+        let memCards = [], flipped = [], matched = 0, moves = 0;
+        function initMemory() {
+            const emojis = ['🌸','🎀','🍬','🍓','🍦','🧸','☁️','🍭'];
+            memCards = [...emojis, ...emojis].sort(()=>Math.random()-0.5);
+            const g = document.getElementById('memory-grid'); g.innerHTML = "";
+            matched = 0; moves = 0; flipped = [];
+            memCards.forEach((e, i) => {
+                const c = document.createElement('div');
+                c.className = "h-16 glass rounded-xl flex items-center justify-center text-xl cursor-pointer";
+                c.innerText = "?";
+                c.onclick = () => {
+                    if(flipped.length < 2 && !c.dataset.match && !flipped.map(f=>f.i).includes(i)) {
+                        c.innerText = e; playSFX('pop'); flipped.push({i, e, el: c});
+                        if(flipped.length === 2) {
+                            moves++;
+                            if(flipped[0].e === flipped[1].e) { 
+                                flipped.forEach(x=>x.el.dataset.match=true); matched+=2; flipped=[]; 
+                                if(matched===16) setTimeout(() => showResult(`${moves} Moves!`, 'memory', true), 500);
+                            } else { 
+                                setTimeout(()=>{ flipped.forEach(x=>x.el.innerText="?"); flipped=[]; }, 700); 
+                            }
+                        }
+                    }
+                };
+                g.appendChild(c);
+            });
+        }
+
+        // --- GAME LOGIC: CATCH ---
+        const canvas = document.getElementById('catch-canvas'), ctx = canvas.getContext('2d');
+        let catchScore = 0, catchLives = 3, basketX = 150, items = [];
+        canvas.width = 320; canvas.height = 380;
+
+        function startCatch() { catchScore = 0; catchLives = 3; items = []; catchGameRunning = true; loopCatch(); }
+        function loopCatch() {
+            if(!catchGameRunning || currentPage !== 'catch') return;
+            ctx.clearRect(0,0,320,380);
+            ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--accent');
+            ctx.beginPath(); ctx.roundRect(basketX, 340, 60, 25, 10); ctx.fill();
+            if(Math.random() < 0.03) items.push({x:Math.random()*290, y:0, t: Math.random()>0.2?'🌸':'💣'});
+            items.forEach((it, i) => {
+                it.y += 4; ctx.font = "24px Arial"; ctx.fillText(it.t, it.x, it.y);
+                if(it.y > 340 && it.x > basketX - 10 && it.x < basketX+60) {
+                    if(it.t==='🌸') { catchScore += 10; } 
+                    else { catchLives--; playSFX('hit'); }
+                    items.splice(i, 1);
+                } else if(it.y > 380) items.splice(i,1);
+            });
+            document.getElementById('game-stat').innerText = `❤️ ${catchLives} | ⭐ ${catchScore}`;
+            if(catchLives <= 0) { catchGameRunning = false; showResult(`Score: ${catchScore}`, 'catch', false); }
+            else requestAnimationFrame(loopCatch);
+        }
+        canvas.addEventListener('mousemove', e => basketX = e.offsetX - 30);
+        canvas.addEventListener('touchmove', e => { basketX = e.touches[0].clientX - canvas.getBoundingClientRect().left - 30; e.preventDefault(); }, {passive:false});
+
+        // --- MAGICAL CURSOR TRAIL (FIXED) ---
+        const cursorParticles = ['🌸', '✨', '🎀', '🍬'];
+        const isMobileDevice = /Mobi|Android/i.test(navigator.userAgent);
+
+        if (!isMobileDevice) {
+            window.addEventListener('mousemove', (e) => {
+                if (Math.random() > 0.4) return;
+                const particle = document.createElement('span');
+                particle.innerText = cursorParticles[Math.floor(Math.random() * cursorParticles.length)];
+                
+                particle.style.position = 'fixed';
+                particle.style.left = e.clientX + 'px';
+                particle.style.top = e.clientY + 'px';
+                particle.style.fontSize = (Math.random() * 10 + 10) + 'px';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '10000';
+                particle.style.transition = 'all 0.8s ease-out';
+                particle.style.opacity = '1';
+                
+                document.body.appendChild(particle);
+
+                const dx = (Math.random() - 0.5) * 100;
+                const dy = (Math.random() - 0.5) * 100;
+
+                requestAnimationFrame(() => {
+                    particle.style.transform = `translate(${dx}px, ${dy}px) rotate(${Math.random() * 360}deg)`;
+                    particle.style.opacity = '0';
+                });
+
+                setTimeout(() => particle.remove(), 800);
+            });
+        }
+
+        changePage('home');
+    </script>
+</body>
+</html>
