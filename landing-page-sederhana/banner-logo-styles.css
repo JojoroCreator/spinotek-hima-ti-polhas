@@ -1,0 +1,98 @@
+/* Banner logo and content layout styles */
+.banner-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.banner-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.banner-logo {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+    /* Removed brightness filter for white background */
+}
+
+.banner-logo-large {
+    height: 48px;
+    /* Increased from 32px */
+}
+
+/* Update existing text styles */
+.banner-event,
+.banner-org,
+.banner-institution {
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.banner-separator {
+    font-size: 1rem;
+}
+
+/* Mobile optimization for banner with logos */
+@media (max-width: 768px) {
+    .banner-content {
+        gap: var(--spacing-sm);
+    }
+
+    .banner-logo {
+        height: 24px;
+    }
+
+    .banner-logo-large {
+        height: 36px;
+    }
+
+    .banner-event,
+    .banner-org,
+    .banner-institution {
+        font-size: 0.75rem;
+        letter-spacing: 0.3px;
+    }
+
+    .banner-separator {
+        margin: 0 0.25rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-banner {
+        padding: var(--spacing-xs) 0;
+    }
+
+    .banner-content {
+        gap: 0.5rem;
+    }
+
+    .banner-logo {
+        height: 20px;
+    }
+
+    .banner-logo-large {
+        height: 28px;
+    }
+
+    .banner-item {
+        gap: 0.25rem;
+    }
+
+    .banner-event,
+    .banner-org,
+    .banner-institution {
+        font-size: 0.65rem;
+    }
+
+    .banner-separator {
+        font-size: 0.8rem;
+    }
+}
