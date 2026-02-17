@@ -1,0 +1,55 @@
+// Inject Auth Modal to all pages
+// This ensures auth modal works on all pages without duplicating HTML
+
+export function injectAuthModal() {
+    // Check if modal already exists
+    if (document.getElementById('auth-modal')) {
+        console.log('✅ Auth modal already exists');
+        return;
+    }
+
+    const modalHTML = `
+    <div id="auth-modal" class="fixed inset-0 bg-black/50 z-50" style="display: none;">
+        <div class="fixed inset-0 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4">
+                <div class="bg-white rounded-2xl w-full max-w-lg shadow-2xl my-8">
+                <div id="login-form" class="p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900">Masuk</h3>
+                        <button type="button" class="close-auth-modal text-gray-400 hover:text-gray-600 transition">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </button>
+                    </div>
+                    <form id="login-form-element" class="space-y-4">
+                        <div><label class="block text-sm font-medium text-gray-700 mb-2">Email</label><input type="email" id="login-email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition" placeholder="email@example.com"></div>
+                        <div><label class="block text-sm font-medium text-gray-700 mb-2">Password</label><input type="password" id="login-password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition" placeholder="••••••••"></div>
+                        <div class="pt-2"><button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-600/20">Masuk</button></div>
+                    </form>
+                    <p class="text-center text-sm text-gray-600 mt-6 pb-2">Belum punya akun? <a href="#" id="switch-to-register" class="text-blue-600 font-semibold hover:underline">Daftar sekarang</a></p>
+                </div>
+                <div id="register-form" class="p-5" style="display: none;">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-lg font-bold text-gray-900">Daftar Akun</h3>
+                        <button type="button" class="close-auth-modal text-gray-400 hover:text-gray-600 transition">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </button>
+                    </div>
+                    <form id="register-form-element" class="space-y-2">
+                        <div><label class="block text-xs font-medium text-gray-700 mb-1">Nama Lengkap</label><input type="text" id="register-name" required class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-100 transition" placeholder="Masukkan nama lengkap"></div>
+                        <div><label class="block text-xs font-medium text-gray-700 mb-1">Email</label><input type="email" id="register-email" required class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-100 transition" placeholder="email@example.com"></div>
+                        <div><label class="block text-xs font-medium text-gray-700 mb-1">Password</label><input type="password" id="register-password" required minlength="6" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-100 transition" placeholder="Minimal 6 karakter"></div>
+                        <div><label class="block text-xs font-medium text-gray-700 mb-1">Program Studi</label><select id="register-prodi" required class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-100 transition cursor-pointer bg-white"><option value="">Pilih Program Studi</option><option value="D3 Teknik Otomotif">D3 Teknik Otomotif</option><option value="D3 Teknik Informatika">D3 Teknik Informatika</option><option value="D3 Budidaya Tanaman Perkebunan">D3 Budidaya Tanaman Perkebunan</option><option value="D4 Teknologi Rekayasa Multimedia">D4 Teknologi Rekayasa Multimedia</option><option value="D4 Akuntansi Bisnis Digital">D4 Akuntansi Bisnis Digital</option><option value="D4 Bisnis Digital">D4 Bisnis Digital</option><option value="D4 Manajemen Pemasaran Internasional">D4 Manajemen Pemasaran Internasional</option></select></div>
+                        <div class="pt-2"><button type="submit" class="w-full bg-blue-600 text-white py-2.5 rounded-lg font-bold text-sm hover:bg-blue-700 transition shadow-lg shadow-blue-600/20">Daftar Sekarang</button></div>
+                    </form>
+                    <p class="text-center text-xs text-gray-600 mt-3">Sudah punya akun? <a href="#" id="switch-to-login" class="text-blue-600 font-semibold hover:underline">Masuk</a></p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    `;
+
+    // Insert modal into body
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    console.log('✅ Auth modal injected successfully');
+}

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Cache Control -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <title>My Dashboard - Polhas CareerBridge</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50 text-gray-900 font-jakarta antialiased">
+    
+    <!-- Particles Background -->
+    <div id="particles-js" class="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"></div>
+    
+    <!-- Navbar Container -->
+    <div id="navbar-container" class="relative z-50"></div>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-20 relative z-10">
+        <div class="container mx-auto px-6 max-w-7xl">
+            
+            <!-- Welcome Header -->
+            <div class="mb-8 flex items-center justify-between">
+                <div>
+                    <h1 class="text-4xl font-bold text-gray-900 mb-2">
+                        Halo, <span id="user-name-display">User</span>! 👋
+                    </h1>
+                    <p class="text-gray-600">Pantau progress belajar dan pencapaian kamu</p>
+                </div>
+                <button id="logout-btn" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-bold transition shadow-lg">
+                    Logout
+                </button>
+            </div>
+            
+            <!-- Progress Dashboard -->
+            <div class="bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl p-8 mb-8 text-white shadow-2xl">
+                <div class="flex flex-wrap items-center justify-between gap-6">
+                    <div class="flex items-center gap-6">
+                        <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border-4 border-white/30">
+                            <span class="text-4xl font-black" id="level-badge">1</span>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold mb-1" id="level-title">Level 1</h3>
+                            <p class="text-blue-100">Keep learning to level up!</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-5xl font-black mb-1" id="total-points">0</div>
+                        <div class="text-blue-100 font-semibold">Total Points</div>
+                    </div>
+                </div>
+
+                <!-- Level Progress -->
+                <div class="mt-8">
+                    <div class="flex justify-between text-sm mb-2">
+                        <span class="font-semibold">Progress to Level <span id="next-level">2</span></span>
+                        <span class="font-semibold"><span id="current-points">0</span> / <span id="points-needed">100</span> points</span>
+                    </div>
+                    <div class="w-full bg-white/20 rounded-full h-4 overflow-hidden backdrop-blur-sm">
+                        <div class="bg-white h-full rounded-full transition-all duration-500 shadow-lg" id="level-progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition border border-gray-100">
+                    <div class="text-4xl mb-3">🎯</div>
+                    <div class="text-3xl font-bold text-gray-900 mb-1" id="skills-completed">0</div>
+                    <div class="text-gray-600 font-medium">Skills Completed</div>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition border border-gray-100">
+                    <div class="text-4xl mb-3">💼</div>
+                    <div class="text-3xl font-bold text-gray-900 mb-1" id="jobs-saved">0</div>
+                    <div class="text-gray-600 font-medium">Jobs Saved</div>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition border border-gray-100">
+                    <div class="text-4xl mb-3">👁️</div>
+                    <div class="text-3xl font-bold text-gray-900 mb-1" id="jobs-viewed">0</div>
+                    <div class="text-gray-600 font-medium">Jobs Viewed</div>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition border border-gray-100">
+                    <div class="text-4xl mb-3">⭐</div>
+                    <div class="text-3xl font-bold text-gray-900 mb-1" id="portfolio-score">0</div>
+                    <div class="text-gray-600 font-medium">Portfolio Score</div>
+                </div>
+            </div>
+
+            <!-- Achievements Section -->
+            <div class="bg-white rounded-3xl p-8 shadow-lg mb-8 border border-gray-100">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-2xl font-bold text-gray-900">🏆 Achievements</h3>
+                    <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-bold" id="achievement-progress">0 / 12 Unlocked</span>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4" id="achievements-grid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-6 text-gray-900">Continue Your Journey</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="roadmap.html" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg hover:shadow-xl transform hover:scale-105">
+                        📚 Explore Roadmaps
+                    </a>
+                    <a href="jobs.html" class="bg-white text-gray-700 px-8 py-4 rounded-xl font-bold hover:bg-gray-50 transition border-2 border-gray-200 shadow-md hover:shadow-lg">
+                        💼 Browse Jobs
+                    </a>
+                    <a href="portfolio.html" class="bg-white text-gray-700 px-8 py-4 rounded-xl font-bold hover:bg-gray-50 transition border-2 border-gray-200 shadow-md hover:shadow-lg">
+                        ✅ Check Portfolio
+                    </a>
+                    <button id="share-progress-btn" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl font-bold hover:from-purple-700 hover:to-pink-700 transition shadow-lg hover:shadow-xl transform hover:scale-105">
+                        📤 Share Progress
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Auth Modal Container -->
+    <div id="auth-modal-container"></div>
+    
+    <!-- Auth Modal - Direct -->
+    <div id="auth-modal" class="fixed inset-0 bg-black/50 z-50" style="display: none;">
+        <div class="fixed inset-0 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4">
+                <div class="bg-white rounded-2xl w-full max-w-lg shadow-2xl my-8">
+                <div id="login-form" class="p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900">Masuk</h3>
+                        <button type="button" class="close-auth-modal text-gray-400 hover:text-gray-600 transition">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </button>
+                    </div>
+                    <form id="login-form-element" class="space-y-4">
+                        <div><label class="block text-sm font-medium text-gray-700 mb-2">Email</label><input type="email" id="login-email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition" placeholder="email@example.com"></div>
+                        <div><label class="block text-sm font-medium text-gray-700 mb-2">Password</label><input type="password" id="login-password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition" placeholder="••••••••"></div>
+                        <div class="pt-2"><button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-600/20">Masuk</button></div>
+                    </form>
+                    <p class="text-center text-sm text-gray-600 mt-6 pb-2">Belum punya akun? <a href="#" id="switch-to-register" class="text-blue-600 font-semibold hover:underline">Daftar sekarang</a></p>
+                </div>
+                <div id="register-form" class="p-5" style="display: none;">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-lg font-bold text-gray-900">Daftar Akun</h3>
+                        <button type="button" class="close-auth-modal text-gray-400 hover:text-gray-600 transition">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </button>
+                    </div>
+                    <form id="register-form-element" class="space-y-2">
+                        <div><label class="block text-xs font-medium text-gray-700 mb-1">Nama Lengkap</label><input type="text" id="register-name" required class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-100 transition" placeholder="Masukkan nama lengkap"></div>
+                        <div><label class="block text-xs font-medium text-gray-700 mb-1">Email</label><input type="email" id="register-email" required class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-100 transition" placeholder="email@example.com"></div>
+                        <div><label class="block text-xs font-medium text-gray-700 mb-1">Password</label><input type="password" id="register-password" required minlength="6" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-100 transition" placeholder="Minimal 6 karakter"></div>
+                        <div><label class="block text-xs font-medium text-gray-700 mb-1">Program Studi</label><select id="register-prodi" required class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-100 transition cursor-pointer bg-white"><option value="">Pilih Program Studi</option><option value="D3 Teknik Otomotif">D3 Teknik Otomotif</option><option value="D3 Teknik Informatika">D3 Teknik Informatika</option><option value="D3 Budidaya Tanaman Perkebunan">D3 Budidaya Tanaman Perkebunan</option><option value="D4 Teknologi Rekayasa Multimedia">D4 Teknologi Rekayasa Multimedia</option><option value="D4 Akuntansi Bisnis Digital">D4 Akuntansi Bisnis Digital</option><option value="D4 Bisnis Digital">D4 Bisnis Digital</option><option value="D4 Manajemen Pemasaran Internasional">D4 Manajemen Pemasaran Internasional</option></select></div>
+                        <div class="pt-2"><button type="submit" class="w-full bg-blue-600 text-white py-2.5 rounded-lg font-bold text-sm hover:bg-blue-700 transition shadow-lg shadow-blue-600/20">Daftar Sekarang</button></div>
+                    </form>
+                    <p class="text-center text-xs text-gray-600 mt-3">Sudah punya akun? <a href="#" id="switch-to-login" class="text-blue-600 font-semibold hover:underline">Masuk</a></p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Load Components First -->
+    <script type="module">
+        import { loadCommonComponents } from './js/components.js';
+        import { auth } from './js/auth.js';
+        import { updateNavbar, setupDropdownClose } from './js/ui.js';
+        import { initParticles } from './js/particles-config.js';
+        
+        // Check if user is logged in
+        if (!auth.isLoggedIn()) {
+            alert('Silakan login terlebih dahulu untuk mengakses Dashboard');
+            window.location.href = 'index.html';
+        } else {
+            // Display user name
+            const currentUser = auth.currentUser;
+            document.getElementById('user-name-display').textContent = currentUser.name;
+        }
+        
+        await loadCommonComponents();
+        
+        // Update navbar after components loaded
+        updateNavbar();
+        setupDropdownClose();
+        
+        // Initialize particles
+        initParticles();
+        
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 50
+        });
+    </script>
+
+    <!-- Dashboard JavaScript -->
+    <script type="module">
+        import { UserProgress, achievements } from './js/gamification.js';
+        import { auth } from './js/auth.js';
+
+        // Initialize
+        const userProgress = new UserProgress();
+        const progress = userProgress.getProgress();
+
+        // Update Level Display
+        document.getElementById('level-badge').textContent = progress.level;
+        document.getElementById('level-title').textContent = `Level ${progress.level}`;
+        document.getElementById('total-points').textContent = progress.points;
+
+        // Update Level Progress
+        const pointsInCurrentLevel = progress.points % 100;
+        const nextLevel = progress.level + 1;
+        document.getElementById('next-level').textContent = nextLevel;
+        document.getElementById('current-points').textContent = pointsInCurrentLevel;
+        document.getElementById('points-needed').textContent = 100;
+        document.getElementById('level-progress-fill').style.width = `${pointsInCurrentLevel}%`;
+
+        // Update Stats
+        document.getElementById('skills-completed').textContent = progress.stats.skillsCompleted;
+        document.getElementById('jobs-saved').textContent = progress.stats.savedJobs;
+        document.getElementById('jobs-viewed').textContent = progress.stats.jobViews;
+        document.getElementById('portfolio-score').textContent = progress.stats.portfolioScore;
+
+        // Logout Button Handler
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            if (confirm('Apakah Anda yakin ingin logout?')) {
+                auth.logout();
+                alert('Logout berhasil!');
+                window.location.href = 'index.html';
+            }
+        });
+
+        // Render Achievements
+        const achievementsGrid = document.getElementById('achievements-grid');
+        const achievementProgress = userProgress.getAchievementProgress();
+        
+        document.getElementById('achievement-progress').textContent = 
+            `${achievementProgress.unlocked} / ${achievementProgress.total} Unlocked (${achievementProgress.percentage}%)`;
+
+        Object.values(achievements).forEach(achievement => {
+            const isUnlocked = userProgress.hasAchievement(achievement.id);
+            const achievementEl = document.createElement('div');
+            achievementEl.className = `relative group cursor-pointer transition-all duration-300 ${isUnlocked ? 'opacity-100' : 'opacity-40'}`;
+            achievementEl.innerHTML = `
+                <div class="bg-gradient-to-br ${isUnlocked ? 'from-yellow-400 to-orange-500' : 'from-gray-300 to-gray-400'} rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+                    <div class="text-5xl mb-3">${achievement.icon}</div>
+                    <div class="text-white font-bold text-sm mb-1">${achievement.name}</div>
+                    <div class="text-white/90 text-xs font-semibold">${achievement.points} pts</div>
+                    ${isUnlocked ? '<div class="absolute top-2 right-2 bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">✓</div>' : '<div class="absolute top-2 right-2 bg-gray-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">🔒</div>'}
+                </div>
+                <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
+                    ${achievement.description}
+                </div>
+            `;
+            
+            achievementsGrid.appendChild(achievementEl);
+        });
+
+        // Animate numbers on load
+        function animateValue(element, start, end, duration) {
+            const range = end - start;
+            const increment = range / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= end) {
+                    element.textContent = end;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // Animate stats
+        setTimeout(() => {
+            animateValue(document.getElementById('skills-completed'), 0, progress.stats.skillsCompleted, 1000);
+            animateValue(document.getElementById('jobs-saved'), 0, progress.stats.savedJobs, 1000);
+            animateValue(document.getElementById('jobs-viewed'), 0, progress.stats.jobViews, 1000);
+            animateValue(document.getElementById('portfolio-score'), 0, progress.stats.portfolioScore, 1000);
+            animateValue(document.getElementById('total-points'), 0, progress.points, 1500);
+        }, 300);
+
+        // Share Progress Button
+        document.getElementById('share-progress-btn').addEventListener('click', shareProgress);
+
+        function shareProgress() {
+            const text = `🎓 Polhas CareerBridge Progress\n\n` +
+                `Level ${progress.level} | ${progress.points} Points\n` +
+                `✅ ${progress.stats.skillsCompleted} Skills Completed\n` +
+                `💼 ${progress.stats.savedJobs} Jobs Saved\n` +
+                `🏆 ${achievementProgress.unlocked}/${achievementProgress.total} Achievements\n\n` +
+                `Join me at Polhas CareerBridge! 🚀`;
+
+            const url = window.location.origin;
+
+            // Check if Web Share API is supported
+            if (navigator.share) {
+                navigator.share({
+                    title: 'My Polhas CareerBridge Progress',
+                    text: text,
+                    url: url
+                }).then(() => {
+                    console.log('Shared successfully');
+                }).catch((error) => {
+                    console.log('Error sharing:', error);
+                    fallbackShare(text, url);
+                });
+            } else {
+                fallbackShare(text, url);
+            }
+        }
+
+        function fallbackShare(text, url) {
+            Swal.fire({
+                title: 'Share Your Progress',
+                html: `
+                    <div class="text-left space-y-4">
+                        <p class="text-gray-600 mb-4">Pilih platform untuk share:</p>
+                        <div class="space-y-2">
+                            <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}" target="_blank" class="block w-full bg-blue-400 text-white py-3 rounded-lg font-semibold hover:bg-blue-500 transition text-center">
+                                🐦 Share to Twitter
+                            </a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}" target="_blank" class="block w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition text-center">
+                                📘 Share to Facebook
+                            </a>
+                            <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}" target="_blank" class="block w-full bg-blue-700 text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition text-center">
+                                💼 Share to LinkedIn
+                            </a>
+                            <button onclick="copyToClipboard('${text.replace(/'/g, "\\'")}\\n\\n${url}')" class="w-full bg-gray-600 text-white py-3 rounded-lg font-semibold hover:bg-gray-700 transition">
+                                📋 Copy to Clipboard
+                            </button>
+                        </div>
+                    </div>
+                `,
+                showConfirmButton: false,
+                showCloseButton: true,
+                customClass: {
+                    popup: 'rounded-2xl'
+                }
+            });
+        }
+
+        window.copyToClipboard = function(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Copied!',
+                    text: 'Progress copied to clipboard',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+            });
+        };
+    </script>
+</body>
+</html>

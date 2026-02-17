@@ -1,0 +1,513 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for Digital Hasnur */
+@layer base {
+    body {
+        @apply bg-background text-gray-900 font-sans;
+    }
+
+    /* Remove all outlines globally */
+    *:focus {
+        outline: none !important;
+    }
+
+    button:focus,
+    a:focus,
+    input:focus,
+    textarea:focus,
+    select:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Typography hierarchy - bold modern sans-serif for headings */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-bold;
+    }
+
+    h1 {
+        @apply text-4xl md:text-5xl lg:text-6xl;
+    }
+
+    h2 {
+        @apply text-3xl md:text-4xl lg:text-5xl;
+    }
+
+    h3 {
+        @apply text-2xl md:text-3xl lg:text-4xl;
+    }
+
+    h4 {
+        @apply text-xl md:text-2xl;
+    }
+
+    h5 {
+        @apply text-lg md:text-xl;
+    }
+
+    h6 {
+        @apply text-base md:text-lg;
+    }
+
+    /* Body text - clean readable font */
+    p,
+    span,
+    div {
+        @apply font-normal;
+    }
+
+    /* Consistent 8px spacing system */
+    * {
+        box-sizing: border-box;
+    }
+}
+
+@layer components {
+    /* Primary interactive elements - using #106EE8 */
+    .btn-primary {
+        @apply bg-primary text-white px-6 py-3 rounded-lg font-semibold 
+           hover:bg-blue-700 transition-all duration-300 
+           transform hover:scale-105 focus:outline-none;
+    }
+
+    .btn-secondary {
+        @apply bg-transparent border-2 border-white text-white px-6 py-3 
+           rounded-lg font-semibold hover:bg-white hover:text-primary 
+           transition-all duration-300 transform hover:scale-105 
+           focus:outline-none;
+    }
+
+    /* All interactive elements use primary color #106EE8 */
+    .interactive-element {
+        @apply text-primary hover:text-blue-700 transition-colors duration-300;
+    }
+
+    .card {
+        @apply bg-white rounded-xl shadow-lg overflow-hidden 
+           transition-all duration-300;
+    }
+
+    .glassmorphism {
+        @apply bg-white/10 backdrop-blur-md border border-white/20;
+    }
+
+    /* Navigation links - no outline */
+    .nav-link {
+        @apply focus:outline-none;
+    }
+
+    /* Navbar default state - white transparent with gradient */
+    #navbar:not(.scrolled) {
+        background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.85) 0%,
+            rgba(255, 255, 255, 0.75) 50%,
+            rgba(255, 255, 255, 0.7) 100%
+        ) !important;
+        backdrop-filter: blur(24px) !important;
+    }
+
+    #navbar:not(.scrolled) .nav-link {
+        color: rgb(30, 41, 59) !important;
+        font-weight: 600;
+    }
+
+    #navbar:not(.scrolled) .nav-link:hover {
+        color: rgb(37, 99, 235) !important;
+    }
+
+    #navbar:not(.scrolled) .nav-link::after {
+        background-color: rgb(37, 99, 235) !important;
+    }
+
+    #navbar:not(.scrolled) #mobile-menu-btn {
+        color: rgb(30, 41, 59) !important;
+    }
+
+    #navbar:not(.scrolled) #mobile-menu-btn:hover {
+        color: rgb(37, 99, 235) !important;
+        background-color: rgba(239, 246, 255, 1) !important;
+    }
+
+    #navbar:not(.scrolled) #nav-cta {
+        background: linear-gradient(to right, rgb(37, 99, 235), rgb(79, 70, 229)) !important;
+        color: white !important;
+        box-shadow: 0 0 15px rgba(37, 99, 235, 0.3) !important;
+    }
+
+    #navbar:not(.scrolled) #nav-cta:hover {
+        box-shadow: 0 0 25px rgba(37, 99, 235, 0.6) !important;
+        transform: translateY(-2px) !important;
+    }
+
+    /* Navbar scrolled state - blue gradient background with white text */
+    #navbar.scrolled {
+        @apply shadow-xl border-primary;
+        background: linear-gradient(135deg, #106ee8 0%, #1e7ff5 50%, #2d8bfc 100%) !important;
+        backdrop-filter: none !important;
+        border-color: #106ee8 !important;
+    }
+
+    #navbar.scrolled .nav-link {
+        @apply text-white;
+        color: white !important;
+    }
+
+    #navbar.scrolled .nav-link:hover {
+        @apply text-blue-100 bg-white/10;
+        color: rgb(219, 234, 254) !important;
+    }
+
+    #navbar.scrolled .nav-link::after {
+        @apply bg-white;
+        background-color: white !important;
+    }
+
+    #navbar.scrolled #logo-brand span {
+        @apply text-white;
+    }
+
+    #navbar.scrolled #mobile-menu-btn {
+        @apply text-white hover:bg-white/10 hover:text-white;
+        color: white !important;
+    }
+
+    #navbar.scrolled #nav-cta {
+        background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%) !important;
+        color: #106ee8 !important;
+        box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15) !important;
+        border: 2px solid rgba(255, 255, 255, 0.3) !important;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #navbar.scrolled #nav-cta::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        transition: left 0.5s;
+    }
+
+    #navbar.scrolled #nav-cta:hover {
+        background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%) !important;
+        box-shadow:
+            0 0 30px rgba(255, 255, 255, 0.6),
+            0 6px 20px rgba(255, 255, 255, 0.3) !important;
+        transform: translateY(-2px) scale(1.05) !important;
+    }
+
+    #navbar.scrolled #nav-cta:hover::before {
+        left: 100%;
+    }
+
+    #navbar.scrolled #nav-cta:active {
+        transform: translateY(0) scale(0.98) !important;
+    }
+
+    .bg-white\/80 #mobile-menu-btn:hover {
+        @apply bg-gray-100;
+    }
+
+    .bg-primary #mobile-menu-btn:hover {
+        @apply bg-white/20;
+    }
+
+    /* Responsive spacing utilities - 8px base system */
+    .spacing-xs {
+        @apply p-2;
+    } /* 8px */
+    .spacing-sm {
+        @apply p-4;
+    } /* 16px */
+    .spacing-md {
+        @apply p-6;
+    } /* 24px */
+    .spacing-lg {
+        @apply p-8;
+    } /* 32px */
+    .spacing-xl {
+        @apply p-12;
+    } /* 48px */
+}
+
+@layer utilities {
+    .text-shadow {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .smooth-scroll {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-bounce {
+    animation: bounce 2s ease-in-out infinite;
+}
+
+/* Hero section specific styles */
+#hero-video {
+    filter: brightness(0.7);
+}
+
+#typing-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: normal;
+    text-align: center;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Reduced motion class for JavaScript control */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+}
+
+.reduce-motion .animate-fadeIn,
+.reduce-motion .animate-slideUp,
+.reduce-motion .animate-fadeOut,
+.reduce-motion .animate-slideInRight,
+.reduce-motion .animate-fade-in,
+.reduce-motion .animate-bounce {
+    animation: none !important;
+}
+
+.reduce-motion .card:hover {
+    transform: none !important;
+}
+
+.reduce-motion .btn-primary:hover,
+.reduce-motion .btn-secondary:hover {
+    transform: none !important;
+}
+
+/* Modal animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.2s ease-out;
+}
+
+.animate-slideUp {
+    animation: slideUp 0.3s ease-out;
+}
+
+.animate-fadeOut {
+    animation: fadeOut 0.3s ease-out;
+}
+
+.animate-slideInRight {
+    animation: slideInRight 0.3s ease-out;
+}
+
+/* Quiz specific styles */
+.quiz-option {
+    cursor: pointer;
+}
+
+.quiz-option:active {
+    transform: scale(0.98);
+}
+
+/* Modal styles */
+.modal-overlay {
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    max-height: 90vh;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Explore section styles */
+.filter-btn {
+    @apply px-6 py-2 rounded-full border-2 border-primary text-primary 
+           font-semibold transition-all duration-300 
+           hover:bg-primary hover:text-white;
+}
+
+.filter-btn.active {
+    @apply bg-primary text-white;
+}
+
+/* Card hover effects with smooth transitions */
+.card:hover {
+    box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: translateY(-4px);
+}
+
+/* Color palette consistency */
+.text-contrast {
+    color: #0a1628; /* Dark Navy for contrast */
+}
+
+.bg-contrast {
+    background-color: #0a1628; /* Dark Navy for contrast */
+}
+
+.text-secondary {
+    color: #e5e7eb; /* Soft Gray for secondary elements */
+}
+
+.bg-secondary {
+    background-color: #e5e7eb; /* Soft Gray for secondary elements */
+}
+
+.bg-background {
+    background-color: #fdfefe; /* Background color */
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Horizontal Slider Styles */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.slider-container {
+    scroll-behavior: smooth;
+}
+
+/* Smooth scroll for slider */
+@media (prefers-reduced-motion: reduce) {
+    .slider-container {
+        scroll-behavior: auto;
+    }
+}

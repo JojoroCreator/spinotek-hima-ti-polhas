@@ -1,0 +1,2477 @@
+<!doctype html>
+<html lang="id" class="smooth-scroll">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Digital Hasnur - Rasakan pengalaman kampus digital Politeknik Hasnur. Temukan program studi yang sesuai dengan minat Anda."
+        />
+        <meta
+            name="keywords"
+            content="Politeknik Hasnur, kampus digital, program studi, pendidikan vokasi"
+        />
+        <meta name="author" content="Politeknik Hasnur" />
+
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="Digital Hasnur - Digital Campus Experience" />
+        <meta
+            property="og:description"
+            content="Rasakan pengalaman kampus digital Politeknik Hasnur"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="assets/images/polihasnur-logo.png" />
+
+        <title>Digital Hasnur - Digital Campus Experience</title>
+
+        <!-- Tailwind CSS CDN for development -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: '#106EE8',
+                            navy: {
+                                900: '#0A1628',
+                            },
+                            background: '#FDFEFE',
+                        },
+                    },
+                },
+            };
+        </script>
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="css/styles.css" />
+
+        <!-- Preconnect for performance -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav
+            id="navbar"
+            class="fixed w-full z-50 transition-all duration-500 ease-in-out bg-white/70 backdrop-blur-xl border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.03)] py-3"
+        >
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16 transition-all duration-500">
+                    <div
+                        id="logo-brand"
+                        class="flex-shrink-0 flex items-center gap-3 cursor-pointer group"
+                        onclick="window.location.reload()"
+                    >
+                        <img
+                            src="assets/images/logo-polihasnur.png"
+                            alt="Logo Politeknik Hasnur"
+                            class="h-10 w-auto transition-all duration-500 ease-out group-hover:scale-105 group-hover:drop-shadow-[0_0_12px_rgba(37,99,235,0.5)]"
+                        />
+                    </div>
+
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a
+                            href="#hero"
+                            class="nav-link relative py-2 text-sm font-semibold tracking-wide transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:transition-all after:duration-300 hover:after:w-full"
+                        >
+                            Beranda
+                        </a>
+                        <a
+                            href="#simulator"
+                            class="nav-link relative py-2 text-sm font-semibold tracking-wide transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:transition-all after:duration-300 hover:after:w-full"
+                        >
+                            Simulasi
+                        </a>
+                        <a
+                            href="#explore"
+                            class="nav-link relative py-2 text-sm font-semibold tracking-wide transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:transition-all after:duration-300 hover:after:w-full"
+                        >
+                            Jelajahi
+                        </a>
+                        <a
+                            href="#testimonials"
+                            class="nav-link relative py-2 text-sm font-semibold tracking-wide transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:transition-all after:duration-300 hover:after:w-full"
+                        >
+                            Testimoni
+                        </a>
+                        <a
+                            href="#registration"
+                            class="nav-link relative py-2 text-sm font-semibold tracking-wide transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:transition-all after:duration-300 hover:after:w-full"
+                        >
+                            Pendaftaran
+                        </a>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <a
+                            href="#footer"
+                            id="nav-cta"
+                            class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold transition-all duration-300 rounded-full"
+                        >
+                            Daftar Sekarang
+                        </a>
+
+                        <button
+                            id="mobile-menu-btn"
+                            class="md:hidden p-2 rounded-lg transition-all duration-300 active:scale-95"
+                        >
+                            <svg
+                                id="menu-icon"
+                                class="h-6 w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="mobile-menu"
+                class="hidden md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-xl absolute w-full"
+            >
+                <div class="px-4 pt-4 pb-6 space-y-1">
+                    <a
+                        href="#hero"
+                        class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent hover:text-blue-600 hover:translate-x-1 transition-all duration-300"
+                        >Beranda</a
+                    >
+                    <a
+                        href="#simulator"
+                        class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent hover:text-blue-600 hover:translate-x-1 transition-all duration-300"
+                        >Simulasi</a
+                    >
+                    <a
+                        href="#explore"
+                        class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent hover:text-blue-600 hover:translate-x-1 transition-all duration-300"
+                        >Jelajahi</a
+                    >
+                    <a
+                        href="#testimonials"
+                        class="nav-link mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent hover:text-blue-600 hover:translate-x-1 transition-all duration-300"
+                        >Testimoni</a
+                    >
+                    <a
+                        href="#registration"
+                        class="nav-link mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent hover:text-blue-600 hover:translate-x-1 transition-all duration-300"
+                        >Pendaftaran</a
+                    >
+                    <div class="pt-4 pb-2">
+                        <a
+                            href="#registration"
+                            class="nav-link block text-center px-6 py-3 text-base font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 active:scale-95 transition-all duration-300"
+                            >Daftar Sekarang</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Hero Section -->
+            <section
+                id="hero"
+                class="relative h-screen overflow-hidden bg-black flex items-center justify-center"
+            >
+                <video
+                    id="hero-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-luminosity scale-105"
+                >
+                    <source src="assets/videos/absolute-cinema.mp4" type="video/mp4" />
+                </video>
+
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/90 via-[#106EE8]/20 to-black/60 z-0"
+                ></div>
+
+                <div
+                    class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#106EE8] rounded-full mix-blend-screen filter blur-[120px] opacity-30 animate-pulse z-0"
+                ></div>
+                <div
+                    class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-600 rounded-full mix-blend-screen filter blur-[120px] opacity-20 z-0"
+                    style="animation: pulse 4s infinite alternate"
+                ></div>
+
+                <div
+                    class="relative z-10 flex flex-col items-center justify-center w-full max-w-5xl px-4 sm:px-6 lg:px-8 mt-16"
+                >
+                    <div
+                        class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-lg transform transition-all hover:scale-105 hover:bg-white/10 cursor-default"
+                    >
+                        <span class="flex h-2.5 w-2.5 relative">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"
+                            ></span>
+                            <span
+                                class="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"
+                            ></span>
+                        </span>
+                        <span
+                            class="text-xs sm:text-sm font-medium text-blue-100 tracking-wider uppercase"
+                            >Kampus Digital Masa Depan</span
+                        >
+                    </div>
+
+                    <h1
+                        id="typing-text"
+                        class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-white text-center mb-6 leading-tight drop-shadow-2xl min-h-[5rem] md:min-h-[6rem] lg:min-h-[8rem]"
+                    ></h1>
+
+                    <p
+                        class="text-lg md:text-xl lg:text-2xl text-blue-50 text-center mb-10 max-w-2xl font-light tracking-wide leading-relaxed drop-shadow-md"
+                    >
+                        Rasakan Pengalaman Kampus Digital Politeknik Hasnur.
+                        <br class="hidden sm:block" />
+                        <span class="font-medium text-white"
+                            >Inovasi, Teknologi, dan Masa Depan.</span
+                        >
+                    </p>
+
+                    <div
+                        class="flex flex-col sm:flex-row gap-5 items-center justify-center w-full max-w-md sm:max-w-none"
+                    >
+                        <a
+                            href="#quiz"
+                            id="cta-primary"
+                            class="group relative w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-white transition-all duration-300 bg-gradient-to-r from-[#106EE8] to-indigo-600 rounded-full shadow-[0_0_20px_rgba(16,110,232,0.4)] hover:shadow-[0_0_35px_rgba(16,110,232,0.7)] hover:-translate-y-1 overflow-hidden"
+                        >
+                            <span
+                                class="absolute inset-0 w-full h-full bg-gradient-to-r from-indigo-600 to-[#106EE8] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                            ></span>
+                            <span class="relative flex items-center gap-2">
+                                Mulai Petualangan
+                                <svg
+                                    class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                    ></path>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <a
+                            href="https://www.polihasnur.ac.id/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            id="cta-secondary"
+                            class="group w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white transition-all duration-300 bg-white/5 border border-white/20 rounded-full backdrop-blur-sm hover:bg-white/10 hover:border-white/40 hover:shadow-lg hover:-translate-y-1"
+                        >
+                            Jelajahi Kampus
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quiz Section -->
+            <section
+                id="quiz"
+                class="relative py-24 bg-slate-50 overflow-hidden min-h-[600px] flex items-center"
+            >
+                <div
+                    class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none"
+                >
+                    <div
+                        class="absolute -top-24 -right-24 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-[100px] opacity-20 animate-blob"
+                    ></div>
+                    <div
+                        class="absolute bottom-0 -left-24 w-96 h-96 bg-indigo-400 rounded-full mix-blend-multiply filter blur-[100px] opacity-20 animate-blob animation-delay-2000"
+                    ></div>
+                </div>
+
+                <div class="container relative z-10 mx-auto px-4">
+                    <div
+                        id="quiz-intro"
+                        class="max-w-4xl mx-auto text-center transition-all duration-500"
+                    >
+                        <div
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-semibold text-sm mb-6"
+                        >
+                            <span>✨</span> AI Personality Matchmaking
+                        </div>
+
+                        <h2
+                            class="text-4xl md:text-5xl font-extrabold mb-6 text-slate-800 tracking-tight"
+                        >
+                            Temukan
+                            <span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-[#106EE8] to-indigo-600"
+                                >DNA Kampusmu</span
+                            >
+                        </h2>
+
+                        <p
+                            class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed"
+                        >
+                            Hanya butuh 1 menit. Jawab 5 pertanyaan seru dan biarkan sistem kami
+                            merancang profil mahasiswa, jadwal harian, dan jalur karir yang paling
+                            cocok untukmu!
+                        </p>
+
+                        <div
+                            class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-3xl mx-auto opacity-70"
+                        >
+                            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                                <div class="text-2xl mb-2">💻</div>
+                                <p class="text-xs font-bold text-slate-700">Tech Wizard</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                                <div class="text-2xl mb-2">🎨</div>
+                                <p class="text-xs font-bold text-slate-700">Creative Builder</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                                <div class="text-2xl mb-2">📈</div>
+                                <p class="text-xs font-bold text-slate-700">Business Strategist</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                                <div class="text-2xl mb-2">⚙️</div>
+                                <p class="text-xs font-bold text-slate-700">Auto Explorer</p>
+                            </div>
+                        </div>
+
+                        <button
+                            id="start-quiz-btn"
+                            onclick="
+                                console.log('Button clicked!');
+                                if (window.quizAppInstance) {
+                                    window.quizAppInstance.startQuiz();
+                                } else {
+                                    console.error('QuizApp instance not found!');
+                                }
+                            "
+                            class="group relative inline-flex items-center justify-center px-10 py-4 text-lg font-bold text-white transition-all duration-300 bg-gradient-to-r from-[#106EE8] to-indigo-600 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1"
+                        >
+                            <span class="relative flex items-center gap-3">
+                                Mulai Simulasi Sekarang
+                                <svg
+                                    class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2.5"
+                                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                    ></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div
+                        id="quiz-interface"
+                        class="hidden max-w-2xl mx-auto bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden relative"
+                    >
+                        <div class="bg-slate-50 px-8 py-6 border-b border-slate-100">
+                            <div class="flex justify-between items-end mb-2">
+                                <span
+                                    class="text-sm font-bold text-slate-500 uppercase tracking-wider"
+                                    >Pertanyaan <span id="q-current">1</span>/5</span
+                                >
+                                <span id="q-percent" class="text-xs font-bold text-[#106EE8]"
+                                    >0%</span
+                                >
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-2">
+                                <div
+                                    id="quiz-progress-bar"
+                                    class="bg-[#106EE8] h-2 rounded-full transition-all duration-500"
+                                    style="width: 0%"
+                                ></div>
+                            </div>
+                        </div>
+
+                        <div class="p-8 md:p-10">
+                            <h3
+                                id="quiz-question-text"
+                                class="text-xl md:text-2xl font-bold text-slate-800 mb-8 leading-snug min-h-[64px]"
+                            >
+                                Memuat Pertanyaan...
+                            </h3>
+
+                            <div id="quiz-options-container" class="space-y-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="simulator" class="py-24 bg-white relative">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-16 max-w-3xl mx-auto">
+                        <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-slate-800">
+                            Dashboard Mahasiswa
+                        </h2>
+                        <p id="simulator-subtitle" class="text-lg text-slate-600">
+                            Gambaran kehidupan kampusmu. Selesaikan quiz di atas untuk menyesuaikan
+                            dashboard ini dengan kepribadianmu secara otomatis!
+                        </p>
+                    </div>
+
+                    <div id="simulator-container" class="max-w-6xl mx-auto">
+                        <div class="flex flex-col lg:flex-row gap-8">
+                            <div class="w-full lg:w-1/3">
+                                <div
+                                    class="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden sticky top-24 transform transition-all hover:shadow-2xl hover:-translate-y-1 duration-300"
+                                >
+                                    <div
+                                        id="card-header-bg"
+                                        class="h-32 bg-gradient-to-br from-slate-400 to-slate-600 relative"
+                                    >
+                                        <div
+                                            class="absolute inset-0 opacity-20"
+                                            style="
+                                                background-image: radial-gradient(
+                                                    #fff 1px,
+                                                    transparent 1px
+                                                );
+                                                background-size: 10px 10px;
+                                            "
+                                        ></div>
+                                    </div>
+
+                                    <div class="px-8 pb-8 relative text-center">
+                                        <div class="pt-6 mb-6">
+                                            <h3
+                                                id="sim-title"
+                                                class="text-2xl font-bold text-slate-800"
+                                            >
+                                                Mahasiswa Polihasnur
+                                            </h3>
+                                            <p
+                                                id="sim-subtitle"
+                                                class="text-sm font-medium text-slate-500 mb-4"
+                                            >
+                                                Profil Umum
+                                            </p>
+                                            <p
+                                                id="sim-desc"
+                                                class="text-sm text-slate-600 leading-relaxed"
+                                            >
+                                                Mahasiswa Politeknik Hasnur yang aktif, kreatif, dan
+                                                siap menghadapi tantangan dunia industri dengan
+                                                bekal pendidikan vokasi berkualitas.
+                                            </p>
+                                        </div>
+
+                                        <div
+                                            id="sim-traits"
+                                            class="flex flex-wrap justify-center gap-2 mb-6"
+                                        >
+                                            <span
+                                                class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-full"
+                                                >Adaptif</span
+                                            >
+                                            <span
+                                                class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-full"
+                                                >Kolaboratif</span
+                                            >
+                                            <span
+                                                class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-full"
+                                                >Inovatif</span
+                                            >
+                                        </div>
+
+                                        <hr class="border-slate-100 mb-6" />
+
+                                        <div class="text-left space-y-4">
+                                            <div>
+                                                <p
+                                                    class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2"
+                                                >
+                                                    Program Studi
+                                                </p>
+                                                <div
+                                                    class="flex items-center gap-2 text-sm font-semibold text-slate-700"
+                                                >
+                                                    <div
+                                                        id="sim-prodi-dot"
+                                                        class="w-2 h-2 rounded-full bg-slate-400"
+                                                    ></div>
+                                                    <span id="sim-prodi">7 Prodi Unggulan</span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <p
+                                                    class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2"
+                                                >
+                                                    Organisasi & UKM
+                                                </p>
+                                                <div
+                                                    class="flex items-center gap-2 text-sm font-semibold text-slate-700"
+                                                >
+                                                    <div
+                                                        id="sim-ukm-dot"
+                                                        class="w-2 h-2 rounded-full bg-slate-400"
+                                                    ></div>
+                                                    <span id="sim-ukm">BEM, HIMA, UKM</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w-full lg:w-2/3 flex flex-col gap-8">
+                                <div
+                                    class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100"
+                                >
+                                    <h4
+                                        class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2"
+                                    >
+                                        <svg
+                                            class="w-6 h-6 text-slate-400"
+                                            id="matkul-icon"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                                            ></path>
+                                        </svg>
+                                        Mata Kuliah Contoh
+                                    </h4>
+                                    <div id="sim-matkul" class="flex flex-wrap gap-3">
+                                        <span
+                                            class="px-4 py-2 bg-slate-50 text-slate-600 border border-slate-200 rounded-xl text-sm font-medium"
+                                            >Pengantar Teknologi</span
+                                        >
+                                        <span
+                                            class="px-4 py-2 bg-slate-50 text-slate-600 border border-slate-200 rounded-xl text-sm font-medium"
+                                            >Bahasa Inggris</span
+                                        >
+                                        <span
+                                            class="px-4 py-2 bg-slate-50 text-slate-600 border border-slate-200 rounded-xl text-sm font-medium"
+                                            >Kewirausahaan</span
+                                        >
+                                        <span
+                                            class="px-4 py-2 bg-slate-50 text-slate-600 border border-slate-200 rounded-xl text-sm font-medium"
+                                            >Matematika Dasar</span
+                                        >
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 relative"
+                                >
+                                    <h4
+                                        class="text-xl font-bold text-slate-800 mb-8 flex items-center gap-2"
+                                    >
+                                        <svg
+                                            class="w-6 h-6 text-slate-400"
+                                            id="timeline-icon"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                            ></path>
+                                        </svg>
+                                        <span id="timeline-title">Jadwal Harian Mahasiswa</span>
+                                    </h4>
+
+                                    <div
+                                        class="absolute left-[51px] md:left-[55px] top-[100px] bottom-[40px] w-0.5 bg-slate-200"
+                                    ></div>
+
+                                    <div id="sim-timeline" class="space-y-6 relative">
+                                        <div class="flex gap-4 md:gap-6 relative group">
+                                            <div
+                                                class="w-12 h-12 flex-shrink-0 bg-blue-100 rounded-full flex items-center justify-center border-4 border-white shadow-sm relative z-10 group-hover:scale-110 transition-transform"
+                                            >
+                                                <span class="text-lg">📚</span>
+                                            </div>
+                                            <div
+                                                class="flex-1 bg-slate-50 border border-slate-100 rounded-2xl p-5 hover:bg-white hover:shadow-md transition-all"
+                                            >
+                                                <div
+                                                    class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-lg text-xs font-bold mb-2"
+                                                >
+                                                    08:00 - 12:00
+                                                </div>
+                                                <h5 class="font-bold text-slate-800 text-lg mb-1">
+                                                    Kuliah & Praktikum
+                                                </h5>
+                                                <p class="text-sm text-slate-600">
+                                                    Mengikuti perkuliahan teori dan praktikum di
+                                                    laboratorium dengan fasilitas modern dan dosen
+                                                    berpengalaman.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex gap-4 md:gap-6 relative group">
+                                            <div
+                                                class="w-12 h-12 flex-shrink-0 bg-orange-100 rounded-full flex items-center justify-center border-4 border-white shadow-sm relative z-10 group-hover:scale-110 transition-transform"
+                                            >
+                                                <span class="text-lg">🍜</span>
+                                            </div>
+                                            <div
+                                                class="flex-1 bg-slate-50 border border-slate-100 rounded-2xl p-5 hover:bg-white hover:shadow-md transition-all"
+                                            >
+                                                <div
+                                                    class="inline-block px-3 py-1 bg-orange-100 text-orange-700 rounded-lg text-xs font-bold mb-2"
+                                                >
+                                                    12:00 - 13:00
+                                                </div>
+                                                <h5 class="font-bold text-slate-800 text-lg mb-1">
+                                                    Istirahat & Sosialisasi
+                                                </h5>
+                                                <p class="text-sm text-slate-600">
+                                                    Waktu untuk makan siang dan bersosialisasi
+                                                    dengan teman-teman di kantin kampus yang nyaman.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex gap-4 md:gap-6 relative group">
+                                            <div
+                                                class="w-12 h-12 flex-shrink-0 bg-indigo-100 rounded-full flex items-center justify-center border-4 border-white shadow-sm relative z-10 group-hover:scale-110 transition-transform"
+                                            >
+                                                <span class="text-lg">👥</span>
+                                            </div>
+                                            <div
+                                                class="flex-1 bg-slate-50 border border-slate-100 rounded-2xl p-5 hover:bg-white hover:shadow-md transition-all"
+                                            >
+                                                <div
+                                                    class="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 rounded-lg text-xs font-bold mb-2"
+                                                >
+                                                    14:00 - 17:00
+                                                </div>
+                                                <h5 class="font-bold text-slate-800 text-lg mb-1">
+                                                    Kegiatan Organisasi
+                                                </h5>
+                                                <p class="text-sm text-slate-600">
+                                                    Aktif dalam organisasi mahasiswa seperti BEM,
+                                                    HIMA, atau UKM untuk mengembangkan soft skills.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex gap-4 md:gap-6 relative group">
+                                            <div
+                                                class="w-12 h-12 flex-shrink-0 bg-sky-100 rounded-full flex items-center justify-center border-4 border-white shadow-sm relative z-10 group-hover:scale-110 transition-transform"
+                                            >
+                                                <span class="text-lg">💻</span>
+                                            </div>
+                                            <div
+                                                class="flex-1 bg-slate-50 border border-slate-100 rounded-2xl p-5 hover:bg-white hover:shadow-md transition-all"
+                                            >
+                                                <div
+                                                    class="inline-block px-3 py-1 bg-sky-100 text-sky-700 rounded-lg text-xs font-bold mb-2"
+                                                >
+                                                    19:00 - 21:00
+                                                </div>
+                                                <h5 class="font-bold text-slate-800 text-lg mb-1">
+                                                    Belajar & Mengerjakan Tugas
+                                                </h5>
+                                                <p class="text-sm text-slate-600">
+                                                    Mengerjakan tugas kuliah dan belajar mandiri
+                                                    untuk mempersiapkan ujian dan project.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Campus Ecosystem Explorer Section -->
+            <section id="explore" class="py-20 bg-background">
+                <div class="container mx-auto px-4">
+                    <div class="max-w-7xl mx-auto">
+                        <div class="text-center mb-16">
+                            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-navy-900">
+                                Jelajahi Ekosistem Kampus
+                            </h2>
+                            <p class="text-xl text-gray-600">
+                                Temukan program studi, organisasi, dan UKM yang sesuai dengan minat
+                                Anda
+                            </p>
+                        </div>
+
+                        <div
+                            id="explore-container"
+                            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                        >
+                            <!-- Program Studi -->
+                            <div
+                                class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all hover:scale-105 cursor-pointer"
+                            >
+                                <div
+                                    class="h-48 bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center"
+                                >
+                                    <svg
+                                        class="w-24 h-24 text-white"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                                        ></path>
+                                    </svg>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-2xl font-bold mb-3">Program Studi</h3>
+                                    <p class="text-gray-600 mb-4">
+                                        7 program studi unggulan: D3 TI, D3 TO, D3 BTP, D4 ABD, D4
+                                        BD, D4 MPI, D4 TRM
+                                    </p>
+                                    <span class="text-primary font-semibold">Lihat Detail →</span>
+                                </div>
+                            </div>
+
+                            <!-- Organisasi -->
+                            <div
+                                class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all hover:scale-105 cursor-pointer"
+                            >
+                                <div
+                                    class="h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center"
+                                >
+                                    <svg
+                                        class="w-24 h-24 text-white"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                                        ></path>
+                                    </svg>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-2xl font-bold mb-3">Organisasi Mahasiswa</h3>
+                                    <p class="text-gray-600 mb-4">
+                                        BEM dan 7 HIMA untuk mengembangkan soft skills dan
+                                        leadership
+                                    </p>
+                                    <span class="text-primary font-semibold">Lihat Detail →</span>
+                                </div>
+                            </div>
+
+                            <!-- UKM -->
+                            <div
+                                class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all hover:scale-105 cursor-pointer"
+                            >
+                                <div
+                                    class="h-48 bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center"
+                                >
+                                    <svg
+                                        class="w-24 h-24 text-white"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                        ></path>
+                                    </svg>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-2xl font-bold mb-3">Unit Kegiatan Mahasiswa</h3>
+                                    <p class="text-gray-600 mb-4">
+                                        11 UKM untuk mengembangkan hobi dan bakat: Olahraga, Seni,
+                                        E-Sport, dan lainnya
+                                    </p>
+                                    <span class="text-primary font-semibold">Lihat Detail →</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campus Location Section -->
+                <div class="container mx-auto px-4 mt-20">
+                    <div class="max-w-7xl mx-auto">
+                        <div class="text-center mb-12">
+                            <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                                Lokasi Kampus
+                            </h3>
+                            <p class="text-lg text-gray-600">
+                                Politeknik Hasnur memiliki 2 kampus yang strategis di Kalimantan
+                                Selatan
+                            </p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <!-- Kampus 1 -->
+                            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                                <div class="bg-gradient-to-r from-primary to-blue-600 p-6">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <svg
+                                            class="w-8 h-8 text-white"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                            ></path>
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                            ></path>
+                                        </svg>
+                                        <h4 class="text-2xl font-bold text-white">Kampus 1</h4>
+                                    </div>
+                                    <p class="text-white/90 text-sm">Kampus Utama</p>
+                                </div>
+                                <div class="p-6">
+                                    <p class="text-gray-700 mb-4 leading-relaxed">
+                                        Ray V, Jl. Brigjen H. Hasan Basri, Handil Bakti, Kec.
+                                        Alalak, Kabupaten Barito Kuala, Kalimantan Selatan 70582
+                                    </p>
+                                    <div class="rounded-xl overflow-hidden shadow-md">
+                                        <iframe
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.462502632767!2d114.6201257146738!3d-3.2344798976450995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de4230bff29bd8b%3A0x9b8228278b99e443!2sPoliteknik%20Hasnur!5e0!3m2!1sid!2sid!4v1653568412593!5m2!1sid!2sid"
+                                            width="100%"
+                                            height="300"
+                                            style="border: 0"
+                                            allowfullscreen=""
+                                            loading="lazy"
+                                            referrerpolicy="no-referrer-when-downgrade"
+                                            class="w-full"
+                                        ></iframe>
+                                    </div>
+                                    <a
+                                        href="https://www.google.com/maps/place/Politeknik+Hasnur/@-3.2344799,114.6201257,17z/data=!3m1!4b1!4m6!3m5!1s0x2de4230bff29bd8b:0x9b8228278b99e443!8m2!3d-3.2344799!4d114.6227006!16s%2Fg%2F11c1z8y8qy"
+                                        target="_blank"
+                                        class="mt-4 inline-flex items-center justify-center w-full px-6 py-3 bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+                                    >
+                                        <svg
+                                            class="w-5 h-5 mr-2"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+                                            ></path>
+                                        </svg>
+                                        Buka di Google Maps
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Kampus 2 -->
+                            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                                <div class="bg-gradient-to-r from-indigo-600 to-purple-600 p-6">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <svg
+                                            class="w-8 h-8 text-white"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                            ></path>
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                            ></path>
+                                        </svg>
+                                        <h4 class="text-2xl font-bold text-white">Kampus 2</h4>
+                                    </div>
+                                    <p class="text-white/90 text-sm">Wetland Square</p>
+                                </div>
+                                <div class="p-6">
+                                    <p class="text-gray-700 mb-4 leading-relaxed">
+                                        Jl. Jend. Ahmad Yani KM.3,5 No.115A, Kota Banjarmasin,
+                                        Kalimantan Selatan 70234
+                                    </p>
+                                    <div class="rounded-xl overflow-hidden shadow-md">
+                                        <iframe
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.086525636458!2d114.60569732269964!3d-3.328799089825868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de42395905787bb%3A0xd2c3b6c02497f9fb!2sWetland%20Square!5e0!3m2!1sid!2sid!4v1653568362940!5m2!1sid!2sid"
+                                            width="100%"
+                                            height="300"
+                                            style="border: 0"
+                                            allowfullscreen=""
+                                            loading="lazy"
+                                            referrerpolicy="no-referrer-when-downgrade"
+                                            class="w-full"
+                                        ></iframe>
+                                    </div>
+                                    <a
+                                        href="https://www.google.com/maps/place/Wetland+Square/@-3.3287991,114.6056973,17z/data=!3m1!4b1!4m6!3m5!1s0x2de42395905787bb:0xd2c3b6c02497f9fb!8m2!3d-3.3287991!4d114.6082722!16s%2Fg%2F11h0l6qy8y"
+                                        target="_blank"
+                                        class="mt-4 inline-flex items-center justify-center w-full px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-semibold"
+                                    >
+                                        <svg
+                                            class="w-5 h-5 mr-2"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+                                            ></path>
+                                        </svg>
+                                        Buka di Google Maps
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials & Stats Section -->
+            <section id="testimonials" class="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+                <div class="container mx-auto px-4">
+                    <div class="max-w-7xl mx-auto">
+                        <!-- Section Header -->
+                        <div class="text-center mb-16">
+                            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-navy-900">
+                                Kenapa Pilih Politeknik Hasnur?
+                            </h2>
+                            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                                Dengar langsung dari mahasiswa kami dan lihat prestasi yang telah
+                                kami raih
+                            </p>
+                        </div>
+
+                        <!-- Stats Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                            <!-- Stat 1 -->
+                            <div
+                                class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                            >
+                                <div
+                                    class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full mb-4 mx-auto"
+                                >
+                                    <svg
+                                        class="w-8 h-8 text-white"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                        ></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-4xl font-bold text-primary mb-2 text-center">
+                                    85%
+                                </h3>
+                                <p class="text-gray-600 text-center font-semibold">
+                                    Lulusan Bekerja
+                                </p>
+                                <p class="text-sm text-gray-500 text-center mt-2">
+                                    Dalam 6 bulan setelah lulus
+                                </p>
+                            </div>
+
+                            <!-- Stat 2 -->
+                            <div
+                                class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                            >
+                                <div
+                                    class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full mb-4 mx-auto"
+                                >
+                                    <svg
+                                        class="w-8 h-8 text-white"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                                        ></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-4xl font-bold text-primary mb-2 text-center">
+                                    18+
+                                </h3>
+                                <p class="text-gray-600 text-center font-semibold">
+                                    Organisasi & UKM
+                                </p>
+                                <p class="text-sm text-gray-500 text-center mt-2">
+                                    BEM, HIMA, dan berbagai UKM aktif
+                                </p>
+                            </div>
+
+                            <!-- Stat 3 -->
+                            <div
+                                class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                            >
+                                <div
+                                    class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full mb-4 mx-auto"
+                                >
+                                    <svg
+                                        class="w-8 h-8 text-white"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                                        ></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-4xl font-bold text-primary mb-2 text-center">
+                                    50+
+                                </h3>
+                                <p class="text-gray-600 text-center font-semibold">
+                                    Mitra Industri
+                                </p>
+                                <p class="text-sm text-gray-500 text-center mt-2">
+                                    Termasuk Hasnur Group & perusahaan besar
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Keunggulan Cards -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                            <!-- Keunggulan 1 -->
+                            <div
+                                class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+                            >
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center"
+                                    >
+                                        <span class="text-2xl">🌍</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-bold mb-2 text-navy-900">
+                                            Ekspor Beneran
+                                        </h3>
+                                        <p class="text-gray-600">
+                                            Mahasiswa MPI pernah sukses ekspor Batu Damar (16 Ton)
+                                            ke India & Sri Lanka. Ini bukti nyata
+                                            <span class="font-semibold text-primary"
+                                                >Project Based Learning</span
+                                            >.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Keunggulan 2 -->
+                            <div
+                                class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+                            >
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center"
+                                    >
+                                        <span class="text-2xl">🏭</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-bold mb-2 text-navy-900">
+                                            Teaching Factory
+                                        </h3>
+                                        <p class="text-gray-600">
+                                            Kuliah rasa kerja. Kurikulumnya
+                                            <span class="font-semibold text-primary"
+                                                >link & match</span
+                                            >
+                                            sama industri (terutama Hasnur Group).
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Keunggulan 3 -->
+                            <div
+                                class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+                            >
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center"
+                                    >
+                                        <span class="text-2xl">🤝</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-bold mb-2 text-navy-900">
+                                            Dukungan Hasnur Group
+                                        </h3>
+                                        <p class="text-gray-600">
+                                            Lulusan punya
+                                            <span class="font-semibold text-primary"
+                                                >privilege koneksi</span
+                                            >
+                                            ke anak perusahaan Hasnur Group (tambang, forestry,
+                                            media, dll).
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Keunggulan 4 -->
+                            <div
+                                class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+                            >
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center"
+                                    >
+                                        <span class="text-2xl">🚀</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-bold mb-2 text-navy-900">
+                                            Kuliah Rasa Startup
+                                        </h3>
+                                        <p class="text-gray-600">
+                                            Terutama buat yang di Wetland Square, suasananya
+                                            <span class="font-semibold text-primary"
+                                                >beda sama kampus konvensional</span
+                                            >.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonials Slider -->
+                        <div
+                            class="bg-gradient-to-br from-primary to-blue-600 rounded-3xl p-8 md:p-12 shadow-2xl"
+                        >
+                            <h3 class="text-3xl font-bold text-white mb-8 text-center">
+                                Kata Mereka
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <!-- Testimonial 1 -->
+                                <div
+                                    class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/15"
+                                >
+                                    <div class="flex items-center gap-4 mb-4">
+                                        <div
+                                            class="w-12 h-12 relative rounded-full overflow-hidden bg-gradient-to-tr from-white/5 to-white/30 border-2 border-white/40 shadow-sm flex items-center justify-center"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="h-10 w-10 text-white/90 mt-2"
+                                                viewBox="0 0 20 20"
+                                                fill="currentColor"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                                    clip-rule="evenodd"
+                                                />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-lg">
+                                                Muhammad Abdullah
+                                            </h4>
+                                            <p class="text-sm font-medium text-blue-200">
+                                                Mahasiswa MPI
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p class="text-white/90 italic leading-relaxed">
+                                        "Gak nyangka kuliah bisa sambil ekspor barang ke luar
+                                        negeri. Pengalaman yang gak bakal didapat di kampus lain!"
+                                    </p>
+                                </div>
+
+                                <div
+                                    class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/15"
+                                >
+                                    <div class="flex items-center gap-4 mb-4">
+                                        <div
+                                            class="w-12 h-12 relative rounded-full overflow-hidden bg-gradient-to-tr from-white/5 to-white/30 border-2 border-white/40 shadow-sm flex items-center justify-center"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="h-10 w-10 text-white/90 mt-2"
+                                                viewBox="0 0 20 20"
+                                                fill="currentColor"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                                    clip-rule="evenodd"
+                                                />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-lg">
+                                                Akhmad Samsudin
+                                            </h4>
+                                            <p class="text-sm font-medium text-blue-200">
+                                                Mahasiswa TI
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p class="text-white/90 italic leading-relaxed">
+                                        "Dosennya asik, fasilitasnya lengkap, dan yang paling
+                                        penting ada koneksi langsung ke industri. Worth it banget!"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Registration Section (Pendaftaran) -->
+            <section id="registration" class="py-20 bg-white">
+                <div class="container mx-auto px-4">
+                    <div class="max-w-7xl mx-auto">
+                        <!-- Section Header -->
+                        <div class="text-center mb-16">
+                            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                                Informasi Pendaftaran
+                            </h2>
+                            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                                Panduan lengkap untuk bergabung dengan Politeknik Hasnur
+                            </p>
+                        </div>
+
+                        <!-- Timeline PMB -->
+                        <div class="mb-16">
+                            <div
+                                class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 md:p-12 border border-blue-100"
+                            >
+                                <div class="flex items-center gap-3 mb-6">
+                                    <div
+                                        class="w-12 h-12 bg-primary rounded-full flex items-center justify-center"
+                                    >
+                                        <svg
+                                            class="w-6 h-6 text-white"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-3xl font-bold text-gray-900">
+                                        Timeline PMB 2026
+                                    </h3>
+                                </div>
+                                <p class="text-xl text-gray-700 mb-8 font-semibold">
+                                    16 Oktober 2025 - 30 September 2026
+                                </p>
+
+                                <!-- Steps -->
+                                <div class="grid md:grid-cols-3 gap-6">
+                                    <!-- Step 1 -->
+                                    <div
+                                        class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow"
+                                    >
+                                        <div
+                                            class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto"
+                                        >
+                                            <span class="text-2xl font-bold text-primary">1</span>
+                                        </div>
+                                        <h4
+                                            class="text-xl font-bold text-gray-900 mb-3 text-center"
+                                        >
+                                            Melengkapi Berkas
+                                        </h4>
+                                        <div class="space-y-6 text-left">
+                                            <div class="border-l-4 border-blue-500 pl-4">
+                                                <h5 class="font-bold text-slate-800 text-lg mb-2">
+                                                    Pendaftaran Offline
+                                                </h5>
+                                                <p
+                                                    class="text-slate-600 text-sm mb-3 leading-relaxed"
+                                                >
+                                                    Datang langsung ke kampus Politeknik Hasnur:<br />
+                                                    <span class="font-medium text-slate-800"
+                                                        >Jl. Brigjen H. Hasan Basri, Handil Bakti,
+                                                        Kec. Alalak - Kalsel.</span
+                                                    >
+                                                </p>
+
+                                                <p
+                                                    class="text-sm font-semibold text-slate-700 mb-2"
+                                                >
+                                                    Dokumen Wajib:
+                                                </p>
+                                                <ul
+                                                    class="list-disc pl-5 text-sm text-slate-600 space-y-1 marker:text-blue-500"
+                                                >
+                                                    <li>
+                                                        Fotocopy Ijazah & SKHU berlegalisir / KTP
+                                                    </li>
+                                                    <li>Fotocopy Raport (Semester 1 - Akhir)</li>
+                                                    <li>Fotocopy KTP / Kartu Pelajar</li>
+                                                    <li>
+                                                        Fotokopi Kartu Keluarga & Akta Kelahiran
+                                                    </li>
+                                                    <li>Fotocopy KTP Orang Tua/Wali</li>
+                                                    <li>Pasfoto berwarna 4x6 & 3x4 (4 lembar)</li>
+                                                    <li>Surat Keterangan Berbadan Sehat</li>
+                                                    <li>
+                                                        Surat Keterangan Tidak Buta Warna
+                                                        <span class="text-xs text-slate-400"
+                                                            >(Khusus BTP & TO)</span
+                                                        >
+                                                    </li>
+                                                </ul>
+
+                                                <div
+                                                    class="mt-3 bg-slate-50 p-3 rounded-lg border border-slate-100"
+                                                >
+                                                    <p
+                                                        class="text-xs font-bold text-slate-500 uppercase mb-2 tracking-wider"
+                                                    >
+                                                        Khusus Jalur Beasiswa:
+                                                    </p>
+                                                    <ul
+                                                        class="list-disc pl-5 text-sm text-slate-600 space-y-1 marker:text-orange-500"
+                                                    >
+                                                        <li>Surat Rekomendasi Sekolah Asal</li>
+                                                        <li>Surat Keterangan Tidak Mampu (SKTM)</li>
+                                                        <li>
+                                                            Fotocopy KIP (Kartu Indonesia Pintar)
+                                                        </li>
+                                                        <li>
+                                                            Fotocopy Sertifikat/Piagam Penghargaan
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="bg-blue-50 rounded-xl p-5 border border-blue-100 flex flex-col sm:flex-row items-center justify-between gap-4"
+                                            >
+                                                <div>
+                                                    <h5
+                                                        class="font-bold text-blue-800 text-lg flex items-center gap-2"
+                                                    >
+                                                        Pendaftaran Online
+                                                    </h5>
+                                                    <p class="text-blue-600 text-sm mt-1">
+                                                        Lebih praktis! Daftar dari mana saja kapan
+                                                        saja.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <a
+                                                href="https://wa.me/6285100156666"
+                                                target="_blank"
+                                                class="inline-flex items-center justify-center w-full px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors text-sm font-semibold"
+                                            >
+                                                <svg
+                                                    class="w-5 h-5 mr-2"
+                                                    fill="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path
+                                                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                                                    />
+                                                </svg>
+                                                Hubungi via WhatsApp
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 2 -->
+                                    <div
+                                        class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow"
+                                    >
+                                        <div
+                                            class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto"
+                                        >
+                                            <span class="text-2xl font-bold text-primary">2</span>
+                                        </div>
+                                        <h4
+                                            class="text-xl font-bold text-gray-900 mb-3 text-center"
+                                        >
+                                            Mengikuti Ujian Masuk
+                                        </h4>
+                                        <div class="space-y-4 text-left">
+                                            <div
+                                                class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg"
+                                            >
+                                                <div class="flex items-start gap-3">
+                                                    <div class="shrink-0 text-amber-500 mt-0.5">
+                                                        <svg
+                                                            class="w-5 h-5"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div>
+                                                        <h5
+                                                            class="font-bold text-amber-800 text-sm mb-1"
+                                                        >
+                                                            Wajib Mengikuti Tes
+                                                        </h5>
+                                                        <p
+                                                            class="text-amber-700 text-xs leading-relaxed"
+                                                        >
+                                                            Seluruh peserta PMB wajib mengikuti tes
+                                                            masuk sesuai jadwal yang ditentukan
+                                                            pihak kampus.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="pl-2">
+                                                <h5
+                                                    class="font-bold text-slate-800 text-sm mb-3 flex items-center gap-2"
+                                                >
+                                                    📢 Kanal Pengumuman Hasil:
+                                                </h5>
+
+                                                <ul class="space-y-3">
+                                                    <li
+                                                        class="flex items-start gap-3 group cursor-pointer"
+                                                    >
+                                                        <div
+                                                            class="shrink-0 w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors"
+                                                        >
+                                                            <svg
+                                                                class="w-4 h-4"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24"
+                                                            >
+                                                                <path
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                                                                ></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div>
+                                                            <span
+                                                                class="block text-sm font-semibold text-slate-700 group-hover:text-blue-600 transition-colors"
+                                                                >Portal PMB Online</span
+                                                            >
+                                                            <span class="text-xs text-slate-500"
+                                                                >Cek laman Pengumuman Kelulusan di
+                                                                website.</span
+                                                            >
+                                                        </div>
+                                                    </li>
+
+                                                    <li
+                                                        class="flex items-start gap-3 group cursor-pointer"
+                                                    >
+                                                        <div
+                                                            class="shrink-0 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-slate-600 group-hover:text-white transition-colors"
+                                                        >
+                                                            <svg
+                                                                class="w-4 h-4"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24"
+                                                            >
+                                                                <path
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                                                ></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div>
+                                                            <span
+                                                                class="block text-sm font-semibold text-slate-700 group-hover:text-slate-900 transition-colors"
+                                                                >Media Kampus</span
+                                                            >
+                                                            <span class="text-xs text-slate-500"
+                                                                >Mading Polihasnur & media penyiaran
+                                                                internal.</span
+                                                            >
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 3 -->
+                                    <div
+                                        class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow"
+                                    >
+                                        <div
+                                            class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto"
+                                        >
+                                            <span class="text-2xl font-bold text-primary">3</span>
+                                        </div>
+                                        <h4
+                                            class="text-xl font-bold text-gray-900 mb-3 text-center"
+                                        >
+                                            Daftar Ulang
+                                        </h4>
+                                        <div class="space-y-5 text-left">
+                                            <p class="text-sm text-slate-600 leading-relaxed">
+                                                Bagi peserta yang dinyatakan <strong>LULUS</strong>,
+                                                silakan lakukan pembayaran daftar ulang (biaya
+                                                pendaftaran & uang pangkal) melalui metode berikut:
+                                            </p>
+
+                                            <div
+                                                class="bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-100 rounded-xl p-5 relative group transition-all hover:shadow-md"
+                                            >
+                                                <div class="flex justify-between items-start mb-2">
+                                                    <div>
+                                                        <p
+                                                            class="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-1"
+                                                        >
+                                                            Bank Transfer
+                                                        </p>
+                                                        <p
+                                                            class="text-sm font-semibold text-slate-700"
+                                                        >
+                                                            Bank Syariah Indonesia (BSI)
+                                                        </p>
+                                                        <p class="text-xs text-slate-500">
+                                                            a.n. Politeknik Hasnur
+                                                        </p>
+                                                    </div>
+                                                    <div
+                                                        class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-emerald-600"
+                                                    >
+                                                        <svg
+                                                            class="w-6 h-6"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="flex items-center gap-3 bg-white border border-emerald-100 rounded-lg p-3 mt-2"
+                                                >
+                                                    <code
+                                                        class="text-2xl font-mono font-bold text-slate-800 tracking-wide flex-1"
+                                                        id="rek-number"
+                                                        >8687888988</code
+                                                    >
+                                                    <button
+                                                        onclick="
+                                                            navigator.clipboard.writeText(
+                                                                '8687888988',
+                                                            );
+                                                            alert('Nomor rekening disalin!');
+                                                        "
+                                                        class="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
+                                                        title="Salin Nomor Rekening"
+                                                    >
+                                                        <svg
+                                                            class="w-5 h-5"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                                                            ></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="flex items-center gap-4 p-4 border border-slate-100 rounded-xl hover:bg-slate-50 transition-colors"
+                                            >
+                                                <div
+                                                    class="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 shrink-0"
+                                                >
+                                                    <svg
+                                                        class="w-5 h-5"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24"
+                                                    >
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                                                        ></path>
+                                                    </svg>
+                                                </div>
+                                                <div>
+                                                    <h5 class="font-bold text-slate-800 text-sm">
+                                                        Pembayaran Tunai
+                                                    </h5>
+                                                    <p class="text-xs text-slate-500">
+                                                        Bayar langsung di Loket Keuangan Kampus.
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="flex items-start gap-3 bg-red-50 text-red-700 p-3 rounded-lg text-sm border border-red-100"
+                                            >
+                                                <svg
+                                                    class="w-5 h-5 shrink-0 mt-0.5"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                                    ></path>
+                                                </svg>
+                                                <div>
+                                                    <span
+                                                        class="font-bold block text-xs uppercase tracking-wide opacity-80"
+                                                        >Batas Akhir</span
+                                                    >
+                                                    <span class="font-bold text-base"
+                                                        >30 September 2026</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Simulasi Biaya -->
+                        <div class="mb-16">
+                            <div class="text-center mb-8">
+                                <h3 class="text-3xl font-bold text-gray-900 mb-2">
+                                    Simulasi Biaya Kuliah
+                                </h3>
+                                <p class="text-gray-600">
+                                    Investasi terjangkau untuk masa depan cemerlang
+                                </p>
+                            </div>
+
+                            <div class="overflow-x-auto">
+                                <table
+                                    class="w-full bg-white rounded-2xl overflow-hidden shadow-lg"
+                                >
+                                    <thead
+                                        class="bg-gradient-to-r from-primary to-blue-600 text-white"
+                                    >
+                                        <tr>
+                                            <th class="px-6 py-4 text-left font-bold">
+                                                Program Studi
+                                            </th>
+                                            <th class="px-6 py-4 text-right font-bold">
+                                                Uang Pangkal
+                                            </th>
+                                            <th class="px-6 py-4 text-right font-bold">
+                                                SPP/Semester
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        <tr class="hover:bg-blue-50 transition-colors">
+                                            <td class="px-6 py-4 font-semibold text-gray-900">
+                                                Teknik Otomotif
+                                            </td>
+                                            <td class="px-6 py-4 text-right text-gray-700">
+                                                Rp 4.000.000
+                                            </td>
+                                            <td class="px-6 py-4 text-right text-gray-700">
+                                                Rp 3.500.000
+                                            </td>
+                                        </tr>
+                                        <tr class="hover:bg-blue-50 transition-colors">
+                                            <td class="px-6 py-4 font-semibold text-gray-900">
+                                                Teknik Informatika
+                                            </td>
+                                            <td class="px-6 py-4 text-right text-gray-700">
+                                                Rp 5.000.000
+                                            </td>
+                                            <td class="px-6 py-4 text-right text-gray-700">
+                                                Rp 3.500.000
+                                            </td>
+                                        </tr>
+                                        <tr class="hover:bg-blue-50 transition-colors">
+                                            <td class="px-6 py-4 font-semibold text-gray-900">
+                                                Budidaya Tanaman Perkebunan
+                                            </td>
+                                            <td class="px-6 py-4 text-right text-gray-700">
+                                                Rp 4.000.000
+                                            </td>
+                                            <td class="px-6 py-4 text-right text-gray-700">
+                                                Rp 3.500.000
+                                            </td>
+                                        </tr>
+                                        <tr class="hover:bg-blue-50 transition-colors">
+                                            <td class="px-6 py-4 font-semibold text-gray-900">
+                                                Bisnis Digital
+                                            </td>
+                                            <td class="px-6 py-4 text-right text-gray-700">
+                                                Rp 5.000.000
+                                            </td>
+                                            <td class="px-6 py-4 text-right text-gray-700">
+                                                Rp 4.000.000
+                                            </td>
+                                        </tr>
+                                        <tr class="hover:bg-blue-50 transition-colors">
+                                            <td class="px-6 py-4 font-semibold text-gray-900">
+                                                Manajemen Pemasaran Internasional
+                                            </td>
+                                            <td class="px-6 py-4 text-right text-gray-700">
+                                                Rp 5.000.000
+                                            </td>
+                                            <td class="px-6 py-4 text-right text-gray-700">
+                                                Rp 4.000.000
+                                            </td>
+                                        </tr>
+                                        <tr class="hover:bg-blue-50 transition-colors">
+                                            <td class="px-6 py-4 font-semibold text-gray-900">
+                                                Akuntansi Bisnis Digital
+                                            </td>
+                                            <td class="px-6 py-4 text-right text-gray-700">
+                                                Rp 5.000.000
+                                            </td>
+                                            <td class="px-6 py-4 text-right text-gray-700">
+                                                Rp 4.000.000
+                                            </td>
+                                        </tr>
+                                        <tr class="hover:bg-blue-50 transition-colors">
+                                            <td class="px-6 py-4 font-semibold text-gray-900">
+                                                Teknologi Rekayasa Multimedia
+                                            </td>
+                                            <td class="px-6 py-4 text-right text-gray-700">
+                                                Rp 5.000.000
+                                            </td>
+                                            <td class="px-6 py-4 text-right text-gray-700">
+                                                Rp 4.000.000
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div
+                                class="mt-6 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg"
+                            >
+                                <p class="text-sm text-yellow-800">
+                                    <span class="font-bold">💡 Info:</span> Biaya perkuliahan dapat
+                                    dicicil atau diangsur. Tersedia berbagai program beasiswa!
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Section -->
+                        <div>
+                            <div class="text-center mb-12">
+                                <h3 class="text-3xl font-bold text-gray-900 mb-2">
+                                    Pertanyaan yang Sering Diajukan
+                                </h3>
+                                <p class="text-gray-600">Temukan jawaban untuk pertanyaan Anda</p>
+                            </div>
+
+                            <div class="max-w-4xl mx-auto space-y-4">
+                                <!-- FAQ Item 1 -->
+                                <details
+                                    class="group bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden"
+                                >
+                                    <summary
+                                        class="cursor-pointer px-6 py-5 font-semibold text-gray-900 flex justify-between items-center list-none"
+                                    >
+                                        <span
+                                            >Apakah ada batasan usia untuk mendaftar di Politeknik
+                                            Hasnur?</span
+                                        >
+                                        <svg
+                                            class="w-5 h-5 text-primary transition-transform group-open:rotate-180"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            ></path>
+                                        </svg>
+                                    </summary>
+                                    <div class="px-6 pb-5 text-gray-600">
+                                        Untuk kelas reguler maksimal berusia 25 tahun saat
+                                        mendaftar, sedangkan untuk kelas eksekutif tidak ada batasan
+                                        usia yaa, jadi silahkan mendaftar!
+                                    </div>
+                                </details>
+
+                                <!-- FAQ Item 2 -->
+                                <details
+                                    class="group bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden"
+                                >
+                                    <summary
+                                        class="cursor-pointer px-6 py-5 font-semibold text-gray-900 flex justify-between items-center list-none"
+                                    >
+                                        <span
+                                            >Untuk kelas eksekutif, sistem perkuliahan offline atau
+                                            hybrid?</span
+                                        >
+                                        <svg
+                                            class="w-5 h-5 text-primary transition-transform group-open:rotate-180"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            ></path>
+                                        </svg>
+                                    </summary>
+                                    <div class="px-6 pb-5 text-gray-600">
+                                        Untuk kelas eksekutif menggunakan sistem blended learning
+                                        ya, yaitu hybrid secara online dan offline. Jadwal
+                                        perkuliahan dilaksanakan di hari Jumat dan Sabtu. Jadi, buat
+                                        teman-teman yang berkuliah sambil bekerja, gak perlu
+                                        khawatir!
+                                    </div>
+                                </details>
+
+                                <!-- FAQ Item 3 -->
+                                <details
+                                    class="group bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden"
+                                >
+                                    <summary
+                                        class="cursor-pointer px-6 py-5 font-semibold text-gray-900 flex justify-between items-center list-none"
+                                    >
+                                        <span
+                                            >Apakah ada jalur beasiswa lain yang bisa diikuti di
+                                            Politeknik Hasnur??</span
+                                        >
+                                        <svg
+                                            class="w-5 h-5 text-primary transition-transform group-open:rotate-180"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            ></path>
+                                        </svg>
+                                    </summary>
+                                    <div class="px-6 pb-5 text-gray-600">
+                                        Wah, banyak banget beasiswa yang bisa teman-teman ikuti dan
+                                        tersedia di Polihasnur diantaranya: Beasiswa Unggulan YHC,
+                                        Beasiswa Hasnur Group, Beasiswa KIP-Kuliah, Beasiswa
+                                        Pemerintah Daerah, Beasiswa Baznaz & UPZ Bakti Bersama, dan
+                                        masih banyak beasiswa lainnya yang dapat teman-teman akses.
+                                        Jadi, jangan khawatir ya rekan Techno!
+                                    </div>
+                                </details>
+
+                                <!-- FAQ Item 4 -->
+                                <details
+                                    class="group bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden"
+                                >
+                                    <summary
+                                        class="cursor-pointer px-6 py-5 font-semibold text-gray-900 flex justify-between items-center list-none"
+                                    >
+                                        <span
+                                            >Kalau lokasi jauh dari Politeknik Hasnur, bisa daftar
+                                            secara online?</span
+                                        >
+                                        <svg
+                                            class="w-5 h-5 text-primary transition-transform group-open:rotate-180"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            ></path>
+                                        </svg>
+                                    </summary>
+                                    <div class="px-6 pb-5 text-gray-600">
+                                        Pendaftaran mahasiswa baru bisa dilakukan secara online
+                                        lewat website Politeknik Hasnur yang tertera ya!
+                                    </div>
+                                </details>
+
+                                <!-- FAQ Item 5 -->
+                                <details
+                                    class="group bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden"
+                                >
+                                    <summary
+                                        class="cursor-pointer px-6 py-5 font-semibold text-gray-900 flex justify-between items-center list-none"
+                                    >
+                                        <span
+                                            >Apakah bisa daftar Politeknik Hasnur lewat jalur
+                                            SNBP?</span
+                                        >
+                                        <svg
+                                            class="w-5 h-5 text-primary transition-transform group-open:rotate-180"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            ></path>
+                                        </svg>
+                                    </summary>
+                                    <div class="px-6 pb-5 text-gray-600">
+                                        Politeknik Hasnur merupakan kampus swasta ya rekan, jadi
+                                        tidak ada jalur SNBP untuk pendaftaran. Silahkan mengikuti
+                                        jalur pendaftaran mandiri, beasiswa, atau KIP di Politeknik
+                                        Hasnur.
+                                    </div>
+                                </details>
+
+                                <!-- FAQ Item 6 -->
+                                <details
+                                    class="group bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden"
+                                >
+                                    <summary
+                                        class="cursor-pointer px-6 py-5 font-semibold text-gray-900 flex justify-between items-center list-none"
+                                    >
+                                        <span>Apakah ada tes masuk? Tes masuknya apa saja?</span>
+                                        <svg
+                                            class="w-5 h-5 text-primary transition-transform group-open:rotate-180"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            ></path>
+                                        </svg>
+                                    </summary>
+                                    <div class="px-6 pb-5 text-gray-600">
+                                        Benar, ada tesnya yaa! Terdiri dari tes pemetaan peminatan
+                                        atau tes akademik dan tes psikotes yang semuanya
+                                        dilaksanakan secara online.
+                                    </div>
+                                </details>
+
+                                <!-- FAQ Item 7 -->
+                                <details
+                                    class="group bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden"
+                                >
+                                    <summary
+                                        class="cursor-pointer px-6 py-5 font-semibold text-gray-900 flex justify-between items-center list-none"
+                                    >
+                                        <span
+                                            >Apakah setelah lulus dari Politeknik Hasnur bisa
+                                            langsung bekerja?</span
+                                        >
+                                        <svg
+                                            class="w-5 h-5 text-primary transition-transform group-open:rotate-180"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            ></path>
+                                        </svg>
+                                    </summary>
+                                    <div class="px-6 pb-5 text-gray-600">
+                                        Polihasnur memberikan kesempatan magang kepada mahasiswa
+                                        sebanyak dua kali. Pertama saat masa perkuliahan dan kedua
+                                        setelah lulus, maka silahkan dimanfaatkan sebaik-baiknya.
+                                        Selama performa dan kinerja teman-teman saat magang bagus,
+                                        maka akan selalu ada kesempatan yang terbuka.
+                                    </div>
+                                </details>
+
+                                <!-- FAQ Item 8 -->
+                                <details
+                                    class="group bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden"
+                                >
+                                    <summary
+                                        class="cursor-pointer px-6 py-5 font-semibold text-gray-900 flex justify-between items-center list-none"
+                                    >
+                                        <span
+                                            >Apakah berkas daftar ulang bisa dikirim secara online
+                                            tanpa perlu ke tempat?</span
+                                        >
+                                        <svg
+                                            class="w-5 h-5 text-primary transition-transform group-open:rotate-180"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            ></path>
+                                        </svg>
+                                    </summary>
+                                    <div class="px-6 pb-5 text-gray-600">
+                                        Bisa, namun hanya untuk calon mahasiswa jalur mandiri saja
+                                        ya rekan Techno. Berkas daftar ulang bisa dikumpulkan ke
+                                        dalam 1 file pdf dan silahkan kirim ke nomor WhatsApp admin
+                                        yang tertera. Namun, kami tetap menyarankan untuk
+                                        pengumpulan berkas daftar ulang sebaiknya langsung ke
+                                        Politeknik Hasnur ya!
+                                    </div>
+                                </details>
+                                <details
+                                    class="group bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden"
+                                >
+                                    <summary
+                                        class="cursor-pointer px-6 py-5 font-semibold text-gray-900 flex justify-between items-center list-none"
+                                    >
+                                        <span
+                                            >Apakah di Politeknik Hasnur bisa cicil
+                                            pembayaran?</span
+                                        >
+                                        <svg
+                                            class="w-5 h-5 text-primary transition-transform group-open:rotate-180"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            ></path>
+                                        </svg>
+                                    </summary>
+                                    <div class="px-6 pb-5 text-gray-600">
+                                        Jangan khawatir, untuk biaya perkuliahan di Politeknik
+                                        Hasnur bisa dicicil atau diangsur ya rekan Techno!
+                                    </div>
+                                </details>
+                                <details
+                                    class="group bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden"
+                                >
+                                    <summary
+                                        class="cursor-pointer px-6 py-5 font-semibold text-gray-900 flex justify-between items-center list-none"
+                                    >
+                                        <span
+                                            >Apakah ada batasan usia untuk mendaftar beasiswa
+                                            unggulan?</span
+                                        >
+                                        <svg
+                                            class="w-5 h-5 text-primary transition-transform group-open:rotate-180"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            ></path>
+                                        </svg>
+                                    </summary>
+                                    <div class="px-6 pb-5 text-gray-600">
+                                        Maksimal berusia 25 tahun dan lulusan angkatan dua tahun
+                                        terakhir ya rekan Techno! Untuk mengetahui informasi lengkap
+                                        terkait persyaratan dan apa saja berkas yang diperlukan
+                                        untuk mendaftar beasiswa unggulan, silahkan kunjungi laman
+                                        website Politeknik Hasnur ya!
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer
+            class="bg-slate-900 border-t border-slate-800 text-slate-300 pt-16 pb-8 font-sans relative mt-24"
+        >
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div
+                    id="footer"
+                    class="scroll-mt-32 bg-gradient-to-br from-[#106EE8] to-blue-700 rounded-3xl p-8 md:p-12 mb-16 flex flex-col md:flex-row items-center justify-between shadow-2xl shadow-[#106EE8]/20 -mt-28 relative z-10 border border-white/10"
+                >
+                    <div class="text-center md:text-left mb-6 md:mb-0">
+                        <h3
+                            class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight"
+                        >
+                            Siap Memulai Petualanganmu?
+                        </h3>
+                        <p class="text-blue-100 max-w-lg text-sm md:text-base">
+                            Bergabunglah dengan ekosistem digital Politeknik Hasnur. Temukan
+                            passion-mu dan raih masa depan sekarang.
+                        </p>
+                    </div>
+                    <a
+                        href="https://pmb.polihasnur.ac.id/"
+                        target="_blank"
+                        class="px-8 py-3.5 bg-white text-[#106EE8] font-bold rounded-full hover:bg-slate-50 hover:scale-105 transition-transform duration-300 shadow-lg whitespace-nowrap"
+                    >
+                        Daftar PMB Sekarang
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 mb-16">
+                    <div class="lg:col-span-4 space-y-6">
+                        <div class="flex items-center gap-3">
+                            <div class="flex items-center gap-3">
+                                <img
+                                    src="assets/images/polihasnur-logo.png"
+                                    alt="Politeknik Hasnur"
+                                    class="h-24 w-auto object-contain opacity-95"
+                                />
+                            </div>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+                            <strong class="text-white">Digital Hasnur</strong> adalah platform
+                            eksplorasi digital. Rasakan pengalaman nyata kehidupan kampus secara
+                            interaktif sebelum mendaftar.
+                        </p>
+
+                        <div class="flex gap-4 pt-2 flex-wrap">
+                            <a
+                                href="https://facebook.com/polihasnur"
+                                target="_blank"
+                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition-all duration-300 hover:-translate-y-1"
+                            >
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333.915-1.333h3.105v-5.444h-3.414c-2.957 0-5.129 1.474-5.129 5.13v3.314z"
+                                    />
+                                </svg>
+                            </a>
+
+                            <a
+                                href="https://twitter.com/Polihasnur_"
+                                target="_blank"
+                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300 hover:-translate-y-1"
+                            >
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                                    />
+                                </svg>
+                            </a>
+
+                            <a
+                                href="https://instagram.com/polihasnur"
+                                target="_blank"
+                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-pink-500 hover:to-purple-500 hover:text-white transition-all duration-300 hover:-translate-y-1"
+                            >
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                            </a>
+
+                            <a
+                                href="https://youtube.com/@politeknikhasnur"
+                                target="_blank"
+                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-red-600 hover:text-white transition-all duration-300 hover:-translate-y-1"
+                            >
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                                    />
+                                </svg>
+                            </a>
+
+                            <a
+                                href="https://tiktok.com/@politeknikhasnur"
+                                target="_blank"
+                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300 hover:-translate-y-1"
+                            >
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
+                                    />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5">
+                        <h4 class="text-white font-bold mb-5 tracking-wide text-sm uppercase">
+                            Lokasi & Kontak
+                        </h4>
+
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#106EE8] shrink-0 mt-1"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                                    ></path>
+                                </svg>
+                                <div>
+                                    <strong class="block text-white"
+                                        >Kampus 1 (Handil Bakti)</strong
+                                    >
+                                    <span class="text-slate-400"
+                                        >Jl. Trans Kalimantan, Handil Bakti, Kab. Barito Kuala</span
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#106EE8] shrink-0 mt-1"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"
+                                    ></path>
+                                </svg>
+                                <div>
+                                    <strong class="block text-white"
+                                        >Kampus 2 (Wetland Square)</strong
+                                    >
+                                    <span class="text-slate-400"
+                                        >Jl. A. Yani Km 3.5, Kota Banjarmasin</span
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="pt-2 flex flex-col sm:flex-row gap-4 sm:gap-6">
+                                <div class="flex items-center gap-2">
+                                    <svg
+                                        class="w-4 h-4 text-[#106EE8] shrink-0"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                        />
+                                    </svg>
+                                    <a
+                                        href="mailto:polihasnur@polihasnur.ac.id"
+                                        class="text-slate-400 hover:text-white transition-colors"
+                                        >polihasnur@polihasnur.ac.id</a
+                                    >
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <svg
+                                        class="w-4 h-4 text-[#106EE8] shrink-0"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                                        />
+                                    </svg>
+                                    <span class="text-slate-400">0851-0015-6666</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-3">
+                        <h4 class="text-white font-bold mb-5 tracking-wide text-sm uppercase">
+                            Didukung Oleh
+                        </h4>
+
+                        <div class="flex flex-col gap-6 w-full pt-2">
+                            <div class="flex flex-wrap items-center gap-8 sm:gap-10">
+                                <img
+                                    src="assets/images/spinotek-icon.png"
+                                    alt="Spinotek"
+                                    class="h-10 sm:h-12 w-auto object-contain opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300 filter grayscale hover:grayscale-0"
+                                    title="Spinotek"
+                                />
+                                <img
+                                    src="assets/images/hima-ti.png"
+                                    alt="HIMA TI Polihasnur"
+                                    class="h-10 sm:h-12 w-auto object-contain opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300 filter grayscale hover:grayscale-0"
+                                    title="HIMA TI Polihasnur"
+                                />
+                            </div>
+
+                            <div class="flex items-center">
+                                <img
+                                    src="assets/images/logo-polihasnur.png"
+                                    alt="Politeknik Hasnur"
+                                    class="h-12 sm:h-14 w-auto object-contain opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300 filter grayscale hover:grayscale-0"
+                                    title="Politeknik Hasnur"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="pt-8 border-t border-slate-800 flex flex-col lg:flex-row items-center justify-between gap-6"
+                >
+                    <p class="text-sm text-slate-500">
+                        &copy; 2026 Politeknik Hasnur. All rights reserved.
+                    </p>
+
+                    <div class="flex flex-col items-center lg:items-end gap-1.5">
+                        <div class="text-sm text-slate-400 flex items-center gap-2">
+                            <span
+                                >Crafted by
+                                <strong class="text-white tracking-wide"
+                                    >KALYZET X SHADOW</strong
+                                ></span
+                            >
+                        </div>
+
+                        <div
+                            class="text-xs text-slate-500 flex flex-wrap justify-center items-center gap-3"
+                        >
+                            <a
+                                href="https://instagram.com/m_ha1kal"
+                                target="_blank"
+                                class="hover:text-[#106EE8] transition-colors duration-300 flex items-center gap-1.5"
+                            >
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#106EE8]"></span>
+                                Muhammad Haikal
+                            </a>
+                            <span class="text-slate-700 hidden sm:inline">|</span>
+                            <a
+                                href="https://instagram.com/abdi_an2234"
+                                target="_blank"
+                                class="hover:text-[#106EE8] transition-colors duration-300 flex items-center gap-1.5"
+                            >
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#106EE8]"></span>
+                                Muhammad Abdi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Modal Container -->
+        <div id="modal-root"></div>
+
+        <!-- Toast Container -->
+        <div id="toast-root" class="fixed top-4 right-4 z-50"></div>
+
+        <!-- Main JavaScript Bundle (No modules - works with file://) -->
+        <script src="js/app-bundle.js?v=3"></script>
+    </body>
+</html>

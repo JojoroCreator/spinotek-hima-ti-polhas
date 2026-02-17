@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cybersecurity Education | Wuthering Waves Style</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-DRDpcjw1.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-C1u0c8Wc.css">
+  </head>
+  <body class="bg-cyber-dark text-slate-200 selection:bg-cyber-accent selection:text-cyber-dark overflow-x-hidden">
+    
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-[-1] pointer-events-none">
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-cyber-dark to-black opacity-80"></div>
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyber-accent/10 rounded-full blur-[100px] animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyber-gold/5 rounded-full blur-[100px] animate-pulse-slow delay-1000"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 px-6 md:px-12 flex justify-between items-center border-b border-white/5 bg-transparent backdrop-blur-[2px]">
+        <div class="font-display font-bold text-2xl tracking-widest text-white uppercase group cursor-pointer">
+            <span class="text-cyber-accent group-hover:text-shadow transition-all">Cyber</span>Sec
+        </div>
+        <ul class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-slate-400">
+            <li><a href="#home" class="hover:text-cyber-accent transition-colors hover:text-shadow">HOME</a></li>
+            <li><a href="#ddos" class="hover:text-cyber-red transition-colors hover:text-shadow">DDOS ARENA</a></li>
+            <li><a href="#phishing" class="hover:text-indigo-400 transition-colors hover:text-shadow">PHISHING ZONE</a></li>
+            <li><a href="#sqli" class="hover:text-cyber-gold transition-colors hover:text-shadow">SQL INJECTION</a></li>
+            <li><a href="#regions" class="hover:text-white transition-colors hover:text-shadow">REGIONS</a></li>
+        </ul>
+        <!-- Mobile Menu Button (Hidden for now) -->
+        <button class="md:hidden text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10 pt-20">
+        
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex flex-col justify-center items-start px-6 md:px-24 relative overflow-hidden">
+            <div class="max-w-4xl space-y-6">
+                <div class="inline-block px-3 py-1 border border-cyber-accent/30 rounded-full bg-cyber-accent/5 text-cyber-accent text-xs tracking-[0.2em] font-mono mb-4">
+                    SYSTEM :: ONLINE
+                </div>
+                <h1 class="font-display text-5xl md:text-7xl font-bold text-white leading-tight">
+                    PROTECT YOUR <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-accent to-blue-600 animate-glitch">DIGITAL SOUL</span>
+                </h1>
+                <p class="text-slate-400 text-lg md:text-xl max-w-2xl leading-relaxed font-light border-l-2 border-cyber-accent/50 pl-6">
+                    Join the vanguard of digital defense. Understand the threats targeting <span class="text-white font-medium">Gen-Z</span> & <span class="text-white font-medium">Polihasnur</span> students. Simulation training initialized.
+                </p>
+                <div class="flex gap-4 pt-4">
+                    <a href="#ddos" class="group relative px-8 py-3 bg-cyber-accent/10 border border-cyber-accent text-cyber-accent font-bold tracking-widest uppercase hover:bg-cyber-accent hover:text-black transition-all duration-300 clip-path-polygon">
+                        Start Simulation
+                        <div class="absolute inset-0 bg-cyber-accent/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+                    </a>
+                    <a href="#regions" class="px-8 py-3 border border-white/20 text-slate-300 font-bold tracking-widest uppercase hover:bg-white/5 hover:border-white/50 transition-all duration-300">
+                        About Us
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Hero Visual Decoration -->
+            <div class="absolute right-0 top-1/2 -translate-y-1/2 w-1/3 h-2/3 hidden lg:block opacity-60">
+                <div class="w-full h-full border border-cyber-accent/20 relative">
+                    <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-cyber-accent"></div>
+                    <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-cyber-accent"></div>
+                    <!-- Decorative grid/tech lines could go here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- DDoS Arena -->
+        <section id="ddos" class="min-h-screen py-24 px-6 md:px-24 relative border-t border-white/5">
+            <div class="absolute top-0 right-0 p-4 font-mono text-xs text-cyber-red/50">SECTOR: 01 // DDOS</div>
+            <h2 class="font-display text-4xl font-bold text-white mb-12 flex items-center gap-4">
+                <span class="w-2 h-8 bg-cyber-red"></span>
+                DDoS ARENA
+            </h2>
+            <div id="ddos-container" class="glass rounded-xl p-8 min-h-[500px] relative overflow-hidden grid place-items-center">
+                <!-- Simulation Content will be injected here -->
+                <p class="text-slate-500 font-mono">Loading Neural Network...</p>
+            </div>
+        </section>
+
+        <!-- Phishing Zone -->
+        <section id="phishing" class="min-h-screen py-24 px-6 md:px-24 relative border-t border-white/5 bg-black/20">
+            <div class="absolute top-0 left-0 p-4 font-mono text-xs text-indigo-400/50">SECTOR: 02 // PHISHING</div>
+            <h2 class="font-display text-4xl font-bold text-white mb-12 flex items-center gap-4 flex-row-reverse text-right">
+                <span class="w-2 h-8 bg-indigo-500"></span>
+                PHISHING ZONE
+            </h2>
+            <div id="phishing-container" class="glass rounded-xl p-8 min-h-[500px] relative">
+                <!-- Simulation Content will be injected here -->
+                <p class="text-slate-500 font-mono">Loading Social Engineering Modules...</p>
+            </div>
+        </section>
+
+        <!-- SQL Injection -->
+        <section id="sqli" class="min-h-screen py-24 px-6 md:px-24 relative border-t border-white/5">
+            <div class="absolute top-0 right-0 p-4 font-mono text-xs text-cyber-gold/50">SECTOR: 03 // SQLi</div>
+            <h2 class="font-display text-4xl font-bold text-white mb-12 flex items-center gap-4">
+                <span class="w-2 h-8 bg-cyber-gold"></span>
+                SQL INJECTION
+            </h2>
+            <div id="sqli-container" class="glass rounded-xl p-8 min-h-[500px] relative grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Simulation Content will be injected here -->
+                <p class="text-slate-500 font-mono">Loading Database Schemas...</p>
+            </div>
+        </section>
+
+        <!-- Regions (About Us) -->
+        <section id="regions" class="py-24 px-6 md:px-24 relative border-t border-white/5 bg-gradient-to-b from-cyber-dark to-slate-900">
+             <div class="absolute top-0 left-0 p-4 font-mono text-xs text-slate-500">SECTOR: 04 // REGIONS</div>
+             <h2 class="font-display text-4xl font-bold text-white mb-12 text-center">ALLIANCE ZONES</h2>
+             
+             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                 <!-- Polihasnur -->
+                 <div class="glass p-6 rounded-lg text-center group hover:bg-white/5 transition-all">
+                     <div class="h-32 flex items-center justify-center mb-6">
+                         <img src="https://www.polihasnur.ac.id/ckfinder/userfiles/images/Logo%20Politeknik%20Hasnur%20-%20Technopreneur%20Campus.png" alt="Polihasnur" class="max-h-full opacity-80 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                     </div>
+                     <h3 class="font-display text-xl font-bold text-white mb-2">POLIHASNUR</h3>
+                     <p class="text-sm text-slate-400">Polytechnic Hasnur. Generating the next wave of technopreneurs.</p>
+                 </div>
+
+                 <!-- Spinotek -->
+                 <div class="glass p-6 rounded-lg text-center group hover:bg-white/5 transition-all">
+                    <div class="h-32 flex items-center justify-center mb-6">
+                        <img src="https://spinotek.com/images/logo/spinotek-logo.png" alt="Spinotek" class="max-h-full opacity-80 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white mb-2">SPINOTEK</h3>
+                    <p class="text-sm text-slate-400">Leading the digital transformation frontier.</p>
+                </div>
+
+                <!-- Hima TI -->
+                <div class="glass p-6 rounded-lg text-center group hover:bg-white/5 transition-all">
+                    <div class="h-32 flex items-center justify-center mb-6">
+                        <img src="https://hima-ti-polihasnur.github.io/assets/img/logo_hima_ti.png" alt="Hima TI" class="max-h-full opacity-80 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white mb-2">HIMA TI</h3>
+                    <p class="text-sm text-slate-400">Student Association of Informatics Technology.</p>
+                </div>
+             </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 bg-black/50 text-center">
+        <p class="text-slate-500 font-mono text-sm">
+            Developed by <span class="text-cyber-accent">Muhammad Abdi</span> for <span class="text-white">SPINOTEK Vibecoding Hackathon Vol. 02</span>
+        </p>
+        <p class="text-xs text-slate-700 mt-2">&copy; 2026. All Systems Nominal.</p>
+    </footer>
+
+  </body>
+</html>

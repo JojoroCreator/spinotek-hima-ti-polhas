@@ -1,0 +1,1354 @@
+/* Import Plus Jakarta Sans Font (BWA Style) */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.font-jakarta {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Custom Scrollbar - Clean White Style */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f9fafb;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* Firefox Scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db #f9fafb;
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Smooth Transitions */
+a, button, input, select {
+    transition: all 0.3s ease;
+}
+
+/* Focus States - BWA Style */
+input:focus, select:focus {
+    outline: none;
+}
+
+/* Button Hover Effects */
+button {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Card Hover Effects */
+.job-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.job-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.job-card:hover::before {
+    left: 100%;
+}
+
+.job-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+/* Modal Animation */
+#job-modal {
+    animation: fadeIn 0.3s ease-out;
+    backdrop-filter: blur(8px);
+}
+
+.modal-container {
+    animation: modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Modal Scroll Custom */
+.modal-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+    border-radius: 10px;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #2563eb, #7c3aed);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+/* Toastify Custom Styles */
+.toastify {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+}
+
+/* BWA Clean White Style - Minimal Additions */
+
+/* Skill Card Clean Style */
+.skill-card {
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Role Button Clean Style */
+.role-btn {
+    transition: all 0.3s ease;
+}
+
+.role-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Progress Bar Smooth Animation */
+#progress-bar {
+    transition: width 0.5s ease;
+}
+
+/* Modal Backdrop */
+#job-modal {
+    backdrop-filter: blur(4px);
+}
+
+/* ==================== AUTH MODAL - CLEAN & FIXED ==================== */
+#auth-modal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    z-index: 9999 !important;
+    display: none !important;
+}
+
+#auth-modal[style*="display: block"] {
+    display: block !important;
+}
+
+#auth-modal > div {
+    position: fixed !important;
+    inset: 0 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+#auth-modal .bg-white {
+    width: 100% !important;
+    max-width: 32rem !important;
+}
+
+#login-form,
+#register-form {
+    display: block !important;
+}
+
+#register-form[style*="display: none"],
+#login-form[style*="display: none"] {
+    display: none !important;
+}
+
+/* Ensure all form elements are visible and clickable */
+#register-form input,
+#register-form select,
+#register-form button,
+#login-form input,
+#login-form button {
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Force select element to be visible */
+#register-prodi {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    min-height: 48px !important;
+    position: relative !important;
+    z-index: 1 !important;
+    -webkit-appearance: menulist !important;
+    -moz-appearance: menulist !important;
+    appearance: auto !important;
+    background-color: white !important;
+    background-image: none !important;
+}
+
+#register-form button[type="submit"],
+#login-form button[type="submit"] {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    min-height: 48px !important;
+}
+
+.close-auth-modal {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+/* Smooth scrolling for modal content */
+#auth-modal > div:first-child::-webkit-scrollbar {
+    width: 10px;
+}
+
+#auth-modal > div:first-child::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+#auth-modal > div:first-child::-webkit-scrollbar-thumb {
+    background: #2563eb;
+    border-radius: 10px;
+}
+
+#auth-modal > div:first-child::-webkit-scrollbar-thumb:hover {
+    background: #1d4ed8;
+}
+    content: '';
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(to top, rgba(255,255,255,0.9), transparent);
+    pointer-events: none;
+    display: block;
+}
+
+
+/* ==================== ACHIEVEMENT POPUP & NOTIFICATIONS ==================== */
+
+/* Achievement Popup */
+.achievement-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    z-index: 10000;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: none;
+}
+
+.achievement-popup.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.achievement-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    min-width: 350px;
+    animation: achievementBounce 0.6s ease-out;
+}
+
+@keyframes achievementBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.achievement-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+    animation: achievementIconSpin 0.8s ease-out;
+}
+
+@keyframes achievementIconSpin {
+    0% { transform: rotate(0deg) scale(0); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+.achievement-title {
+    color: #ffd700;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.achievement-name {
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.achievement-desc {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.achievement-points {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: #ffd700;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 12px;
+    display: inline-block;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+/* Notification Toast */
+.notification {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background: white;
+    border-radius: 16px;
+    padding: 20px 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    min-width: 320px;
+    max-width: 400px;
+    z-index: 9999;
+    transform: translateX(450px);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+}
+
+.notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.notification-content h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #1f2937;
+}
+
+.notification-content p {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0;
+}
+
+.notification-success {
+    border-left: 4px solid #10b981;
+}
+
+.notification-info {
+    border-left: 4px solid #3b82f6;
+}
+
+.notification-warning {
+    border-left: 4px solid #f59e0b;
+}
+
+.notification-error {
+    border-left: 4px solid #ef4444;
+}
+
+/* ==================== SKILL MATCH COLORS ==================== */
+
+/* Green Match (80%+) */
+.bg-green-50 {
+    background-color: #f0fdf4 !important;
+}
+
+.border-green-200 {
+    border-color: #bbf7d0 !important;
+}
+
+.text-green-600 {
+    color: #16a34a !important;
+}
+
+.text-green-700 {
+    color: #15803d !important;
+}
+
+.bg-green-600 {
+    background-color: #16a34a !important;
+}
+
+/* Yellow Match (50-79%) */
+.bg-yellow-50 {
+    background-color: #fefce8 !important;
+}
+
+.border-yellow-200 {
+    border-color: #fef08a !important;
+}
+
+.text-yellow-600 {
+    color: #ca8a04 !important;
+}
+
+.text-yellow-700 {
+    color: #a16207 !important;
+}
+
+.bg-yellow-600 {
+    background-color: #ca8a04 !important;
+}
+
+/* Orange Match (1-49%) */
+.bg-orange-50 {
+    background-color: #fff7ed !important;
+}
+
+.border-orange-200 {
+    border-color: #fed7aa !important;
+}
+
+.text-orange-600 {
+    color: #ea580c !important;
+}
+
+.text-orange-700 {
+    color: #c2410c !important;
+}
+
+.bg-orange-600 {
+    background-color: #ea580c !important;
+}
+
+/* Blue Match (0%) */
+.bg-blue-50 {
+    background-color: #eff6ff !important;
+}
+
+.border-blue-200 {
+    border-color: #bfdbfe !important;
+}
+
+.text-blue-600 {
+    color: #2563eb !important;
+}
+
+.text-blue-700 {
+    color: #1d4ed8 !important;
+}
+
+.bg-blue-600 {
+    background-color: #2563eb !important;
+}
+
+/* Skill Match Progress Bar Animation */
+.skill-match-bar {
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Modal Skill Section Hover Effects */
+.skill-item-hover:hover {
+    background-color: #f9fafb;
+    transform: translateX(4px);
+    transition: all 0.2s ease;
+}
+
+/* Checkbox Custom Style */
+.skill-checkbox {
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d1d5db;
+    border-radius: 6px;
+    background-color: white;
+    position: relative;
+}
+
+.skill-checkbox:checked {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    border-color: #3b82f6;
+}
+
+.skill-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.skill-checkbox:hover {
+    border-color: #3b82f6;
+    transform: scale(1.15);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* Skill Badge Animation */
+.skill-badge {
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Modal Scroll Shadow */
+.modal-scroll-shadow {
+    position: relative;
+}
+
+.modal-scroll-shadow::after {
+    content: '';
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(to top, rgba(255,255,255,1), transparent);
+    pointer-events: none;
+}
+
+/* ==================== MODERN SOFT DESIGN ENHANCEMENTS ==================== */
+
+/* Glassmorphism Effect */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Smooth Shadow */
+.soft-shadow {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.soft-shadow-lg {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+/* Button Hover Glow */
+button:hover {
+    filter: brightness(1.05);
+}
+
+/* Smooth Transitions for All Interactive Elements */
+button, a, input, select, .job-card, .skill-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Badge Pulse Animation */
+@keyframes badgePulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+}
+
+.badge-pulse {
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+/* Floating Animation */
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+/* Gradient Border Animation */
+@keyframes gradientBorder {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.gradient-border {
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+    background-size: 300% 300%;
+    animation: gradientBorder 3s ease infinite;
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Focus Ring Modern */
+*:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+    border-radius: 8px;
+}
+
+/* Card Shine Effect on Hover */
+.card-shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-shine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 70%
+    );
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+}
+
+.card-shine:hover::after {
+    opacity: 1;
+    left: 100%;
+}
+
+/* Soft Rounded Corners */
+.rounded-soft {
+    border-radius: 24px;
+}
+
+.rounded-soft-lg {
+    border-radius: 32px;
+}
+
+/* Gradient Backgrounds */
+.bg-gradient-soft {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.bg-gradient-blue {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+}
+
+.bg-gradient-purple {
+    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+}
+
+.bg-gradient-orange {
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+}
+
+/* Text Shadow Soft */
+.text-shadow-soft {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Backdrop Blur */
+.backdrop-blur-soft {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Hover Scale Effect */
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+.hover-scale-sm:hover {
+    transform: scale(1.02);
+}
+
+/* Smooth Border Transition */
+.border-transition {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.border-transition:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* Loading Skeleton */
+@keyframes skeleton-loading {
+    0% {
+        background-position: -200px 0;
+    }
+    100% {
+        background-position: calc(200px + 100%) 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(90deg, #f3f4f6 0px, #e5e7eb 40px, #f3f4f6 80px);
+    background-size: 200px 100%;
+    animation: skeleton-loading 1.5s infinite;
+}
+
+/* Ripple Effect */
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+}
+
+.ripple:active::after {
+    animation: ripple 0.6s ease-out;
+}
+
+/* ==================== USER DROPDOWN MENU IMPROVEMENTS ==================== */
+
+/* Dropdown Animation */
+#user-dropdown {
+    animation: dropdownSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: top right;
+}
+
+@keyframes dropdownSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Dropdown Shadow Enhancement */
+#user-dropdown {
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+}
+
+/* Dropdown Header Gradient Animation */
+#user-dropdown > div:first-child {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 6s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Dropdown Avatar Styling */
+#dropdown-avatar {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Menu Items Hover Effects */
+#user-dropdown button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#user-dropdown button:hover {
+    transform: translateX(4px);
+}
+
+/* Icon Containers in Dropdown */
+#user-dropdown button > div:first-of-type {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#user-dropdown button:hover > div:first-of-type {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Arrow Icons Animation */
+#user-dropdown button svg:last-child {
+    transition: all 0.3s ease;
+}
+
+#user-dropdown button:hover svg:last-child {
+    transform: translateX(4px);
+}
+
+/* Logout Button Special Effect */
+#logout-menu-item:hover {
+    background: linear-gradient(to right, #fee2e2, #fce7f3) !important;
+}
+
+#logout-menu-item:hover > div:first-of-type {
+    transform: scale(1.1) rotate(-5deg) !important;
+}
+
+/* User Menu Button Hover */
+#user-menu-btn {
+    transition: all 0.3s ease;
+}
+
+#user-menu-btn:hover {
+    background: linear-gradient(to right, #eff6ff, #f5f3ff);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+}
+
+/* User Avatar Pulse Effect */
+#user-avatar {
+    animation: avatarPulse 3s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+@keyframes avatarPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
+    }
+}
+
+#user-menu-btn:hover #user-avatar {
+    transform: scale(1.1);
+}
+
+/* Dropdown Divider */
+#user-dropdown .border-t {
+    margin: 0.5rem 1rem;
+}
+
+/* Menu Item Text Styling */
+#user-dropdown button > div:nth-child(2) {
+    transition: all 0.2s ease;
+}
+
+#user-dropdown button:hover > div:nth-child(2) > div:first-child {
+    color: #1f2937;
+}
+
+#user-dropdown button:hover > div:nth-child(2) > div:last-child {
+    color: #6b7280;
+}
+
+/* Profile Menu Item Specific */
+#profile-menu-item:hover > div:first-of-type {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+}
+
+/* Dashboard Menu Item Specific */
+#dashboard-menu-item:hover > div:first-of-type {
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+}
+
+/* Logout Menu Item Specific */
+#logout-menu-item:hover > div:first-of-type {
+    background: linear-gradient(135deg, #dc2626 0%, #ec4899 100%);
+}
+
+/* Smooth Backdrop Click Close */
+#user-dropdown.hidden {
+    animation: dropdownSlideOut 0.2s ease-out forwards;
+}
+
+@keyframes dropdownSlideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+    }
+}
+
+/* ==================== USER DROPDOWN IMPROVEMENTS ==================== */
+
+/* User Menu Container */
+#user-menu {
+    position: relative;
+    z-index: 100;
+}
+
+/* User Dropdown */
+#user-dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: 12px;
+    min-width: 320px;
+    max-width: 320px;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    z-index: 1000;
+    animation: dropdownSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes dropdownSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Dropdown Header Gradient */
+#user-dropdown .bg-gradient-to-br {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+}
+
+/* Dropdown Avatar */
+#dropdown-avatar {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Menu Item Hover Effects */
+#user-dropdown button {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#user-dropdown button:hover {
+    transform: translateX(4px);
+}
+
+/* Icon Container Hover */
+#user-dropdown button .w-11 {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#user-dropdown button:hover .w-11 {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Arrow Icon Hover */
+#user-dropdown button svg:last-child {
+    transition: all 0.3s ease;
+}
+
+#user-dropdown button:hover svg:last-child {
+    transform: translateX(4px);
+}
+
+/* Ensure dropdown is above other elements */
+nav {
+    position: relative;
+    z-index: 50;
+}
+
+/* User Menu Button Hover */
+#user-menu-btn {
+    transition: all 0.2s ease;
+}
+
+#user-menu-btn:hover {
+    background: linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
+}
+
+/* User Avatar in Navbar */
+#user-avatar {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+#user-menu-btn:hover #user-avatar {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Dropdown Text Truncate */
+#dropdown-name,
+#dropdown-email {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Menu Item Text */
+#user-dropdown button .flex-1 {
+    overflow: hidden;
+}
+
+#user-dropdown button .font-bold {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Smooth Transitions */
+#user-dropdown button * {
+    transition: all 0.2s ease;
+}
+
+/* Logout Button Special Styling */
+#logout-menu-item:hover {
+    background: linear-gradient(to right, rgba(239, 68, 68, 0.1), rgba(236, 72, 153, 0.1));
+}
+
+/* Profile Button Special Styling */
+#profile-menu-item:hover {
+    background: linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+}
+
+/* Dashboard Button Special Styling */
+#dashboard-menu-item:hover {
+    background: linear-gradient(to right, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.1));
+}
+
+/* Divider Styling */
+#user-dropdown .border-t {
+    border-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive Dropdown */
+@media (max-width: 768px) {
+    #user-dropdown {
+        min-width: 280px;
+        max-width: 280px;
+        right: -20px;
+    }
+}
+
+
+/* ==================== MOBILE RESPONSIVE STYLES ==================== */
+
+/* Mobile Menu Animation */
+#mobile-menu {
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    /* Typography */
+    h1 {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    h2 {
+        font-size: 1.75rem !important;
+    }
+    
+    h3 {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Spacing */
+    section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+    
+    /* Cards */
+    .job-card,
+    .skill-card {
+        margin-bottom: 1rem;
+    }
+    
+    /* Buttons */
+    button,
+    .btn {
+        padding: 0.75rem 1.5rem !important;
+        font-size: 0.875rem !important;
+    }
+    
+    /* Modal */
+    #job-modal .bg-white,
+    .swal2-popup {
+        width: 95% !important;
+        max-width: 95% !important;
+        margin: 1rem !important;
+    }
+    
+    /* Grid Adjustments */
+    .grid {
+        gap: 1rem !important;
+    }
+    
+    /* Stats Grid */
+    .grid-cols-3 {
+        grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+        gap: 0.75rem !important;
+    }
+    
+    /* Feature Cards */
+    .md\:grid-cols-2,
+    .lg\:grid-cols-4 {
+        grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+    }
+    
+    /* Container Padding */
+    .container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    /* Particles - Reduce on mobile */
+    #particles-js {
+        opacity: 0.5;
+    }
+    
+    /* Hide decorative blobs on mobile */
+    .animate-blob {
+        display: none !important;
+    }
+    
+    /* Text Gradient - Ensure readability */
+    .text-gradient {
+        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Grid Adjustments */
+    .lg\:grid-cols-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+    
+    .grid-cols-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+/* Small Mobile (< 375px) */
+@media (max-width: 374px) {
+    h1 {
+        font-size: 1.75rem !important;
+    }
+    
+    .text-xl {
+        font-size: 1rem !important;
+    }
+    
+    button,
+    .btn {
+        padding: 0.625rem 1.25rem !important;
+        font-size: 0.8125rem !important;
+    }
+}
+
+/* Touch Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase tap targets */
+    button,
+    a,
+    .clickable {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Remove hover effects on touch devices */
+    .hover\:scale-105:hover,
+    .hover\:scale-110:hover {
+        transform: none !important;
+    }
+    
+    /* Simplify animations on touch */
+    .job-card:hover {
+        transform: none !important;
+    }
+}
+
+/* Landscape Mobile */
+@media (max-width: 896px) and (orientation: landscape) {
+    section {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+    
+    .pt-32 {
+        padding-top: 6rem !important;
+    }
+}
+
+/* Fix for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+    /* iOS-specific fixes */
+    body {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    input,
+    select,
+    textarea {
+        font-size: 16px !important; /* Prevent zoom on focus */
+    }
+}
+
+/* Accessibility - Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
