@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - CashMate</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#CCFF00',
+                        secondary: '#1A1A1A',
+                        accent: '#00FF94',
+                        surface: '#F8F9FA',
+                        glass: 'rgba(255, 255, 255, 0.7)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '2xl': '1.5rem',
+                        '3xl': '2rem',
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(204, 255, 0, 0.3)',
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="antialiased selection:bg-primary selection:text-secondary">
+
+    <!-- Background Blobs -->
+    <div class="blob w-96 h-96 top-0 left-0 -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="blob w-[500px] h-[500px] bottom-0 right-0 translate-x-1/3 translate-y-1/3 opacity-50"></div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 px-6 md:px-12">
+        <div
+            class="max-w-7xl mx-auto flex justify-between items-center glass-panel rounded-full px-6 py-3 shadow-glass">
+            <!-- Logo -->
+            <a href="index.html" class="font-heading font-bold text-2xl tracking-tight flex items-center gap-2">
+                <svg class="w-10 h-10 drop-shadow-md hover:scale-110 transition-transform duration-300"
+                    viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="15" y="30" width="70" height="50" rx="12" fill="#84CC16" stroke="#1A2E05"
+                        stroke-width="4" />
+                    <path d="M15 42C15 35.3726 20.3726 30 27 30H73C79.6274 30 85 35.3726 85 42V45H15V42Z" fill="#65A30D"
+                        stroke="#1A2E05" stroke-width="4" />
+                    <circle cx="40" cy="55" r="4" fill="#1A2E05" />
+                    <circle cx="60" cy="55" r="4" fill="#1A2E05" />
+                    <path d="M42 65C42 65 46 70 50 70C54 70 58 65 58 65" stroke="#1A2E05" stroke-width="3"
+                        stroke-linecap="round" />
+                    <circle cx="35" cy="60" r="3" fill="#FCA5A5" opacity="0.6" />
+                    <circle cx="65" cy="60" r="3" fill="#FCA5A5" opacity="0.6" />
+                    <circle cx="50" cy="25" r="12" fill="#FACC15" stroke="#1A2E05" stroke-width="3" />
+                    <path d="M50 18V32M43 25H57" stroke="#FEF08A" stroke-width="3" stroke-linecap="round" />
+                    <path d="M75 15L77 18L80 18L77 21L78 24L75 22L72 24L73 21L70 18L73 18L75 15Z" fill="#FACC15" />
+                </svg>
+                CashMate
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="index.html#features" class="hover:text-gray-600 transition-colors">Features</a>
+                <a href="index.html#how-it-works" class="hover:text-gray-600 transition-colors">How It Works</a>
+                <a href="index.html#pricing" class="hover:text-gray-600 transition-colors">Pricing</a>
+                <a href="about.html" class="text-primary font-bold">About Us</a>
+            </div>
+
+            <!-- CTA -->
+            <div class="flex items-center gap-4">
+                <a href="index.html"
+                    class="bg-secondary text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-800 transition-all hover:scale-105 hover:shadow-glow shadow-lg transform text-center">
+                    Get Started
+                </a>
+                <button id="mobile-menu-btn" class="md:hidden text-2xl">
+                    ☰
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden absolute top-20 left-6 right-6 glass-panel rounded-2xl p-6 flex flex-col gap-4 shadow-xl">
+            <a href="index.html#features" class="text-lg font-medium">Features</a>
+            <a href="index.html#how-it-works" class="text-lg font-medium">How It Works</a>
+            <a href="index.html#pricing" class="text-lg font-medium">Pricing</a>
+            <a href="about.html" class="text-lg font-bold text-primary">About Us</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-40 pb-20 px-6 md:px-12 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center reveal active">
+            <div
+                class="inline-flex items-center gap-2 bg-white/50 backdrop-blur-sm px-4 py-1.5 rounded-full border border-gray-200 text-xs font-semibold uppercase tracking-wider text-gray-600 mb-8">
+                <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                Behind the Scenes
+            </div>
+            <h1
+                class="font-heading text-5xl md:text-7xl font-extrabold leading-tight tracking-tight text-secondary mb-8">
+                Misi Kami: Bikin Gen Z <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-primary">
+                    Merdeka Finansial.
+                </span>
+            </h1>
+            <p class="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+                CashMate bukan cuma aplikasi pengatur duit. Kami adalah teman yang ngerti gaya hidup kamu,
+                biar tetep bisa nongkrong tanpa harus panik di akhir bulan.
+            </p>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="py-20 px-6 md:px-12 bg-white">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <h2 class="font-heading text-4xl font-bold mb-6 text-secondary">Kenapa CashMate Ada?</h2>
+                <div class="space-y-6 text-gray-600 leading-relaxed">
+                    <p>
+                        Dunia hari ini penuh dengan godaan "Checkout" dan "Subscribe". Gen Z sering kejebak dalam siklus
+                        FOMO yang bikin saldo bank nangis.
+                    </p>
+                    <p>
+                        Kami ngerasa budgeting itu ngebosenin dan kaku. Makanya, kami bikin CashMate —
+                        AI Money Companion yang pake bahasa kita, pake kategori yang kita paham, dan kasih
+                        warning sebelum kita bener-bener boncos.
+                    </p>
+                    <p class="pt-4 border-t border-gray-100 font-medium italic text-secondary">
+                        "CashMate adalah solusi finansial untuk Gen Z, dan ini adalah karya anak banua yang ingin
+                        membanggakan banua-nya lewat platform digital."
+                    </p>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 reveal delay-100">
+                <div class="bg-surface p-8 rounded-3xl border border-gray-100 text-center">
+                    <div class="text-4xl mb-4">🚀</div>
+                    <div class="text-2xl font-bold text-secondary">Vision</div>
+                    <p class="text-sm text-gray-500 mt-2">Memberdayakan generasi muda untuk punya kontrol penuh atas
+                        masa depan mereka.</p>
+                </div>
+                <div class="bg-primary p-8 rounded-3xl text-center">
+                    <div class="text-4xl mb-4">💎</div>
+                    <div class="text-2xl font-bold text-secondary">Values</div>
+                    <p class="text-sm text-secondary/70 mt-2">Transparansi, Inovasi, dan Relatability di atas segalanya.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founders/Team Section Concept -->
+    <section class="py-20 px-6 md:px-12 bg-secondary text-white">
+        <div class="max-w-7xl mx-auto text-center mb-16 reveal">
+            <h2 class="font-heading text-4xl font-bold mb-4">Built by Gen Z, for Gen Z</h2>
+            <p class="text-gray-400">Kami paham rasa sakitnya liat saldo tinggal gocap di pertengahan bulan.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white/5 border border-white/10 p-8 rounded-[2.5rem] reveal">
+                <div
+                    class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center text-primary text-3xl mb-6">
+                    🤖</div>
+                <h3 class="text-2xl font-bold mb-3">AI Deep Culture</h3>
+                <p class="text-gray-400">AI kita gak cuma ngitung angka, tapi ngerti konteks "Healing" vs "Kebutuhan
+                    Primer".</p>
+            </div>
+            <div class="bg-white/5 border border-white/10 p-8 rounded-[2.5rem] reveal delay-100">
+                <div
+                    class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center text-primary text-3xl mb-6">
+                    🔒</div>
+                <h3 class="text-2xl font-bold mb-3">Privacy First</h3>
+                <p class="text-gray-400">Data kamu aman 100%. Kami pake enkripsi tingkat dewa buat mastiin rahasia
+                    dompetmu tetep rahasia.</p>
+            </div>
+            <div class="bg-white/5 border border-white/10 p-8 rounded-[2.5rem] reveal delay-200">
+                <div
+                    class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center text-primary text-3xl mb-6">
+                    ⚡</div>
+                <h3 class="text-2xl font-bold mb-3">Instant Insights</h3>
+                <p class="text-gray-400">Gak butuh waktu lama buat paham kondisi finansialmu. Real-time dan
+                    to-the-point.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 mb-16 text-center reveal">
+            <h2 class="font-heading text-4xl md:text-5xl font-extrabold text-secondary mb-6 leading-tight">
+                Apa Kata <span class="text-primary italic">Squad</span> CashMate?
+            </h2>
+            <p class="text-xl text-gray-500 max-w-2xl mx-auto">
+                Dengerin langsung dari mereka yang udah berhasil merdeka dari rasa takut boncos.
+            </p>
+        </div>
+
+        <div class="space-y-10">
+            <!-- Row 1: Left Scroll -->
+            <div class="marquee-container">
+                <div class="animate-marquee flex gap-6 py-4">
+                    <div class="flex gap-6">
+                        <div class="w-[350px] bg-surface p-8 rounded-[2.5rem] border border-gray-100 shadow-sm">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-2xl">
+                                    😎</div>
+                                <div>
+                                    <h4 class="font-bold text-secondary">Budi</h4>
+                                    <p class="text-xs text-gray-400">Mahasiswa</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 italic">"Gue tau kapan harus ngerem jajan boba!"</p>
+                        </div>
+                        <div class="w-[350px] bg-secondary text-white p-8 rounded-[2.5rem] shadow-sm">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-2xl">
+                                    👩‍💻</div>
+                                <div>
+                                    <h4 class="font-bold">Siti</h4>
+                                    <p class="text-xs text-gray-400">Freelancer</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-200 italic">"Nabung beli tablet baru jadi sat-set!"</p>
+                        </div>
+                        <div class="w-[350px] bg-primary p-8 rounded-[2.5rem] shadow-sm">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="w-12 h-12 bg-white/50 rounded-full flex items-center justify-center text-2xl">
+                                    💅</div>
+                                <div>
+                                    <h4 class="font-bold text-secondary">Amanda</h4>
+                                    <p class="text-xs text-secondary/60">Creator</p>
+                                </div>
+                            </div>
+                            <p class="text-secondary/80 italic">"Healing tetep jalan, tabungan makin mapan!"</p>
+                        </div>
+                    </div>
+                    <!-- Repeat -->
+                    <div class="flex gap-6">
+                        <div class="w-[350px] bg-surface p-8 rounded-[2.5rem] border border-gray-100">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-2xl">
+                                    😎</div>
+                                <div>
+                                    <h4 class="font-bold text-secondary">Budi</h4>
+                                    <p class="text-xs text-gray-400">Mahasiswa</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 italic">"Gue tau kapan harus ngerem jajan boba!"</p>
+                        </div>
+                        <div class="w-[350px] bg-secondary text-white p-8 rounded-[2.5rem]">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-2xl">
+                                    👩‍💻</div>
+                                <div>
+                                    <h4 class="font-bold">Siti</h4>
+                                    <p class="text-xs text-gray-400">Freelancer</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-200 italic">"Nabung beli tablet baru jadi sat-set!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: Right Scroll -->
+            <div class="marquee-container">
+                <div class="animate-marquee-reverse flex gap-6 py-4">
+                    <div class="flex gap-6">
+                        <div class="w-[350px] bg-surface p-8 rounded-[2.5rem] border border-gray-100 shadow-sm">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-2xl">
+                                    ✨</div>
+                                <div>
+                                    <h4 class="font-bold text-secondary">Maya</h4>
+                                    <p class="text-xs text-gray-400">Kpopers</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 italic">"Dana buat tiket konser aman berkat platform lokal ini!"</p>
+                        </div>
+                        <div class="w-[350px] bg-primary p-8 rounded-[2.5rem] shadow-sm">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="w-12 h-12 bg-white/50 rounded-full flex items-center justify-center text-2xl">
+                                    🍜</div>
+                                <div>
+                                    <h4 class="font-bold text-secondary">Lilis</h4>
+                                    <p class="text-xs text-secondary/60">Foodie</p>
+                                </div>
+                            </div>
+                            <p class="text-secondary/80 italic">"Jajan seblak tiap hari tapi tetep punya dana darurat."
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Repeat -->
+                    <div class="flex gap-6">
+                        <div class="w-[350px] bg-surface p-8 rounded-[2.5rem] border border-gray-100">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-2xl">
+                                    ✨</div>
+                                <div>
+                                    <h4 class="font-bold text-secondary">Maya</h4>
+                                    <p class="text-xs text-gray-400">Kpopers</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 italic">"Dana buat tiket konser aman berkat platform lokal ini!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-20 pb-10 px-6 md:px-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <div class="space-y-6">
+                <div class="flex items-center gap-3 font-heading font-bold text-2xl">
+                    <svg class="w-10 h-10 drop-shadow-md hover:scale-110 transition-transform duration-300"
+                        viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="15" y="30" width="70" height="50" rx="12" fill="#84CC16" stroke="#1A2E05"
+                            stroke-width="4" />
+                        <path d="M15 42C15 35.3726 20.3726 30 27 30H73C79.6274 30 85 35.3726 85 42V45H15V42Z"
+                            fill="#65A30D" stroke="#1A2E05" stroke-width="4" />
+                        <circle cx="40" cy="55" r="4" fill="#1A2E05" />
+                        <circle cx="60" cy="55" r="4" fill="#1A2E05" />
+                        <path d="M42 65C42 65 46 70 50 70C54 70 58 65 58 65" stroke="#1A2E05" stroke-width="3"
+                            stroke-linecap="round" />
+                        <circle cx="35" cy="60" r="3" fill="#FCA5A5" opacity="0.6" />
+                        <circle cx="65" cy="60" r="3" fill="#FCA5A5" opacity="0.6" />
+                        <circle cx="50" cy="25" r="12" fill="#FACC15" stroke="#1A2E05" stroke-width="3" />
+                        <path d="M50 18V32M43 25H57" stroke="#FEF08A" stroke-width="3" stroke-linecap="round" />
+                        <path d="M75 15L77 18L80 18L77 21L78 24L75 22L72 24L73 21L70 18L73 18L75 15Z" fill="#FACC15" />
+                    </svg>
+                    CashMate
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Teman finansial pintar buat Gen Z yang pengen kaya tapi tetep bisa flexing. Atur duit gak pernah
+                    seseru ini.
+                </p>
+
+                <div class="pt-8 border-t border-gray-800/50">
+                    <p class="text-xs font-bold text-gray-500 uppercase mb-4 tracking-widest">Supported By</p>
+                    <div class="flex items-center gap-6 opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="assets/spinotek.png" alt="Spinotek"
+                            class="h-8 w-auto grayscale hover:grayscale-0 transition-all">
+                        <img src="assets/hasnur.png" alt="Politeknik Hasnur"
+                            class="h-10 w-auto grayscale hover:grayscale-0 transition-all">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-6 text-primary">Explore</h4>
+                <ul class="space-y-4 text-sm text-gray-400">
+                    <li><a href="index.html#features" class="hover:text-primary transition-colors">Fitur Premium</a>
+                    </li>
+                    <li><a href="index.html#pricing" class="hover:text-primary transition-colors">Harga Student</a></li>
+                    <li><a href="about.html" class="hover:text-primary transition-colors">Tentang Kami</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-6 text-primary">Hubungi Kami</h4>
+                <ul class="space-y-4 text-sm text-gray-400">
+                    <li class="flex items-center gap-3">📧 <a href="mailto:cashmate.id@gmail.com"
+                            class="hover:text-primary">cashmate.id@gmail.com</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-6 text-primary">Gas Mulai?</h4>
+                <a href="index.html#register"
+                    class="inline-block bg-primary text-secondary px-6 py-3 rounded-full font-bold hover:shadow-glow transition-all">Join
+                    Club</a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+            <p>&copy; 2024 CashMate Technologies Inc. Terdaftar & Diawasi oleh OJK (Otoritas Jajan Kenceng). 😜</p>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>

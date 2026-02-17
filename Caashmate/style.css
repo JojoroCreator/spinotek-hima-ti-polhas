@@ -1,0 +1,91 @@
+/* Custom Styles for CashMate */
+body {
+    background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+    color: #1A1A1A;
+    overflow-x: hidden;
+}
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.neon-text-glow {
+    text-shadow: 0 0 10px rgba(26, 26, 26, 0.1);
+}
+
+.blob {
+    position: absolute;
+    background: linear-gradient(180deg, rgba(204, 255, 0, 0.4) 0%, rgba(0, 255, 148, 0.2) 100%);
+    filter: blur(80px);
+    z-index: -1;
+    border-radius: 50%;
+}
+
+/* Scroll Reveal Utility */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Float Animation */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+    animation: float 6s ease-in-out 3s infinite;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+.animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-reverse {
+    display: flex;
+    width: max-content;
+    animation: marquee-reverse 40s linear infinite;
+}
+
+.animate-marquee:hover, .animate-marquee-reverse:hover {
+    animation-play-state: paused;
+}
+
+.marquee-container {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
