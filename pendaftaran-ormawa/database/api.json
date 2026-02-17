@@ -1,0 +1,150 @@
+{
+    "berita": [
+        {
+            "id": 1,
+            "judul": "Berita Pertama",
+            "isi": "ILorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+            "tanggal": "2024-06-01",
+            "by": "HIMA TI",
+            "image": "../assets/berita1.png"
+        },
+        {
+            "id": 2,
+            "judul": "Berita Kedua",
+            "isi": "ILorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+            "tanggal": "2024-06-02",
+            "by": "HIMA TI",
+            "image": "../assets/berita2.png"
+        },
+        {
+            "id": 3,
+            "judul": "Berita Ketiga",
+            "isi": "ILorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+            "tanggal": "2024-06-03",
+            "by": "HIMA TI",
+            "image": "../assets/berita3.png"
+        }
+    ],
+    "organisasi": [
+        {
+            "id": 1,
+            "nama": "BEM",
+            "deskripsi": "Badan Eksekutif Mahasiswa (BEM)",
+            "kontak": "kontak@himati.com",
+            "image": "../assets/xYcQ2Ss5qlrefdYHz8xH7ZdS5FfFqDC1OXkGzIVT.png",
+            "link" : "https://forms.gle/44NFegPB431xgL8J7"
+        },
+        {
+            "id": 2,
+            "nama": "HIMA TI",
+            "deskripsi": "Himpunan Mahasiswa Teknik Informatika",
+            "kontak": "kontak@himati.com",
+            "image": "../assets/CLnnOasgOit32onZkUk0tAl1IxIuFntbB1pCPnsr.jpg",
+            "link" : "https://forms.gle/44NFegPB431xgL8J7"
+        },
+        {
+            "id": 3,
+            "nama": "HIMA TO",
+            "deskripsi": "Himpunan Mahasiswa Teknik Otomotif",
+            "kontak": "kontak@himato.com",
+            "image": "../assets/hima-to-polihasnur.jpg",
+            "link" : "https://forms.gle/44NFegPB431xgL8J7"
+        },
+        {
+            "id": 4,
+            "nama": "HIMA ABD",
+            "deskripsi": "Himpunan Mahasiswa Akuntansi Bisnis Digital",
+            "kontak": "kontak@himate.com",
+            "image": "../assets/hima-abd.png",
+            "link" : "https://forms.gle/44NFegPB431xgL8J7"
+        },  
+        {
+            "id": 5,
+            "nama": "HIMA BD",
+            "deskripsi": "Himpunan Mahasiswa Bisnis Digital",
+            "kontak": "kontak@himatk.com",
+            "image": "../assets/hima-bd.png",
+            "link" : "https://forms.gle/44NFegPB431xgL8J7"
+        },
+        {
+            "id": 6,
+            "nama": "HIMA BTP",
+            "deskripsi": "Himpunan Mahasiswa Budidaya Tanaman Perkebunan",
+            "kontak": "kontak@himatp.com",
+            "image": "../assets/hima-btp-polihasnur.jpg",
+            "link" : "https://forms.gle/44NFegPB431xgL8J7"
+        },  
+        {
+            "id": 7,
+            "nama": "HIMA MPI",
+            "deskripsi": "Himpunan Mahasiswa Manajemen Pemasaran Internasional",
+            "kontak": "kontak@himats.com",
+            "image": "../assets/hima-mpi.jpg",
+            "link" : "https://forms.gle/44NFegPB431xgL8J7"
+        },  
+        {
+            "id": 8,
+            "nama": "HIMA TRM",
+            "deskripsi": "Himpunan Mahasiswa Teknologi Rekayasa Multimedia",
+            "kontak": "kontak@himatpl.com",
+            "image": "../assets/hima-trm.png",
+            "link" : "https://forms.gle/44NFegPB431xgL8J7"
+        },
+        {
+            "id": 9,
+            "nama": "MAPALA",
+            "deskripsi": "Mahasiswa Pecinta Alam",
+            "kontak": "kontak@mapala.com",
+            "image": "../assets/mapala-mahasiswa-pecinta-alam.png",
+            "link" : "https://forms.gle/44NFegPB431xgL8J7"
+        },
+        {
+            "id": 10,
+            "nama": "Menwa",
+            "deskripsi": "Resimen Mahasiswa",
+            "kontak": "kontak@menwa.com",
+            "image": "../assets/resimen-mahasiswa.jpg",
+            "link" : "https://forms.gle/44NFegPB431xgL8J7"
+        },
+        {
+            "id": 11,
+            "nama": "Sanggar",
+            "deskripsi": "Sanggar Harmoni",
+            "kontak": "kontak@sanggar.com",
+            "image": "../assets/sanggar-harmoni.jpg",
+            "link" : "https://forms.gle/44NFegPB431xgL8J7"
+        },
+        {
+            "id": 12,
+            "nama": "Olahraga",
+            "deskripsi": "Unit Kegiatan Mahasiswa Olahraga",
+            "kontak": "kontak@olahraga.com",
+            "image": "../assets/ukm-olahraga.jpg",
+            "link" : "https://forms.gle/44NFegPB431xgL8J7"
+        },
+        {
+            "id": 13,
+            "nama": "Silat",
+            "deskripsi": "Unit Kegiatan Mahasiswa Pencak Silat",
+            "kontak": "kontak@silat.com",
+            "image": "../assets/ukm-pencak-silat-politeknik-hasnur.png",
+            "link" : "https://forms.gle/44NFegPB431xgL8J7"
+        },
+        {
+            "id": 14,
+            "nama": "ESport",
+            "deskripsi": "Unit Kegiatan Mahasiswa Esport",
+            "kontak": "kontak@esport.com",
+            "image": "../assets/ukm-ph-e-sport.jpg",
+            "link" : "https://forms.gle/44NFegPB431xgL8J7"
+        },
+        {
+            "id": 15,
+            "nama": "PHRT",
+            "deskripsi": "Unit Kegiatan Mahasiswa Racing Team",
+            "kontak": "kontak@phrt.com",
+            "image": "../assets/ukm-polihasnur-reacing-team.jpg",
+            "link" : "https://forms.gle/44NFegPB431xgL8J7"
+        }
+    ]
+}

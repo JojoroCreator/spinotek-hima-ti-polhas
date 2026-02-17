@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page Organisasi</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .fade-section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-900 font-sans">
+
+<!-- HEADER -->
+<div class="flex items-center justify-center bg-[#e1e1e1] p-4 w-full gap-8">
+  <img src="assets/logo.png" class="w-18 h-20 object-contain">
+  <img src="assets/logo_teks.png" class="w-auto h-16 object-contain">
+</div>
+
+<!-- HERO -->
+<section class="bg-blue-900 text-white py-16 fade-section">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center px-6">
+
+    <div>
+      <h2 class="ml-16 text-4xl font-bold mb-6 leading-snug">
+        SUDAH SIAPKAH <br>
+        ANDA MENJADI <br>
+        BAGIAN DARI <br>
+        ORGANISASI?
+      </h2>
+
+      <button class="ml-16 bg-white text-blue-900 px-6 py-2 rounded shadow hover:bg-gray-200 transition">
+        <a href="list.html">DAFTAR SEKARANG</a>
+      </button>
+    </div>
+
+    <!-- JSON ORGANISASI AKAN MASUK KE SINI -->
+    <div id="organisasi-list" class="grid grid-cols-4 gap-4"></div>
+
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="bg-gray-200 py-16 fade-section">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <h2 class="text-center text-2xl font-bold text-blue-900 mb-12">
+      BIAR APA SIH MASUK ORGANISASI?
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- Card -->
+      <div class="bg-white rounded-xl shadow p-6 text-center">
+        <div class="w-6 h-6 bg-blue-900 rounded-full mx-auto mb-4"></div>
+        <h1 class="font-bold mb-2">Mengembangkan soft skill</h1>
+        <p class="text-gray-600">
+          Di organisasi kamu belajar komunikasi, kerja tim, leadership, dan manajemen waktu — skill yang sangat dibutuhkan di dunia kerja.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow p-6 text-center">
+        <div class="w-6 h-6 bg-blue-900 rounded-full mx-auto mb-4"></div>
+        <h1 class="font-bold mb-2">Memperluas relasi (networking)</h1>
+        <p class="text-gray-600">
+          Di organisasi kamu bisa bertemu dan membangun hubungan dengan banyak orang dari berbagai latar belakang, baik teman sebaya maupun dosen.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow p-6 text-center">
+        <div class="w-6 h-6 bg-blue-900 rounded-full mx-auto mb-4"></div>
+        <h1 class="font-bold mb-2">Melatih jiwa kepemimpinan</h1>
+        <p class="text-gray-600">
+          Di organisasi kamu bisa mengasah kemampuan kepemimpinan melalui berbagai kegiatan dan tanggung jawab yang diberikan.
+        </p>
+      </div>
+
+    </div>
+
+    
+  </div>
+</section>
+
+<section class="bg-blue-900 py-16 text-white fade-section">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <h2 class="text-center text-2xl font-bold mb-12">
+      YUK UKIR PRESTASI LEWAT ORGANISASI
+    </h2>
+
+    <div id="prestasi-list" class="grid md:grid-cols-3 gap-8">
+      <!-- Card Prestasi -->
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-gray-200 py-16 text-center fade-section">
+  <div class="max-w-4xl mx-auto px-6">
+
+    <h2 class="text-xl font-bold text-blue-900 mb-8">
+      JANGAN RAGU JANGAN BIMBANG <br>
+      IKUT ORGANISASI SUDAH PASTI BERKEMBANG
+    </h2>
+
+    <button class="bg-blue-900 text-white px-10 py-3 rounded-lg shadow hover:bg-blue-800 transition text-lg font-bold">
+      <a href="list.html">DAFTAR</a>
+    </button>
+
+  </div>
+</section>
+
+<!-- SCRIPT -->
+<script>
+/* =====================
+   FADE ANIMATION
+===================== */
+const sections = document.querySelectorAll('.fade-section');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.15 });
+
+sections.forEach(section => observer.observe(section));
+
+
+/* =====================
+   FETCH JSON
+===================== */
+fetch("database/api.json")
+  .then(res => res.json())
+  .then(data => {
+
+    const container = document.getElementById("organisasi-list");
+
+    const limitedData = data.organisasi.slice(0, 8);
+
+    limitedData.forEach(org => {
+      container.innerHTML += `
+        <div class="w-24 h-24 rounded-lg flex items-center justify-center bg-white shadow p-2">
+          <img src="${org.image}" class="w-full h-full object-contain">
+        </div>
+      `;
+    });
+
+  })
+  .catch(err => console.error("JSON Error:", err));
+
+
+fetch("database/api.json")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("prestasi-list");
+    data.berita.forEach(berita => {
+      container.innerHTML += `
+        <div class="bg-white text-gray-800 rounded-xl shadow overflow-hidden">
+          <div class="w-full h-48 flex items-center justify-center rounded-lg">
+            <img src="${berita.image}" class="w-full h-full object-contain p-2">
+            
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold mb-2">${berita.by}</h3>
+            <p class="text-sm text-gray-600 italic pb-2">${berita.tanggal}</p>
+            <p class="text-sm text-gray-600">${berita.isi}</p>
+          </div>
+        </div>
+      `;
+    });
+  })
+  .catch(err => console.error("JSON Error:", err));
+</script>
+
+</body>
+</html>

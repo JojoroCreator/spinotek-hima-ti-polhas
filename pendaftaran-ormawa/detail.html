@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Organisasi</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 font-sans">
+
+<!-- HEADER -->
+<div class="flex items-center justify-center bg-[#e1e1e1] p-4 w-full gap-8">
+  <img src="assets/logo.png" class="w-18 h-20 object-contain">
+  <img src="assets/logo_teks.png" class="w-auto h-16 object-contain">
+</div>
+
+<section class="min-h-screen bg-gradient-to-b from-blue-900 to-blue-800 py-16 text-white">
+
+  <div id="detail-container" class="max-w-4xl mx-auto px-6 text-center">
+
+    <!-- DATA DETAIL AKAN MASUK SINI -->
+
+  </div>
+
+</section>
+
+<script>
+// ========================
+// Ambil ID dari URL
+// ========================
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+// ========================
+// Fetch JSON
+// ========================
+fetch("database/api.json")
+  .then(res => res.json())
+  .then(data => {
+
+    const organisasi = data.organisasi.find(o => o.id == id);
+    const container = document.getElementById("detail-container");
+
+    if (!organisasi) {
+      container.innerHTML = "<h1>Data tidak ditemukan</h1>";
+      return;
+    }
+
+    container.innerHTML = `
+      <div class="bg-white text-gray-800 rounded-xl shadow-lg p-10">
+
+        <img src="${organisasi.image}"
+             class="w-40 h-40 mx-auto mb-6">
+
+        <h1 class="text-3xl font-bold mb-4">
+          ${organisasi.deskripsi}
+        </h1>
+
+        <p class="text-lg mb-6">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+
+        <a href="${organisasi.link}"
+              target="_blank"
+           class="bg-blue-900 text-white px-6 py-3 rounded hover:bg-blue-800 transition">
+            Daftar Sekarang
+        </a>
+
+      </div>
+    `;
+  })
+  .catch(err => console.error(err));
+</script>
+
+</body>
+</html>

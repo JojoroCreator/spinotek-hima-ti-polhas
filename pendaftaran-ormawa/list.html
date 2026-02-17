@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informasi Organisasi</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 font-sans">
+
+<!-- HEADER -->
+<div class="flex items-center justify-center bg-[#e1e1e1] p-4 w-full gap-8">
+  <img src="assets/logo.png" class="w-18 h-20 object-contain">
+  <img src="assets/logo_teks.png" class="w-auto h-16 object-contain">
+</div>
+
+<!-- MAIN SECTION -->
+<section class="min-h-screen bg-gradient-to-b from-blue-900 to-blue-800 py-16">
+  <div class="max-w-6xl mx-auto px-6 text-white">
+    <!-- TITLE -->
+    <h2 class="ml-16 text-4xl font-bold mb-6 leading-snug pb-8">
+        YUK KENALIN ORGANISASI YANG ADA DI KAMPUSMU! <br>
+      </h2>
+
+    <div id="organisasi-list"class="grid grid-cols-2 md:grid-cols-5 gap-8 justify-items-center">
+        <!-- JSON ORGANISASI AKAN MASUK KE SINI -->
+    </div>
+
+  </div>
+
+</section>
+
+
+<script>
+const sections = document.querySelectorAll('.fade-section');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.15 });
+
+sections.forEach(section => observer.observe(section));
+
+
+
+fetch("database/api.json")
+  .then(res => res.json())
+  .then(data => {
+
+    const container = document.getElementById("organisasi-list");
+
+    data.organisasi.forEach(org => {
+      container.innerHTML += `
+      <a href="detail.html?id=${org.id}"
+        <div class="bg-white w-40 h-44 rounded-xl shadow-md flex flex-col items-center justify-center text-center p-3 hover:scale-105 transition cursor-pointer">
+        <img src="${org.image}" class="w-24 h-24 mb-2 pb-2">
+        <p class="text-xs font-semibold text-blue-900">
+          ${org.deskripsi}
+        </p>
+      </div>
+      </a>
+      `;
+    });
+
+  })
+  .catch(err => console.error("JSON Error:", err));
+</script>
+</body>
+</html>
