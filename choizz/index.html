@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHOIZZ | Defy The Ordinary</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        bg: '#020202',
+                        fuchsia: { 600: '#c026d3' },
+                        cyan: { 400: '#22d3ee' },
+                        indigo: { 500: '#6366f1' },
+                    },
+                    boxShadow: {
+                        'neon': '0 0 20px rgba(192, 38, 211, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body
+    class="bg-[var(--bg-color)] text-white overflow-x-hidden selection:bg-fuchsia-600 selection:text-white transition-colors duration-500">
+
+    <!-- Infinite Marquee Slogan -->
+    <div
+        class="fixed top-0 left-0 w-full bg-white/5 backdrop-blur-sm py-2 z-[60] overflow-hidden border-b border-white/5">
+        <div class="animate-marquee whitespace-nowrap">
+            <span class="mx-4 text-[10px] font-bold tracking-[0.3em] uppercase opacity-50">FAST. FLUID. FUTURE.
+                VALIDATED.</span>
+            <span class="mx-4 text-[10px] font-bold tracking-[0.3em] uppercase opacity-50">FAST. FLUID. FUTURE.
+                VALIDATED.</span>
+            <span class="mx-4 text-[10px] font-bold tracking-[0.3em] uppercase opacity-50">FAST. FLUID. FUTURE.
+                VALIDATED.</span>
+            <span class="mx-4 text-[10px] font-bold tracking-[0.3em] uppercase opacity-50">FAST. FLUID. FUTURE.
+                VALIDATED.</span>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-[100] flex flex-col gap-3 max-w-[300px]"></div>
+
+    <!-- Vibe Shifter Kinetic Feedback Elements -->
+    <div id="scanline-wave" class="scanline-wave"></div>
+    <div id="screen-flash" class="screen-flash"></div>
+    <audio id="vibe-audio" preload="auto">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="custom-cursor"></div>
+
+    <!-- Vibe Shifter Panel (Premium UI) -->
+    <div id="vibe-panel"
+        class="fixed bottom-28 left-6 z-[100] w-72 glass-card p-8 rounded-[2.5rem] border border-white/20 hidden animate-fade-in-up">
+        <div class="mb-6">
+            <h3 class="text-xs font-bold uppercase tracking-[0.3em] text-accent-primary mb-1">Reality Shift</h3>
+            <p class="text-[10px] text-gray-500 uppercase font-mono">Select your digital identity</p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4">
+            <button data-vibe="cyber"
+                class="vibe-option active flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-accent-primary transition-all group">
+                <div class="w-10 h-10 rounded-full bg-[#bf5af2] shadow-[0_0_15px_rgba(191,90,242,0.5)]"></div>
+                <div class="text-left">
+                    <div class="text-xs font-bold uppercase tracking-widest">Cyber Punk</div>
+                    <div class="text-[9px] text-gray-500 uppercase">Neon / Dark / Deep</div>
+                </div>
+            </button>
+            <button data-vibe="acid"
+                class="vibe-option flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-accent-primary transition-all group">
+                <div class="w-10 h-10 rounded-full bg-[#39ff14] shadow-[0_0_15px_rgba(57,255,20,0.5)]"></div>
+                <div class="text-left">
+                    <div class="text-xs font-bold uppercase tracking-widest">Acid Grime</div>
+                    <div class="text-[9px] text-gray-500 uppercase">Gritty / Lime / Noise</div>
+                </div>
+            </button>
+            <button data-vibe="cloud"
+                class="vibe-option flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-accent-primary transition-all group">
+                <div
+                    class="w-10 h-10 rounded-full bg-[#ffffff] border border-gray-200 shadow-[0_0_15px_rgba(255,255,255,0.5)]">
+                </div>
+                <div class="text-left">
+                    <div class="text-xs font-bold uppercase tracking-widest">Cloud Drift</div>
+                    <div class="text-[9px] text-gray-500 uppercase">Pearl / Soft / High Blur</div>
+                </div>
+            </button>
+
+            <div class="pt-4 border-t border-white/10">
+                <button id="glitch-trigger"
+                    class="w-full py-3 rounded-xl bg-red-600/20 hover:bg-red-600/40 text-red-500 border border-red-500/30 font-bold text-[10px] uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-2">
+                    <ion-icon name="skull-outline"></ion-icon>
+                    Reality Glitch
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orbit Trigger (Floating Orbit Button) -->
+    <div id="vibe-trigger" class="orbit-trigger">
+        <div class="orbit-ring"></div>
+        <ion-icon name="planet-outline" class="text-2xl text-accent-primary"></ion-icon>
+    </div>
+
+    <!-- Animated Mesh Background -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[var(--mesh-1)] rounded-full blur-[120px] animate-mesh"
+            style="animation-duration: 25s;"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[var(--mesh-2)] rounded-full blur-[120px] animate-mesh"
+            style="animation-delay: 5s;"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[var(--mesh-3)] rounded-full blur-[100px] animate-mesh"
+            style="animation-delay: 2s; animation-duration: 15s;"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed top-8 w-full z-50 transition-all duration-300">
+        <div
+            class="container mx-auto px-6 py-4 flex justify-between items-center bg-black/10 backdrop-blur-md rounded-2xl border border-white/5">
+            <a href="#" class="text-2xl font-extrabold tracking-tighter hover:text-cyan-400 transition-colors">
+                CHOIZZ
+            </a>
+
+            <nav class="hidden md:flex space-x-8">
+                <a data-target="community"
+                    class="text-sm font-bold text-gray-400 hover:text-white uppercase tracking-widest transition-colors cursor-pointer nav-link">Community</a>
+                <a data-target="experience"
+                    class="text-sm font-bold text-gray-400 hover:text-white uppercase tracking-widest transition-colors cursor-pointer nav-link nav-active">Experience</a>
+                <a data-target="validation"
+                    class="text-sm font-bold text-gray-400 hover:text-white uppercase tracking-widest transition-colors cursor-pointer nav-link">Validation</a>
+            </nav>
+
+            <a href="#join"
+                class="bg-white text-black px-8 py-3 rounded-full font-bold text-sm hover:bg-black hover:text-white border border-transparent hover:border-fuchsia-600 transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:shadow-neon">
+                JOIN NOW
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 pt-20 z-10">
+        <div class="animate-float-text">
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter mb-6">
+                DEFY THE <br class="md:hidden">
+                <span
+                    class="bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-600 via-cyan-400 to-indigo-500 animate-gradient-x">ORDINARY.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto tracking-wide">
+                Platform digital yang hidup di keseharian Gen-Z, mendobrak batas biasa.
+            </p>
+        </div>
+    </section>
+
+    <!-- MAIN SPA CONTAINER -->
+    <div id="spa-content" class="relative z-10 w-full min-h-screen">
+
+        <!-- SECTION 1: COMMUNITY -->
+        <section id="community" class="content-section hidden container mx-auto px-6 py-24 animate-fade-in-up">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+                <!-- Left: Community Hub Content -->
+                <div class="lg:col-span-2">
+                    <div class="mb-12">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-fuchsia-400">Community Hub</h2>
+                        <div class="text-[10px] font-mono uppercase tracking-[0.5em] text-fuchsia-600 mb-4">Real-Time
+                            Vibes:
+                            <span class="vibe-score">4.2k</span>
+                        </div>
+                    </div>
+
+                    <!-- Stories -->
+                    <div class="flex overflow-x-auto gap-4 pb-12 no-scrollbar mb-12">
+                        <div
+                            class="flex-shrink-0 w-20 h-20 rounded-full p-1 bg-gradient-to-tr from-fuchsia-600 to-cyan-400 cursor-pointer hover:scale-110 transition-transform">
+                            <div
+                                class="w-full h-full rounded-full bg-bg flex items-center justify-center border-2 border-bg shadow-lg">
+                                <ion-icon name="person-outline" class="text-2xl opacity-50"></ion-icon>
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0 w-20 h-20 rounded-full p-1 border border-white/10 cursor-pointer">
+                            <div class="w-full h-full rounded-full bg-bg/50 flex items-center justify-center">
+                                <ion-icon name="add-outline" class="text-2xl opacity-30"></ion-icon>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="glass-card p-6 rounded-3xl border border-white/5">
+                            <div class="skeleton w-full h-40 mb-4"></div>
+                            <div class="content-actual hidden">
+                                <h3 class="text-xl font-bold mb-2">The Creators Hub</h3>
+                                <p class="text-sm text-gray-400 mb-4">Space untuk berbagi karya visual.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs text-fuchsia-400 font-mono">1.2k Online</span>
+                                    <button class="vibe-btn text-xl hover:text-fuchsia-500 transition-colors"><ion-icon
+                                            name="flame-outline"></ion-icon></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 rounded-3xl border border-white/5">
+                            <div class="skeleton w-full h-40 mb-4"></div>
+                            <div class="content-actual hidden">
+                                <h3 class="text-xl font-bold mb-2">Trend Radar</h3>
+                                <p class="text-sm text-gray-400 mb-4">Monitoring apa yang sedang hype.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs text-fuchsia-400 font-mono">854 Online</span>
+                                    <button class="vibe-btn text-xl hover:text-fuchsia-500 transition-colors"><ion-icon
+                                            name="star-outline"></ion-icon></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Live Leaderboard -->
+                <div class="lg:col-span-1">
+                    <div class="glass-card p-8 rounded-3xl border border-white/10 sticky top-32">
+                        <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
+                            <ion-icon name="trophy-outline" class="text-yellow-400"></ion-icon>
+                            Vibe Leaderboard
+                        </h3>
+
+                        <div id="leaderboard-list" class="space-y-6">
+                            <!-- Leaderboard Items -->
+                            <div
+                                class="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/5">
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-fuchsia-600/20 flex items-center justify-center font-bold text-fuchsia-400">
+                                        1</div>
+                                    <span class="font-bold text-sm">Zenith_Creator</span>
+                                </div>
+                                <span class="font-mono text-xs text-cyan-400">12.4k pts</span>
+                            </div>
+                            <div
+                                class="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/5">
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center font-bold text-gray-400">
+                                        2</div>
+                                    <span class="font-bold text-sm">Neon_Ghost</span>
+                                </div>
+                                <span class="font-mono text-xs text-cyan-400">9.1k pts</span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="mt-8 p-4 rounded-2xl bg-gradient-to-r from-fuchsia-600/10 to-indigo-600/10 border border-white/5">
+                            <p class="text-[10px] text-gray-400 uppercase tracking-widest text-center">Your Rank: #14
+                                (4.2k pts)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: EXPERIENCE -->
+        <section id="experience" class="content-section container mx-auto px-6 py-24 animate-fade-in-up">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-cyan-400">Experience Hub</h2>
+                <div class="text-[10px] font-mono uppercase tracking-[0.5em] text-cyan-500 mb-8">Reputation Score: <span
+                        class="vibe-score">8.9k</span></div>
+
+                <!-- Search & Filters -->
+                <div class="max-w-4xl mx-auto mb-12 space-y-6">
+                    <div class="relative group">
+                        <ion-icon name="search-outline"
+                            class="absolute left-6 top-1/2 -translate-y-1/2 text-xl text-gray-500 group-focus-within:text-cyan-400 transition-colors"></ion-icon>
+                        <input type="text" id="exp-search" placeholder="Search experiences..."
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-16 pr-6 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/20 transition-all text-sm backdrop-blur-sm">
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <button data-filter="all"
+                            class="filter-btn px-6 py-2 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest bg-white/10 text-white transition-all hover:border-cyan-400 active">All</button>
+                        <button data-filter="chill"
+                            class="filter-btn px-6 py-2 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-gray-400 transition-all hover:border-cyan-400">Chill</button>
+                        <button data-filter="hype"
+                            class="filter-btn px-6 py-2 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-gray-400 transition-all hover:border-cyan-400">Hype</button>
+                        <button data-filter="focus"
+                            class="filter-btn px-6 py-2 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-gray-400 transition-all hover:border-cyan-400">Focus</button>
+                        <button data-filter="chaos"
+                            class="filter-btn px-6 py-2 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-gray-400 transition-all hover:border-cyan-400">Chaos</button>
+                        <div id="experience-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            <!-- Card 1: Hype -->
+                            <div class="exp-card glass-card p-8 rounded-3xl tilt-card" data-mood="hype"
+                                data-title="Flash Speed">
+                                <div class="skeleton w-16 h-16 rounded-2xl mb-6"></div>
+                                <div class="content-actual hidden">
+                                    <div
+                                        class="w-16 h-16 rounded-2xl bg-fuchsia-600/10 flex items-center justify-center mb-6 text-fuchsia-400">
+                                        <ion-icon name="flash-outline" class="text-3xl"></ion-icon>
+                                    </div>
+                                    <h3 class="text-2xl font-bold mb-3 text-fuchsia-400">Flash Speed</h3>
+                                    <p class="text-gray-400 text-sm mb-6">Visual consummation without any delay.</p>
+                                    <span
+                                        class="text-[10px] bg-fuchsia-600/20 text-fuchsia-400 px-3 py-1 rounded-full font-bold uppercase tracking-tighter mb-4 inline-block">Hype</span>
+                                    <button
+                                        class="vibe-btn w-full py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 flex items-center justify-center gap-2 transition-all">
+                                        <ion-icon name="flame" class="text-fuchsia-500"></ion-icon>
+                                        <span class="text-xs font-bold uppercase tracking-widest">Hype It</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Card 2: Chill -->
+                            <div class="exp-card glass-card p-8 rounded-3xl tilt-card" data-mood="chill"
+                                data-title="Cloud Drift">
+                                <div class="skeleton w-16 h-16 rounded-2xl mb-6"></div>
+                                <div class="content-actual hidden">
+                                    <div
+                                        class="w-16 h-16 rounded-2xl bg-cyan-400/10 flex items-center justify-center mb-6 text-cyan-400">
+                                        <ion-icon name="cloud-outline" class="text-3xl"></ion-icon>
+                                    </div>
+                                    <h3 class="text-2xl font-bold mb-3 text-cyan-400">Cloud Drift</h3>
+                                    <p class="text-gray-400 text-sm mb-6">Ambient soundscapes for relaxation.</p>
+                                    <span
+                                        class="text-[10px] bg-cyan-400/20 text-cyan-400 px-3 py-1 rounded-full font-bold uppercase tracking-tighter mb-4 inline-block">Chill</span>
+                                    <button
+                                        class="vibe-btn w-full py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 flex items-center justify-center gap-2 transition-all">
+                                        <ion-icon name="happy" class="text-cyan-400"></ion-icon>
+                                        <span class="text-xs font-bold uppercase tracking-widest">Vibe Check</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Card 3: Focus -->
+                            <div class="exp-card glass-card p-8 rounded-3xl tilt-card" data-mood="focus"
+                                data-title="Zen Mode">
+                                <div class="skeleton w-16 h-16 rounded-2xl mb-6"></div>
+                                <div class="content-actual hidden">
+                                    <div
+                                        class="w-16 h-16 rounded-2xl bg-indigo-500/10 flex items-center justify-center mb-6 text-indigo-400">
+                                        <ion-icon name="eye-outline" class="text-3xl"></ion-icon>
+                                    </div>
+                                    <h3 class="text-2xl font-bold mb-3 text-indigo-400">Zen Mode</h3>
+                                    <p class="text-gray-400 text-sm mb-6">Zero distractions, pure concentration.</p>
+                                    <span
+                                        class="text-[10px] bg-indigo-400/20 text-indigo-400 px-3 py-1 rounded-full font-bold uppercase tracking-tighter mb-4 inline-block">Focus</span>
+                                    <button
+                                        class="vibe-btn w-full py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 flex items-center justify-center gap-2 transition-all">
+                                        <ion-icon name="star" class="text-indigo-400"></ion-icon>
+                                        <span class="text-xs font-bold uppercase tracking-widest">Rate It</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Card 4: Chaos -->
+                            <div class="exp-card glass-card p-8 rounded-3xl tilt-card" data-mood="chaos"
+                                data-title="Glitch Art">
+                                <div class="skeleton w-16 h-16 rounded-2xl mb-6"></div>
+                                <div class="content-actual hidden">
+                                    <div
+                                        class="w-16 h-16 rounded-2xl bg-red-500/10 flex items-center justify-center mb-6 text-red-400">
+                                        <ion-icon name="skull-outline" class="text-3xl"></ion-icon>
+                                    </div>
+                                    <h3 class="text-2xl font-bold mb-3 text-red-500">Glitch Art</h3>
+                                    <p class="text-gray-400 text-sm mb-6">Experimental distortion visuals.</p>
+                                    <span
+                                        class="text-[10px] bg-red-400/20 text-red-400 px-3 py-1 rounded-full font-bold uppercase tracking-tighter mb-4 inline-block">Chaos</span>
+                                    <button
+                                        class="vibe-btn w-full py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 flex items-center justify-center gap-2 transition-all">
+                                        <ion-icon name="nuclear" class="text-red-500"></ion-icon>
+                                        <span class="text-xs font-bold uppercase tracking-widest">Explode</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+        </section>
+
+        <!-- SECTION 3: VALIDATION -->
+        <section id="validation" class="content-section hidden container mx-auto px-6 py-24 animate-fade-in-up">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-pink-500">Social Proof</h2>
+                <div class="text-[10px] font-mono uppercase tracking-[0.5em] text-pink-600 mb-4">Total Interactions:
+                    <span class="vibe-score">240k</span>
+                </div>
+                <p class="text-gray-400 max-w-2xl mx-auto">Lihat bagaimana dunia merespons inovasimu.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="glass-card p-8 rounded-3xl flex items-center space-x-6">
+                    <div
+                        class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">
+                        98%</div>
+                    <div>
+                        <h3 class="text-xl text-white font-bold">Positive Vibes</h3>
+                        <p class="text-sm text-gray-400">User satisfaction rate.</p>
+                    </div>
+                </div>
+                <div class="glass-card p-8 rounded-3xl flex items-center space-x-6">
+                    <div
+                        class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                        24/7</div>
+                    <div>
+                        <h3 class="text-xl text-white font-bold">Live Feed</h3>
+                        <p class="text-sm text-gray-400">Real-time community engagement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        </section>
+
+    </div>
+
+    <!-- SECTION: JOIN (PORTAL) -->
+    <section id="join-section"
+        class="hidden fixed inset-0 z-[80] bg-black/90 backdrop-blur-2xl flex items-center justify-center p-6 overflow-y-auto">
+        <div
+            class="glass-card max-w-md w-full p-10 rounded-[2.5rem] border border-white/20 shadow-2xl animate-fade-in-up relative overflow-hidden">
+            <!-- Background Decoration -->
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-fuchsia-600/20 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-cyan-400/20 rounded-full blur-3xl"></div>
+
+            <div id="join-form-container">
+                <h2
+                    class="text-4xl font-extrabold mb-2 tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-600 to-cyan-400">
+                    JOIN THE PULSE.</h2>
+                <p class="text-gray-400 text-sm mb-8 tracking-wide">Enter the collective and validate your existence.
+                </p>
+
+                <form id="vibe-join-form" class="space-y-6">
+                    <div class="relative">
+                        <input type="text" id="join-username" required placeholder=" "
+                            class="peer w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-5 text-sm outline-none focus:border-fuchsia-500/50 transition-all placeholder-transparent">
+                        <label for="join-username"
+                            class="absolute left-5 top-4 text-gray-500 text-xs transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-focus:top-[-10px] peer-focus:text-[10px] peer-focus:text-fuchsia-400 bg-transparent px-1">Username</label>
+                    </div>
+
+                    <div class="relative">
+                        <input type="email" id="join-email" required placeholder=" "
+                            class="peer w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-5 text-sm outline-none focus:border-cyan-400/50 transition-all placeholder-transparent">
+                        <label for="join-email"
+                            class="absolute left-5 top-4 text-gray-500 text-xs transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-focus:top-[-10px] peer-focus:text-[10px] peer-focus:text-cyan-400 bg-transparent px-1">Email</label>
+                    </div>
+
+                    <div class="relative">
+                        <select id="join-vibe" required
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-5 text-sm outline-none focus:border-fuchsia-500/50 transition-all appearance-none cursor-pointer">
+                            <option value="" disabled selected>Select Your Vibe Category</option>
+                            <option value="chill" class="bg-black">Chill</option>
+                            <option value="hype" class="bg-black">Hype</option>
+                            <option value="focus" class="bg-black">Focus</option>
+                            <option value="chaos" class="bg-black">Chaos</option>
+                        </select>
+                        <ion-icon name="chevron-down-outline"
+                            class="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none"></ion-icon>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full py-4 rounded-2xl bg-white text-black font-extrabold text-xs uppercase tracking-[0.2em] shadow-white/10 hover:shadow-neon hover:bg-fuchsia-600 hover:text-white transition-all duration-500 border border-transparent">
+                        Submit Vibe
+                    </button>
+
+                    <button type="button" id="join-close"
+                        class="w-full py-2 hover:text-gray-300 transition-colors text-[10px] uppercase font-bold tracking-widest text-gray-500">Back
+                        to Earth</button>
+                </form>
+            </div>
+
+            <!-- Success State (Hidden) -->
+            <div id="join-success" class="hidden text-center py-10 animate-fade-in-up">
+                <div
+                    class="w-20 h-20 bg-fuchsia-600/20 text-fuchsia-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-neon">
+                    <ion-icon name="checkmark-done-outline" class="text-4xl"></ion-icon>
+                </div>
+                <h3 class="text-2xl font-bold mb-4" id="success-msg">Welcome to the Pulse!</h3>
+                <p class="text-gray-400 text-sm mb-8">Your identity has been validated. You are now part of the
+                    ecosystem.</p>
+                <button id="success-close"
+                    class="px-8 py-3 rounded-full border border-white/10 hover:bg-white/5 transition-all text-xs font-bold uppercase tracking-widest">Entry
+                    Confirmed</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infinite Footer Marquee -->
+    <div class="relative py-8 overflow-hidden border-t border-white/5 bg-black/20">
+        <div class="animate-marquee whitespace-nowrap opacity-20">
+            <span class="mx-8 text-4xl font-extrabold tracking-tighter uppercase">CHOIZZ. CHOIZZ. CHOIZZ. CHOIZZ.</span>
+            <span class="mx-8 text-4xl font-extrabold tracking-tighter uppercase">CHOIZZ. CHOIZZ. CHOIZZ. CHOIZZ.</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="relative z-10 py-12 text-center bg-black/50 backdrop-blur-lg">
+        <p class="text-gray-500 text-sm tracking-widest uppercase mb-2">© 2026 Choizz Platform.</p>
+        <p class="text-xs text-fuchsia-600 font-mono opacity-80">Vibe check: Passed.</p>
+    </footer>
+
+    <!-- SVG Glitch Filters -->
+    <svg style="display: none;">
+        <defs>
+            <filter id="rgbSplit">
+                <feOffset in="SourceGraphic" dx="3" dy="0" result="red" />
+                <feOffset in="SourceGraphic" dx="-3" dy="0" result="blue" />
+                <feOffset in="SourceGraphic" dx="0" dy="0" result="green" />
+                <feColorMatrix in="red" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"
+                    result="redOnly" />
+                <feColorMatrix in="blue" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0"
+                    result="blueOnly" />
+                <feColorMatrix in="green" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0"
+                    result="greenOnly" />
+                <feBlend in="redOnly" in2="blueOnly" mode="screen" result="rb" />
+                <feBlend in="rb" in2="greenOnly" mode="screen" />
+            </filter>
+            <filter id="digitalNoise">
+                <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"
+                    result="noise" />
+                <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" />
+                <feComposite operator="in" in2="SourceGraphic" />
+                <feBlend mode="overlay" in2="SourceGraphic" />
+            </filter>
+        </defs>
+    </svg>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
