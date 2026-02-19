@@ -12,15 +12,36 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "Zenith_Creator", points: 12400 },
         { name: "Neon_Ghost", points: 9100 },
         { name: "Aether_Flux", points: 8800 },
-        { name: "Cyber_Sage", points: 7200 },
-        { name: "Choizz_User (You)", points: userPoints, isUser: true }
+        { name: "Cyber_Sage", points: 7200 }
     ];
+
+    // Load user data
+    const userData = JSON.parse(localStorage.getItem('choizz_user')) || null;
+    const navJoinBtn = document.getElementById('nav-join-btn');
+    const navAvatar = document.getElementById('nav-profile-avatar');
+
+    if (userData) {
+        leaderboardData.push({ name: userData.username + " (You)", points: userPoints, isUser: true });
+        // Swap Join button for Avatar if user exists
+        if (navJoinBtn) navJoinBtn.classList.add('hidden');
+        if (navAvatar) navAvatar.classList.remove('hidden');
+    } else {
+        leaderboardData.push({ name: "Choizz_User (You)", points: userPoints, isUser: true });
+    }
+
+    // Avatar Navigation
+    if (navAvatar) {
+        navAvatar.addEventListener('click', () => switchSection('profile'));
+    }
 
     // --- 1. SPA NAVIGATION ---
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.content-section');
 
     function switchSection(targetId) {
+        // Reset scroll position
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
         sections.forEach(section => {
             section.classList.add('hidden');
             section.classList.remove('animate-fade-in-up');
@@ -31,6 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
             targetSection.classList.remove('hidden');
             void targetSection.offsetWidth;
             targetSection.classList.add('animate-fade-in-up');
+
+            if (targetId === 'profile') {
+                updateProfileUI();
+            }
+
             initSkeletons(targetSection);
         }
 
@@ -45,6 +71,15 @@ document.addEventListener('DOMContentLoaded', () => {
             switchSection(link.dataset.target);
         });
     });
+
+    // Logo click returns to Home
+    const logoLink = document.querySelector('nav .container > a');
+    if (logoLink) {
+        logoLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchSection('home');
+        });
+    }
 
 
     // --- 2. EXPERIENCE HUB (Filter & Search) ---
@@ -385,17 +420,100 @@ document.addEventListener('DOMContentLoaded', () => {
         joinForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const username = document.getElementById('join-username').value;
+            const email = document.getElementById('join-email').value;
             const vibe = document.getElementById('join-vibe').value;
+
+            // Save user data
+            const userObj = { username, email, vibe, joinedAt: new Date().toISOString() };
+            localStorage.setItem('choizz_user', JSON.stringify(userObj));
+
             document.getElementById('join-form-container').classList.add('hidden');
             const successDiv = document.getElementById('join-success');
             successDiv.classList.remove('hidden');
             document.getElementById('success-msg').innerText = `Welcome to the Pulse, ${username}!`;
             createToast(`New member: ${username} joined with ${vibe} vibe!`);
-            leaderboardData.push({ name: username, points: 500, isUser: false });
+
+            // Swap Join button for Avatar in navbar
+            const navJoinBtn = document.getElementById('nav-join-btn');
+            const navAvatar = document.getElementById('nav-profile-avatar');
+            if (navJoinBtn) navJoinBtn.classList.add('hidden');
+            if (navAvatar) navAvatar.classList.remove('hidden');
+
+            // Update leaderboard
+            const currentUser = leaderboardData.find(p => p.isUser);
+            if (currentUser) {
+                currentUser.name = username + " (You)";
+            } else {
+                leaderboardData.push({ name: username + " (You)", points: 500, isUser: true });
+            }
+
             updateLeaderboardUI();
             userPoints += 500;
             localStorage.setItem('choizz_points', userPoints);
             createParticles(window.innerWidth / 2, window.innerHeight / 2);
+
+            // Auto-navigate to profile after a short delay
+            setTimeout(() => {
+                closeJoinPortal();
+                switchSection('profile');
+            }, 1500);
+        });
+    }
+
+    function updateProfileUI() {
+        const userData = JSON.parse(localStorage.getItem('choizz_user'));
+        const usernameDisplay = document.getElementById('profile-username-display');
+        const vibeDisplay = document.getElementById('profile-vibe-display');
+        const pointsDisplay = document.getElementById('profile-points-display');
+        const serialDisplay = document.getElementById('profile-serial');
+
+        if (userData) {
+            if (usernameDisplay) usernameDisplay.innerText = userData.username.toUpperCase();
+            if (vibeDisplay) vibeDisplay.innerText = userData.vibe.toUpperCase();
+            if (serialDisplay) {
+                // Generate a consistent pseudo-serial from username
+                const hash = userData.username.split('').reduce((a, b) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a }, 0);
+                serialDisplay.innerText = `SN-${Math.abs(hash).toString(16).toUpperCase().padStart(8, '0')}`;
+            }
+        }
+        if (pointsDisplay) pointsDisplay.innerText = (userPoints / 1000).toFixed(1) + 'k';
+    }
+
+    const refreshBtn = document.getElementById('refresh-identity-btn');
+    if (refreshBtn) {
+        refreshBtn.addEventListener('click', () => {
+            triggerFeedback();
+            createToast("Identity sync complete.");
+            updateProfileUI();
+        });
+    }
+
+    const logoutBtn = document.getElementById('profile-logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            // 1. Clear Data
+            localStorage.removeItem('choizz_user');
+            localStorage.removeItem('choizz_points');
+
+            // 2. Reset points in memory
+            userPoints = 4200;
+
+            // 3. Update UI visibility
+            if (navJoinBtn) navJoinBtn.classList.remove('hidden');
+            if (navAvatar) navAvatar.classList.add('hidden');
+
+            // 4. Feedback & Navigation
+            triggerFeedback();
+            createToast("Profile decoded. Session ended.");
+            switchSection('experience');
+
+            // Optionally remove user from leaderboard data if added
+            const userIndex = leaderboardData.findIndex(p => p.isUser);
+            if (userIndex !== -1) {
+                leaderboardData.splice(userIndex, 1);
+                leaderboardData.push({ name: "Choizz_User (You)", points: userPoints, isUser: true });
+                updateLeaderboardUI();
+            }
         });
     }
 
